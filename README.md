@@ -25,6 +25,13 @@ Entries live in one of two states:
   Candidates are displayed with their sources but never fill defaults
   automatically; adopting one is always an explicit user choice.
 
+## Tags
+
+Every merged data change bumps `version` in `catalog.yaml`; a maintainer
+ships the new state as a tag named `v<version>` (for example
+`v2026-10-01.1`). Tags are the only thing chord's catalog refresh pulls —
+it never follows a branch head.
+
 ## Contributing
 
 1. Fork, edit the YAML files, bump `version` in `catalog.yaml`.
@@ -35,17 +42,23 @@ Entries live in one of two states:
    against the endpoint (a smoke run through `chord doctor models` on the
    preset, noted in the PR).
 4. Open a PR. CI validates the schema and references; a maintainer reviews the
-   evidence and merges.
+   evidence, merges, and tags `v<version>`.
 
 ## How chord consumes this repository
 
 - **Release snapshot**: each chord release embeds a snapshot of a pinned tag
   as its built-in catalog (generated, byte-stable, guarded by a golden test in
-  the chord repository).
-- **Catalog refresh** (planned): `chord config add --refresh-catalog` pulls the
-  latest tag into a local cache. Refreshed verified data supersedes the
-  embedded snapshot as a whole by catalog version — never merged entry by
-  entry — and failures fall back to the embedded snapshot.
+  the chord repository). Chord records the pinned tag in its
+  `internal/modelcatalog/data/snapshot.yaml`, and
+  `scripts/sync_model_catalog.sh <tag>` performs the pin → copy → regenerate
+  → verify round trip.
+- **Catalog refresh**: `chord config refresh-catalog` (or
+  `chord config add --refresh-catalog`) pulls the newest `v<version>` tag
+  into a local cache. Refreshed verified data supersedes the embedded
+  snapshot as a whole by catalog version — never merged entry by entry — and
+  any failure (network, corrupt snapshot, incompatible schema) falls back to
+  the embedded snapshot. Refreshed candidates join chord's discovery lists
+  with their scope and sources; they never fill defaults.
 - chord owns the schema and the presentation; this repository owns the data.
 
 ## Validating locally
@@ -57,4 +70,5 @@ go run ./cmd/modelcatalog-gen -dir /path/to/chord-models
 ```
 
 It fails on unknown fields, duplicate identities, dangling bindings,
-non-https sources, non-calendar check dates, and zero-priced entries.
+non-https sources, non-calendar check dates, and zero-priced entries, and it
+validates every entry under `candidates/` the same way.
