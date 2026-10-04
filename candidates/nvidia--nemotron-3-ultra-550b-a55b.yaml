@@ -1,0 +1,13 @@
+wire_model_id: nemotron-3-ultra-550b-a55b
+scope: nvidia
+context: 1048576
+sources:
+- &id001
+  url: https://research.nvidia.com/labs/nemotron/files/NVIDIA-Nemotron-3-Ultra-Technical-Report.pdf
+  checked: '2026-10-04'
+- url: https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/nvidia/nemotron-3-ultra-550b-a55b.toml
+  checked: '2026-10-04'
+notes: Official report confirms agentic coding and 1M context; serving output maximum
+  and release date need confirmation.
+coding_sources:
+- *id001

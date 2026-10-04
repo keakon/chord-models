@@ -1,0 +1,110 @@
+# Maintaining a six-month coding catalog
+
+## Scope and inclusion
+
+Review every newly released flagship/general frontier model, coding specialist,
+and competitive efficient variant during the last six calendar months.
+Include previews with explicit availability restrictions, official APIs,
+third-party hosted weights and self-hosted weights. Do not equate tool calling
+with coding quality: require official software-engineering capabilities or
+model-specific coding evaluations before treating a discovery as suitable.
+Exclude embeddings, rerankers, image/audio generators, research-agent wrappers,
+roleplay-only models and retired routes. Keep an exclusion reason and evidence.
+Do not multiply one underlying model into records for every quantization or
+alias; route limits and costs belong to the actual serving scope.
+
+`coverage.json` is the review inventory, not another runtime catalog. Use
+`released` only for a cited official calendar date. `reported_release` is a
+secondary discovery hint and is never copied into model defaults. Vendor
+reviews remain `partial` or `pending` until their official release inventory
+has actually been audited. A report must say `complete: false` while unknown
+dates or coverage gaps remain. Retain older facts needed by existing users;
+do not remove a model solely because the window advanced.
+
+## Review discoveries weekly
+
+1. Inspect the scheduled `catalog-discovery` artifact: it records the exact
+   models.dev commit used and all new tool-capable text models in the window,
+   including records whose release date is unknown. This is a broad screening
+   list, not a recommendation. Also read official release/model/deprecation
+   pages: an external registry cannot guarantee exhaustive coverage.
+2. For each item, record a decision in `coverage.json`: `model`, `candidate`,
+   or `excluded`. Candidates use `<vendor>--<wire-id>.yaml` filenames.
+3. Verify release date, coding evidence, context versus independent input
+   limits, **hard** output maximum, modalities, lifecycle, account/region
+   restrictions and current standard pricing. Defaults and benchmark
+   `max_tokens` settings do not prove a hard model maximum. Never copy a
+   neighboring model's limits. Unknown pricing is absent, not zero/free.
+4. Add complete model facts to `models.yaml`; partial observations stay in
+   `candidates/`. Add `coding_sources`, and `released` when supported by a
+   cited official release. `sources` need HTTPS URLs and real `checked` dates.
+   Record all new evidence dates and update the inventory review date.
+5. If the official API uses a supported protocol and a general URL, add a
+   `connection` with the full request URL, exact `wire_model_id`, `env_var`,
+   and `sources`. Do not insert a guessed region, workspace or entitlement.
+   A connection is not a managed preset or smoke-tested binding.
+6. Bump `catalog.yaml`, validate, and submit the evidence for review.
+
+You can generate the same report locally, without API keys:
+
+```bash
+CATALOG_REPORT_PATH=/tmp/chord-catalog.json ./scripts/validate.sh ../chord
+python3 scripts/catalog_coverage.py --catalog /tmp/chord-catalog.json \
+  --models-dev /path/to/models.dev > /tmp/chord-coverage-report.json
+```
+
+The script is read-only and needs Python 3.11+. It subtracts six calendar
+months with end-of-month clamping. `--as-of YYYY-MM-DD` makes historical
+reports reproducible. `--max-review-age 7` enables the freshness gate.
+
+## Route behavior and pricing
+
+A managed endpoint change needs protocol/auth documentation and a recorded
+`chord doctor models` run in the PR (date, endpoint/preset, wire ID, variants
+checked, outcome; redact secrets). Bindings support `limit` overrides and
+`input_modalities`: they must describe this route, not the model family in
+isolation. `limit.input: 0` explicitly clears an inherited separate input cap.
+Ordinary explicit config always wins over catalog defaults.
+
+Use `cost.notes` for uncached/peak standard rates, region, long-context tiers,
+promotions or account restrictions. Never present a promotional rate as an
+unqualified permanent price. Store only the supported base price plus scope;
+do not pretend this schema models every billing tier. Record subscription or
+self-hosting restrictions in candidate notes/coverage reasons and cited docs.
+
+Model output capacity can equal the total window. Chord reserves the effective
+requested output budget when deriving input from a total window; an explicit
+independent input limit still wins. Preserve real model capabilities instead
+of lowering them to work around a budgeting bug.
+
+## Validation and immutable releases
+
+```bash
+./scripts/validate.sh ../chord             # local checkout, no network needed
+./scripts/validate.sh                     # fetch exact validator commit
+CATALOG_REVISION=v2026-10-05.3 ./scripts/validate.sh ../chord
+```
+
+The generator validates all candidates as well as the four runtime sources.
+It rejects unknown fields, missing references, malformed versions/dates,
+invalid connection recipes, invalid route overrides and invented zero prices.
+The inventory checker catches missing models/candidate files and decisions.
+Validation writes only a temporary artifact, never Chord's embedded snapshot.
+
+Every data or coverage change must increase `YYYY-MM-DD.N` in `catalog.yaml`.
+A release tag is exactly `v<version>` and must point at that data version.
+Never move/delete a published tag or reuse a version. Protect tags on the
+hosting service. Fix bad data by releasing a **higher** version (revert the
+facts in that new release); version-based refresh cannot roll back to an
+older tag. Failed refresh leaves the last valid catalog in use.
+
+When adding schema fields, implement and test the Chord consumer first; pin
+its full commit SHA in `validator-revision`. **Publish that Chord commit before
+publishing the upstream data/tag**, so remote CI can fetch the validator.
+Then publish the reviewed catalog tag and sync Chord's embedded snapshot with
+`scripts/sync_model_catalog.sh <tag> /path/to/chord-models`. Older Chord builds
+reject unknown fields and retain their supported embedded catalog.
+
+Schema and source evidence checks are not live provider checks. Contributions
+must state which smoke checks actually ran; do not imply a published tag or
+GitHub workflow succeeded merely because local validation passed.

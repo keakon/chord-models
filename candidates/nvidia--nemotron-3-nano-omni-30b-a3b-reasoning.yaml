@@ -1,0 +1,9 @@
+wire_model_id: nemotron-3-nano-omni-30b-a3b-reasoning
+scope: nvidia
+context: 256000
+sources:
+- url: https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning.toml
+  checked: '2026-10-04'
+notes: 'Discovery only: release date, coding suitability, hard output limit, lifecycle
+  and serving route need official confirmation. Registry context is an observed reference,
+  never a runtime default.'

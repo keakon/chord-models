@@ -1,0 +1,14 @@
+wire_model_id: MiniMax-M3
+scope: minimax
+context: 1048576
+sources:
+- &id001
+  url: https://www.minimax.io/blog/minimax-m3
+  checked: '2026-10-04'
+- url: https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/minimax/MiniMax-M3.toml
+  checked: '2026-10-04'
+notes: Official coding and release evidence; maximum API output still needs confirmation.
+  Open weights and official API are available.
+coding_sources:
+- *id001
+released: '2026-06-01'

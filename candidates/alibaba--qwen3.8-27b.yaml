@@ -1,0 +1,13 @@
+wire_model_id: qwen3.8-27b
+scope: alibaba
+context: 262144
+sources:
+- &id001
+  url: https://huggingface.co/Qwen/Qwen3.8-27B
+  checked: '2026-10-04'
+- url: https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/alibaba/qwen3.8-27b.toml
+  checked: '2026-10-04'
+notes: Native 262144 context; up to 1M requires deployment-specific RoPE scaling.
+  Recommended reasoning/final output lengths are not a serving hard limit.
+coding_sources:
+- *id001

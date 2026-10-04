@@ -1,0 +1,57 @@
+name: Catalog validation and discovery
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * 1'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.27.x'
+          cache: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Check data version on pull requests
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: python3 scripts/check_version.py "$BASE_SHA"
+      - name: Validate data with pinned Chord schema
+        env:
+          REF_TYPE: ${{ github.ref_type }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          if [[ "$REF_TYPE" == tag ]]; then
+            export CATALOG_REVISION="$REF_NAME"
+          fi
+          export CATALOG_REPORT_PATH="$RUNNER_TEMP/catalog.json"
+          scripts/validate.sh
+      - name: Discover possible omissions
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          git clone --depth 1 --filter=blob:none --sparse https://github.com/anomalyco/models.dev.git "$RUNNER_TEMP/models-dev"
+          git -C "$RUNNER_TEMP/models-dev" sparse-checkout set models
+          git -C "$RUNNER_TEMP/models-dev" rev-parse HEAD > discovery-source.txt
+          python3 scripts/catalog_coverage.py --catalog "$RUNNER_TEMP/catalog.json" --models-dev "$RUNNER_TEMP/models-dev" --max-review-age 7 > coverage-report.json
+      - name: Upload discovery report
+        if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-discovery
+          path: |
+            coverage-report.json
+            discovery-source.txt
+          if-no-files-found: ignore

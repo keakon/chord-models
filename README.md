@@ -1,74 +1,95 @@
 # chord-models
 
-Upstream source of [Chord](https://github.com/keakon/chord)'s built-in model
-catalog: verified endpoint contracts, model facts, and endpoint bindings.
-This repository exists so catalog data can move faster than chord releases —
-a new model lands here by PR, and users pick it up through `chord
-config add` and catalog refresh instead of waiting for a binary update.
+[中文](README_CN.md)
 
-## Layout
+A model catalog for [Chord](https://github.com/keakon/chord): choose a coding
+model and configure it without copying API URLs or token limits by hand.
+The maintenance target is **all frontier models suitable for coding released
+in the last six calendar months**, including official APIs, hosted open
+weights, and self-hosted deployments.
 
-| File            | Contents                                                                 |
-| --------------- | ------------------------------------------------------------------------ |
-| `catalog.yaml`  | Catalog identity: the version, bumped on every data change                |
-| `endpoints.yaml`| Verified endpoint contracts: protocol, request URL, auth method, credential env var, sources |
-| `models.yaml`   | Verified model facts: context/input/output budgets, modalities, reasoning options, pricing, sources |
-| `bindings.yaml` | Verified endpoint bindings: wire model IDs, reasoning variants, Responses field send defaults |
-| `candidates/`   | Community-submitted discovery entries (inert: never become defaults until verified and moved up) |
-
-Entries live in one of two states:
-
-- **verified** — official docs checked, binding recorded, request behavior
-  validated. Verified entries ship in chord's embedded snapshot and provide
-  runtime defaults.
-- **candidate** — discovered and proposed, facts not yet fully verified.
-  Candidates are displayed with their sources but never fill defaults
-  automatically; adopting one is always an explicit user choice.
-
-## Tags
-
-Every merged data change bumps `version` in `catalog.yaml`; a maintainer
-ships the new state as a tag named `v<version>` (for example
-`v2026-10-01.1`). Tags are the only thing chord's catalog refresh pulls —
-it never follows a branch head.
-
-## Contributing
-
-1. Fork, edit the YAML files, bump `version` in `catalog.yaml`.
-2. Every fact carries its evidence: `sources` entries with an https URL and a
-   real calendar-day `checked` date. Missing facts stay missing — never encode
-   a guess as zero or as a copied neighbor value.
-3. `verified` additions additionally need a recorded request-behavior check
-   against the endpoint (a smoke run through `chord doctor models` on the
-   preset, noted in the PR).
-4. Open a PR. CI validates the schema and references; a maintainer reviews the
-   evidence, merges, and tags `v<version>`.
-
-## How chord consumes this repository
-
-- **Release snapshot**: each chord release embeds a snapshot of a pinned tag
-  as its built-in catalog (generated, byte-stable, guarded by a golden test in
-  the chord repository). Chord records the pinned tag in its
-  `internal/modelcatalog/data/snapshot.yaml`, and
-  `scripts/sync_model_catalog.sh <tag>` performs the pin → copy → regenerate
-  → verify round trip.
-- **Catalog refresh**: `chord config refresh-catalog` (or
-  `chord config add --refresh-catalog`) pulls the newest `v<version>` tag
-  into a local cache. Refreshed verified data supersedes the embedded
-  snapshot as a whole by catalog version — never merged entry by entry — and
-  any failure (network, corrupt snapshot, incompatible schema) falls back to
-  the embedded snapshot. Refreshed candidates join chord's discovery lists
-  with their scope and sources; they never fill defaults.
-- chord owns the schema and the presentation; this repository owns the data.
-
-## Validating locally
-
-From a chord checkout, run the catalog generator against this directory:
+## Use in Chord
 
 ```bash
-go run ./cmd/modelcatalog-gen -dir /path/to/chord-models
+chord config show --catalog
+chord config add openai/gpt-6.1-sol
 ```
 
-It fails on unknown fields, duplicate identities, dangling bindings,
-non-https sources, non-calendar check dates, and zero-priced entries, and it
-validates every entry under `candidates/` the same way.
+Copy an add command from the catalog. Chord creates your first config if
+needed, fills the documented connection, and tells you which API key variable
+to set. For example:
+
+```bash
+export OPENAI_API_KEY="your-api-key"
+chord config add openai/gpt-6.1-sol
+chord
+```
+
+Existing providers keep their URL and credentials. OAuth models also print
+the login command. A workspace-specific or self-hosted connection needs your
+own `--url`; a custom wire model name can borrow facts explicitly:
+
+```bash
+chord config add local/my-model \
+  --url https://your-server.example/v1/chat/completions \
+  --catalog cohere/north-mini-code-1-0 --api-key-env LOCAL_API_KEY
+```
+
+Fetch a published update with `chord config refresh-catalog`. Ordinary viewing
+and adding are offline. Use `chord config show --catalog --json` for full
+sources, release dates, pricing scope, and candidates delivered by refresh.
+These commands require a Chord build supporting the schema pinned in
+[`validator-revision`](validator-revision).
+
+## Coverage and evidence
+
+The 2026-10-05 review contains **31 model fact records** and **98 discovery
+candidates**, with a release inventory across **33 vendors**. This is a
+starting coverage audit, **not a claim that every eligible model is already
+verified**. [`coverage.json`](coverage.json) records each model, candidate,
+exclusion, reported release date, and remaining checks. Official release
+proof is still missing for many entries; registry dates are discovery hints.
+
+- Model facts are checked against cited documentation and may exist without
+  a managed binding. Unknown facts stay absent.
+- A documented `connection` supplies an API URL, wire ID and credential
+  variable after the user selects an exact catalog model. It is a setup
+  recipe, not a live request test or a source of route send defaults.
+- Managed endpoint bindings carry route-specific behavior. Changes require
+  endpoint evidence and a recorded smoke test in the contribution.
+- Candidates are unverified observations. They never become runtime defaults.
+  Partial official evidence can be retained here while a hard output limit,
+  access restriction, release date, or coding suitability remains unresolved.
+
+Six months means calendar months, not 180 days. Older facts remain available
+for existing configurations. Retired routes, duplicates, and unsuitable models
+receive an explicit inventory decision rather than silently disappearing.
+
+## Maintain the catalog
+
+```bash
+# Offline, using your local Chord checkout; does not alter its embedded data.
+./scripts/validate.sh ../chord
+```
+
+Without a checkout argument the script fetches the fixed Chord validator
+commit. CI runs the same schema/candidate checks, verifies version bumps on
+PRs and tag/version identity on releases. Weekly discovery produces an
+artifact listing possible omissions from models.dev and missing official
+release evidence; it never silently promotes registry data. An inventory
+review older than seven days fails the weekly check.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for scope, evidence, discovery review,
+pricing and release instructions. Chord owns the schema; this repository owns
+the data. Local validation does not establish that GitHub CI, published tags,
+or live provider requests have succeeded.
+
+| File | Purpose |
+| --- | --- |
+| `catalog.yaml` | Immutable release identity (`YYYY-MM-DD.N`) |
+| `models.yaml` | Model facts, coding/release evidence, documented connections, pricing scope |
+| `endpoints.yaml` | Managed API protocol, URL and authentication contracts |
+| `bindings.yaml` | Exact wire IDs, route limits/modalities, variants and send rules |
+| `candidates/` | Partial discoveries, never used as defaults |
+| `coverage.json` | Rolling inventory, exclusions, unresolved evidence and vendor watch list |
+| `validator-revision` | Full Chord commit SHA used by validation |

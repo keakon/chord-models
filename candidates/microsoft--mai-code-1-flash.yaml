@@ -1,0 +1,9 @@
+wire_model_id: mai-code-1-flash
+scope: microsoft
+context: 256000
+sources:
+- url: https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/microsoft/mai-code-1-flash.toml
+  checked: '2026-10-04'
+notes: 'Discovery only: release date, coding suitability, hard output limit, lifecycle
+  and serving route need official confirmation. Registry context is an observed reference,
+  never a runtime default.'

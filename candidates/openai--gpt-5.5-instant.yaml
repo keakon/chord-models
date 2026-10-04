@@ -1,0 +1,9 @@
+wire_model_id: gpt-5.5-instant
+scope: openai
+context: 400000
+sources:
+- url: https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/openai/gpt-5.5-instant.toml
+  checked: '2026-10-04'
+notes: 'Discovery only: release date, coding suitability, hard output limit, lifecycle
+  and serving route need official confirmation. Registry context is an observed reference,
+  never a runtime default.'
