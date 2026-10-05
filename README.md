@@ -41,6 +41,13 @@ sources, release dates, pricing scope, and candidates delivered by refresh.
 These commands require a Chord build supporting the schema pinned in
 [`validator-revision`](validator-revision).
 
+Custom endpoints selected with `--catalog` inherit model behavior and compat
+when they expose the same protocol as the official connection. Limits,
+modalities and context compaction hints also transfer across protocols.
+Request-body compression is disabled by default; users can set provider
+`compress: gzip` or `compress: zstd` after confirming support. Adding a model
+preserves explicit compression settings.
+
 ## Coverage and evidence
 
 The 2026-10-05 review contains **31 model fact records** and **98 discovery

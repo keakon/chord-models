@@ -20,13 +20,15 @@ chord config add openai/gpt-6.1-sol
 chord
 ```
 
-已有 provider 会沿用原地址和凭据。OAuth 模型还会提示登录命令；需要业务空间地址或自部署地址时，用 `--url` 指定你的接口。自定义请求模型名可显式借用目录事实：
+已有 provider 会沿用原地址和凭据。OAuth 模型还会提示登录命令；需要业务空间地址或自部署地址时，用 `--url` 指定你的接口。自定义请求模型名可显式继承目录模型配方；与官方使用相同协议时，compat、thinking/reasoning 和上下文压缩策略也会自动补齐：
 
 ```bash
 chord config add local/my-model \
   --url https://your-server.example/v1/chat/completions \
   --catalog cohere/north-mini-code-1-0 --api-key-env LOCAL_API_KEY
 ```
+
+请求体压缩默认关闭。确认接口或代理支持后，可在 provider 下手动设置 `compress: gzip` 或 `compress: zstd`；添加模型会保留该设置。请求体压缩与上下文压缩策略相互独立。
 
 用 `chord config refresh-catalog` 获取已发布的目录更新。普通查看和添加操作均可离线完成。完整来源、发布日期、价格适用范围和刷新得到的候选见 `chord config show --catalog --json`。
 需要使用支持当前目录格式的 Chord，校验版本固定在 [validator-revision](validator-revision)。
