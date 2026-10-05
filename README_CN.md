@@ -12,7 +12,7 @@ chord config show --catalog
 chord config add openai/gpt-6.1-sol
 ```
 
-查看目录，复制模型对应的添加命令即可。没有配置文件时，Chord 会直接创建配置、填入官方接入信息，并提示应设置哪个密钥环境变量。例如：
+查看目录，复制模型对应的添加命令即可。在交互终端中，添加命令会引导你补齐接入信息、预览并确认保存。没有配置文件时，Chord 会直接创建配置、填入官方接入信息，并提示应设置哪个密钥环境变量。例如：
 
 ```bash
 export OPENAI_API_KEY="你的 API key"
@@ -28,7 +28,17 @@ chord config add local/my-model \
   --catalog cohere/north-mini-code-1-0 --api-key-env LOCAL_API_KEY
 ```
 
-请求体压缩默认关闭。确认接口或代理支持后，可在 provider 下手动设置 `compress: gzip` 或 `compress: zstd`；添加模型会保留该设置。请求体压缩与上下文压缩策略相互独立。
+也可以直接添加网关上的模型，无需先查目录或拼出完整参数：
+
+```bash
+chord config add mygw/gpt-6-sol
+```
+
+Chord 会列出接近的已验证目录模型，由你按数字键立即选择，无需回车；按 `m` 可输入完整目录 ID。接着补齐新 provider 的 API 地址和密钥环境变量。选择后可选择已有模型池或创建新池，并配置推理档位和请求体压缩，确认预览后保存。已有 provider 会沿用地址与凭据。编号菜单和 `y/n` 均直接响应按键；菜单中按 Esc、`q` 或 `0`，文本中输入 `q`，或拒绝保存即可取消，配置和凭据文件保持原样。文本输入仍需回车。YAML 锚点和 `<<` 合并均可使用，编辑共享值不会改变其他引用的配置。
+
+脚本传 `--no-interactive` 并提供完整参数；重定向 stdin 或 stdout 也会关闭交互。未匹配的模型只显示建议并返回错误，不会自动选用相似模型。
+
+请求体压缩默认关闭。确认接口或代理支持后，可在引导中选择 `gzip` / `zstd`，传 `--compress gzip` / `--compress zstd`，或在 provider 下手动设置 `compress: gzip` / `compress: zstd`；添加模型会保留该设置。请求体压缩与上下文压缩策略相互独立。
 
 用 `chord config refresh-catalog` 获取已发布的目录更新。普通查看和添加操作均可离线完成。完整来源、发布日期、价格适用范围和刷新得到的候选见 `chord config show --catalog --json`。
 需要使用支持当前目录格式的 Chord，校验版本固定在 [validator-revision](validator-revision)。

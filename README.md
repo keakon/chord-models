@@ -41,12 +41,20 @@ sources, release dates, pricing scope, and candidates delivered by refresh.
 These commands require a Chord build supporting the schema pinned in
 [`validator-revision`](validator-revision).
 
+For guided gateway setup, run:
+
+```bash
+chord config add mygw/gpt-6-sol
+```
+
+In an interactive terminal, press a number to select a suggested verified model without Enter (`m` enters a full catalog ID), fill any missing provider URL and API-key environment variable, choose an existing pool or create one, and optionally configure the reasoning variant and request compression. Review and confirm before saving. Existing providers reuse their URL and credentials. Numbered menus and `y/n` respond immediately; text input still needs Enter. Press Esc, `q` or `0` in menus, enter `q` in text prompts, or decline saving to cancel without changing configuration or credential files. YAML anchors and `<<` merges are supported; editing shared settings leaves other references unchanged.
+
+For scripts, pass `--no-interactive` with explicit arguments. Redirecting stdin or stdout also disables prompts; an unmatched model shows suggestions and returns an error without adopting one automatically.
+
 Custom endpoints selected with `--catalog` inherit model behavior and compat
 when they expose the same protocol as the official connection. Limits,
 modalities and context compaction hints also transfer across protocols.
-Request-body compression is disabled by default; users can set provider
-`compress: gzip` or `compress: zstd` after confirming support. Adding a model
-preserves explicit compression settings.
+Request-body compression is disabled by default. After confirming endpoint support, choose `gzip` or `zstd` in the guide, pass `--compress gzip` / `--compress zstd`, or set provider `compress: gzip` / `compress: zstd` manually. Adding models preserves compression settings unless you explicitly change them.
 
 ## Coverage and evidence
 
