@@ -33,6 +33,31 @@ class CoverageTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 validate(Path(tmp), catalog, inventory, day)
 
+    def test_runtime_model_requires_model_inventory_decision(self):
+        day = dt.date(2026, 10, 5)
+        catalog = {'models': [{'id': 'sample/model'}], 'bindings': []}
+        entry = {'id': 'sample/model', 'checked': str(day),
+                 'reason': 'Pending review or excluded from this catalog',
+                 'sources': [{'url': 'https://example.invalid/docs', 'checked': str(day)}]}
+        inventory = {'schema_version': 1, 'window_months': 6, 'as_of': str(day),
+                     'watchlist': {'sample': {'review': 'partial'}}, 'entries': [entry]}
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for state in ('excluded', 'candidate'):
+                with self.subTest(state=state):
+                    entry['state'] = state
+                    if state == 'candidate':
+                        entry['candidate'] = 'candidates/sample--model.yaml'
+                        (root / 'candidates').mkdir()
+                        (root / entry['candidate']).write_text('wire_model_id: model\nscope: sample\n')
+                    with self.assertRaisesRegex(ValueError, 'model facts without a model inventory decision'):
+                        validate(root, catalog, inventory, day)
+
+            # Exclusion remains valid once the runtime model is actually removed.
+            (root / entry.pop('candidate')).unlink()
+            entry['state'] = 'excluded'
+            validate(root, {'models': [], 'bindings': []}, inventory, day)
+
 
 if __name__ == '__main__':
     unittest.main()

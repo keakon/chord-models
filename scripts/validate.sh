@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if [[ ! -f "$root/coverage.json" ]]; then
+  echo 'missing required source inventory: coverage.json' >&2
+  exit 1
+fi
+pin="$(cat "$root/validator-revision")"
+if [[ ! "$pin" =~ ^[0-9a-f]{40}$ ]]; then
+  echo 'validator-revision must contain one full Chord commit SHA' >&2
+  exit 1
+fi
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 chord="${1:-}"
 if [[ -z "$chord" ]]; then
-  pin="$(cat "$root/validator-revision")"
-  if [[ ! "$pin" =~ ^[0-9a-f]{40}$ ]]; then
-    echo 'validator-revision must contain one full Chord commit SHA' >&2
-    exit 1
-  fi
   chord="$tmp/chord"
   git init -q "$chord"
   git -C "$chord" remote add origin https://github.com/keakon/chord.git

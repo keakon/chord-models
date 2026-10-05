@@ -40,6 +40,9 @@ and adding are offline. Use `chord config show --catalog --json` for full
 sources, release dates, pricing scope, and candidates delivered by refresh.
 These commands require a Chord build supporting the schema pinned in
 [`validator-revision`](validator-revision).
+Input budgets reserve the requested output from the total context window unless
+the provider documents a separate input cap. Prices include scope notes; for
+example, long-context requests can cost more than the listed base rate.
 
 For guided gateway setup, run:
 
@@ -55,6 +58,11 @@ Custom endpoints selected with `--catalog` inherit model behavior and compat
 when they expose the same protocol as the official connection. Limits,
 modalities and context compaction hints also transfer across protocols.
 Request-body compression is disabled by default. After confirming endpoint support, choose `gzip` or `zstd` in the guide, pass `--compress gzip` / `--compress zstd`, or set provider `compress: gzip` / `compress: zstd` manually. Adding models preserves compression settings unless you explicitly change them.
+
+The Opus 5.5 profile starts at its documented default effort, `medium`.
+Compaction thresholds are adjustable Chord starting recommendations; tune them
+for task quality, latency and cache reuse. Documented reasoning capabilities
+can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
@@ -83,7 +91,7 @@ receive an explicit inventory decision rather than silently disappearing.
 ## Maintain the catalog
 
 ```bash
-# Offline, using your local Chord checkout; does not alter its embedded data.
+# Local Chord checkout; offline with cached Go dependencies. Does not alter embedded data.
 ./scripts/validate.sh ../chord
 ```
 

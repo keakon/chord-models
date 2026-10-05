@@ -20,6 +20,11 @@ reviews remain `partial` or `pending` until their official release inventory
 has actually been audited. A report must say `complete: false` while unknown
 dates or coverage gaps remain. Retain older facts needed by existing users;
 do not remove a model solely because the window advanced.
+Every model in `models.yaml` must have an inventory decision of `model`;
+`candidate` and `excluded` decisions cannot also appear as runtime model facts.
+The inventory is a required, committed source file, not a generated coverage
+report. The repository's ignore exception keeps global `coverage.*` rules
+from hiding it.
 
 ## Review discoveries weekly
 
@@ -65,6 +70,9 @@ checked, outcome; redact secrets). Bindings support `limit` overrides and
 `input_modalities`: they must describe this route, not the model family in
 isolation. `limit.input: 0` explicitly clears an inherited separate input cap.
 Ordinary explicit config always wins over catalog defaults.
+Model `reasoning_options` lists documented capabilities; binding `variants`
+lists the subset verified on that route. Do not copy public API capabilities
+into Codex OAuth bindings without route evidence and the required smoke check.
 
 Use `cost.notes` for uncached/peak standard rates, region, long-context tiers,
 promotions or account restrictions. Never present a promotional rate as an
@@ -76,20 +84,33 @@ Model output capacity can equal the total window. Chord reserves the effective
 requested output budget when deriving input from a total window; an explicit
 independent input limit still wins. Preserve real model capabilities instead
 of lowering them to work around a budgeting bug.
+In particular, do not store `context - output` as an independent `input` cap.
+Omit `input` when no separate provider limit is documented.
+
+Configuration profiles are Chord starting recommendations, not additional
+provider limits or proven performance optima. Prefer documented provider
+defaults for effort; record a reason and workload evidence for deviations.
+Compaction thresholds trade retained context against request cost, cache reuse
+and latency. Tune them with representative tasks rather than treating a fixed
+percentage as optimal for every endpoint.
 
 ## Validation and immutable releases
 
 ```bash
-./scripts/validate.sh ../chord             # local checkout, no network needed
+./scripts/validate.sh ../chord             # local checkout; Go dependencies must be cached for offline use
 ./scripts/validate.sh                     # fetch exact validator commit
-CATALOG_REVISION=v2026-10-05.3 ./scripts/validate.sh ../chord
+# On a checked-out release tag, verify tag/version identity as well:
+catalog_tag="$(git describe --tags --exact-match)" && \
+  CATALOG_REVISION="$catalog_tag" ./scripts/validate.sh ../chord
 ```
 
 The generator validates all candidates as well as the four runtime sources.
 It rejects unknown fields, missing references, malformed versions/dates,
 invalid connection recipes, invalid route overrides and invented zero prices.
-The inventory checker catches missing models/candidate files and decisions.
+The inventory checker catches missing models/candidate files and inconsistent decisions.
 Validation writes only a temporary artifact, never Chord's embedded snapshot.
+The validator pin must be a full 40-character SHA even with a local checkout;
+the local checkout argument deliberately uses that checkout's current code.
 
 Every data or coverage change must increase `YYYY-MM-DD.N` in `catalog.yaml`.
 A release tag is exactly `v<version>` and must point at that data version.

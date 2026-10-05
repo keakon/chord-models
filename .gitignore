@@ -2,3 +2,5 @@
 __pycache__/
 coverage-report.json
 discovery-source.txt
+# Source inventory, even when a global ignore rule excludes coverage.*.
+!/coverage.json

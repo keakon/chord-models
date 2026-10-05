@@ -34,7 +34,7 @@ def validate(root, catalog, inventory, as_of):
     if reviewed > as_of:
         raise ValueError('inventory review cannot be in the future')
     models = {m['id']: m for m in catalog['models']}
-    seen, candidates = set(), set()
+    seen, inventoried_models, candidates = set(), set(), set()
     for e in inventory['entries']:
         mid = e['id']
         if mid in seen or not re.fullmatch(r'[A-Za-z0-9._-]+/[A-Za-z0-9._-]+', mid):
@@ -53,6 +53,7 @@ def validate(root, catalog, inventory, as_of):
         if e['state'] == 'model':
             if mid not in models or e.get('released') != models[mid].get('released'):
                 raise ValueError(f'model missing or official release differs: {mid}')
+            inventoried_models.add(mid)
         elif e['state'] == 'candidate':
             expected = 'candidates/' + mid.replace('/', '--') + '.yaml'
             if e['candidate'] != expected or not (root / expected).is_file():
@@ -60,10 +61,10 @@ def validate(root, catalog, inventory, as_of):
             candidates.add(expected)
         elif e['state'] != 'excluded':
             raise ValueError(f'unknown inventory state: {mid}')
-    missing = set(models) - seen
+    missing = set(models) - inventoried_models
     files = {p.relative_to(root).as_posix() for p in (root / 'candidates').glob('*.yaml')}
     if missing or files != candidates:
-        raise ValueError(f'untracked model facts: {sorted(missing)}; candidate inventory differs: {sorted(files ^ candidates)}')
+        raise ValueError(f'model facts without a model inventory decision: {sorted(missing)}; candidate inventory differs: {sorted(files ^ candidates)}')
 
 
 def discoveries(registry, as_of):
