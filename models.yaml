@@ -156,6 +156,9 @@ models:
     context: 1000000
     output: 128000
     input_modalities: [text, image]
+    coding_sources:
+    - url: https://www.anthropic.com/claude/fable
+      checked: "2026-10-08"
     reasoning_options: [low, medium, high, xhigh, max]
     cost:
       input_per_million: 10
@@ -175,6 +178,9 @@ models:
     context: 1000000
     output: 128000
     input_modalities: [text, image]
+    coding_sources:
+    - url: https://www.anthropic.com/news/claude-opus-5
+      checked: "2026-10-08"
     reasoning_options: [low, medium, high, xhigh, max]
     cost:
       input_per_million: 5
@@ -194,6 +200,9 @@ models:
     context: 1000000
     output: 128000
     input_modalities: [text, image]
+    coding_sources:
+    - url: https://www.anthropic.com/news/claude-sonnet-5
+      checked: "2026-10-08"
     reasoning_options: [low, medium, high, xhigh, max]
     cost:
       input_per_million: 2
@@ -285,6 +294,9 @@ models:
     context: 1050000
     output: 128000
     input_modalities: [text, image]
+    coding_sources:
+    - url: https://openai.com/index/gpt-5-6/
+      checked: "2026-10-08"
     reasoning_options: [none, low, medium, high, xhigh, max]
     sources:
       - url: https://developers.openai.com/api/docs/models/gpt-5.6-luna
@@ -300,6 +312,9 @@ models:
     context: 1050000
     output: 128000
     input_modalities: [text, image]
+    coding_sources:
+    - url: https://openai.com/index/gpt-5-6/
+      checked: "2026-10-08"
     reasoning_options: [none, low, medium, high, xhigh, max]
     sources:
       - url: https://developers.openai.com/api/docs/models/gpt-5.6-sol
@@ -315,6 +330,9 @@ models:
     context: 1050000
     output: 128000
     input_modalities: [text, image]
+    coding_sources:
+    - url: https://openai.com/index/gpt-5-6/
+      checked: "2026-10-08"
     reasoning_options: [none, low, medium, high, xhigh, max]
     sources:
       - url: https://developers.openai.com/api/docs/models/gpt-5.6-terra
@@ -330,6 +348,9 @@ models:
     context: 1050000
     output: 128000
     input_modalities: [text, image]
+    coding_sources:
+    - url: https://openai.com/index/gpt-6-astra/
+      checked: "2026-10-08"
     reasoning_options: [low, medium, high, xhigh, max]
     cost:
       input_per_million: 10
@@ -358,6 +379,9 @@ models:
     context: 1050000
     output: 128000
     input_modalities: [text, image]
+    coding_sources:
+    - url: https://openai.com/index/introducing-gpt-6-sol-and-luna/
+      checked: "2026-10-08"
     reasoning_options: [none, low, medium, high, xhigh, max]
     cost:
       input_per_million: 0.1
@@ -386,6 +410,9 @@ models:
     context: 1050000
     output: 128000
     input_modalities: [text, image]
+    coding_sources:
+    - url: https://openai.com/index/introducing-gpt-6-sol-and-luna/
+      checked: "2026-10-08"
     reasoning_options: [none, low, medium, high, xhigh, max]
     sources:
       - url: https://developers.openai.com/api/docs/models/gpt-6-sol
@@ -414,6 +441,9 @@ models:
     context: 1050000
     output: 128000
     input_modalities: [text, image]
+    coding_sources:
+    - url: https://developers.openai.com/api/docs/models/gpt-6.1-sol
+      checked: "2026-10-08"
     reasoning_options: [low, medium, high, xhigh, max]
     cost:
       input_per_million: 2
@@ -464,6 +494,9 @@ models:
     context: 1000000
     output: 131072
     input_modalities: [text]
+    coding_sources:
+    - url: https://docs.z.ai/guides/llm/glm-5.3
+      checked: "2026-10-08"
     reasoning_options: [low, high, max]
     cost:
       input_per_million: 1.4
@@ -499,6 +532,9 @@ models:
     context: 1048576
     output: 1048576
     input_modalities: [text, image]
+    coding_sources:
+    - url: https://platform.kimi.ai/docs/guide/kimi-k3-quickstart
+      checked: "2026-10-08"
     reasoning_options: [low, high, max]
     cost:
       input_per_million: 3
@@ -520,6 +556,9 @@ models:
     context: 1000000
     output: 131072
     input_modalities: [text, image, video]
+    coding_sources:
+    - url: https://qwen.ai/blog?id=qwen3.8
+      checked: "2026-10-08"
     cost:
       input_per_million: 1.65
       output_per_million: 4.951
@@ -540,6 +579,9 @@ models:
     context: 1000000
     output: 131072
     input_modalities: [text, image, video]
+    coding_sources:
+    - url: https://www.alibabacloud.com/blog/603503
+      checked: "2026-10-08"
     cost:
       input_per_million: 0.15
       output_per_million: 0.47
@@ -579,6 +621,9 @@ models:
     context: 1000000
     output: 393216
     input_modalities: [text, image]
+    coding_sources:
+    - url: https://api-docs.deepseek.com/news/news260910
+      checked: "2026-10-08"
     cost:
       input_per_million: 0.3
       output_per_million: 1.2
@@ -615,6 +660,9 @@ models:
     context: 500000
     output: 500000
     input_modalities: [text, image]
+    coding_sources:
+    - url: https://x.ai/news/grok-4-7
+      checked: "2026-10-08"
     reasoning_options: [low, medium, high, xhigh]
     cost:
       input_per_million: 2
@@ -641,6 +689,9 @@ models:
     context: 500000
     output: 500000
     input_modalities: [text, image]
+    coding_sources:
+    - url: https://x.ai/news/grok-4-6
+      checked: "2026-10-08"
     reasoning_options: [low, medium, high, xhigh]
     cost:
       input_per_million: 2
@@ -667,6 +718,9 @@ models:
     context: 1048576
     output: 131072
     input_modalities: [text, image, video, pdf]
+    coding_sources:
+    - url: https://dev.meta.ai/models/muse-spark
+      checked: "2026-10-08"
     reasoning_options: [minimal, low, medium, high, xhigh, max]
     cost:
       input_per_million: 1.25
@@ -695,6 +749,9 @@ models:
     context: 1048576
     output: 131072
     input_modalities: [text, image, video, audio, pdf]
+    coding_sources:
+    - url: https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2
+      checked: "2026-10-08"
     reasoning_options: [minimal, low, medium, high, xhigh]
     cost:
       input_per_million: 1.25
