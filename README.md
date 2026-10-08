@@ -66,7 +66,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-The 2026-10-05 review contains **31 model fact records** and **98 discovery
+The 2026-10-08 review contains **32 model fact records** and **99 discovery
 candidates**, with a release inventory across **33 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,

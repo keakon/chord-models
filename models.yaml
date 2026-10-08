@@ -91,6 +91,51 @@ models:
       - url: https://docs.anthropic.com/en/docs/about-claude/models
         checked: "2026-10-01"
 
+  - id: anthropic/claude-haiku-5-5
+    config_profile:
+      model:
+        thinking:
+          type: adaptive
+          effort: medium
+        prompt_cache:
+          mode: explicit
+          ttl: 5m
+          cache_tools: true
+      sources:
+        - url: https://platform.claude.com/docs/en/models/haiku-5-5/overview
+          checked: "2026-10-08"
+        - url: https://platform.claude.com/docs/en/build-with-claude/effort
+          checked: "2026-10-08"
+    input_modalities:
+    - text
+    - image
+    coding_sources:
+    - url: https://www.anthropic.com/claude-haiku-5-5
+      checked: "2026-10-08"
+    cost:
+      input_per_million: 0.1
+      output_per_million: 0.5
+      currency: USD
+      checked: "2026-10-08"
+      source:
+        url: https://platform.claude.com/docs/en/models/haiku-5-5/overview
+        checked: "2026-10-08"
+      notes: >-
+        Base rates for prompts up to 100K tokens. Prompts over 100K use
+        $0.50/$2.50 per million input/output tokens; cache and batch pricing
+        are separate.
+    context: 1000000
+    output: 128000
+    reasoning_options: [low, medium, high, xhigh, max]
+    released: "2026-10-07"
+    sources:
+      - url: https://platform.claude.com/docs/en/models/haiku-5-5/overview
+        checked: "2026-10-08"
+      - url: https://platform.claude.com/docs/en/build-with-claude/effort
+        checked: "2026-10-08"
+      - url: https://www.anthropic.com/claude-haiku-5-5
+        checked: "2026-10-08"
+
   - id: anthropic/claude-fable-5-1
     config_profile:
       model:

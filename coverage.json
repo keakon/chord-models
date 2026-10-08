@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-05",
+  "as_of": "2026-10-08",
   "window_months": 6,
   "discovery_source": {
     "repository": "https://github.com/anomalyco/models.dev",
@@ -15,7 +15,7 @@
       "notes": "Continue checking official release inventory; this record is not a claim of exhaustive vendor coverage."
     },
     "anthropic": {
-      "registry_checked": "2026-10-04",
+      "registry_checked": "2026-10-08",
       "official_index": "https://platform.claude.com/docs/en/models/overview",
       "review": "partial",
       "notes": "Continue checking official release inventory; this record is not a claim of exhaustive vendor coverage."
@@ -87,7 +87,7 @@
       "notes": "Continue checking official release inventory; this record is not a claim of exhaustive vendor coverage."
     },
     "mistral": {
-      "registry_checked": "2026-10-04",
+      "registry_checked": "2026-10-08",
       "official_index": "https://docs.mistral.ai/resources/changelogs",
       "review": "partial",
       "notes": "Continue checking official release inventory; this record is not a claim of exhaustive vendor coverage."
@@ -433,6 +433,23 @@
       "state": "candidate",
       "candidate": "candidates/alibaba--qwen3.8-omni-flash.yaml",
       "reason": "Pending official release, coding, limits and endpoint verification."
+    },
+    {
+      "id": "anthropic/claude-haiku-5-5",
+      "checked": "2026-10-08",
+      "sources": [
+        {
+          "url": "https://platform.claude.com/docs/en/models/haiku-5-5/overview",
+          "checked": "2026-10-08"
+        },
+        {
+          "url": "https://www.anthropic.com/claude-haiku-5-5",
+          "checked": "2026-10-08"
+        }
+      ],
+      "state": "model",
+      "reason": "Official Anthropic model documentation verifies the API ID, limits, pricing, adaptive effort and active lifecycle; the launch post supplies coding benchmark evidence.",
+      "released": "2026-10-07"
     },
     {
       "id": "anthropic/claude-fable-5",
@@ -1271,6 +1288,24 @@
       "state": "candidate",
       "candidate": "candidates/mistral--mistral-medium-latest.yaml",
       "reason": "Pending official release, coding, limits and endpoint verification."
+    },
+    {
+      "id": "mistral/mistral-large-4",
+      "checked": "2026-10-08",
+      "sources": [
+        {
+          "url": "https://docs.mistral.ai/models/mistral-large-4",
+          "checked": "2026-10-08"
+        },
+        {
+          "url": "https://mistral.ai/news/mistral-large-4/",
+          "checked": "2026-10-08"
+        }
+      ],
+      "state": "candidate",
+      "candidate": "candidates/mistral--mistral-large-4.yaml",
+      "reason": "Public Preview with official agentic-coding evidence and a 1M context/API route; the reviewed official materials do not state a hard maximum output limit.",
+      "released": "2026-10-06"
     },
     {
       "id": "mixedbread/toast-1",

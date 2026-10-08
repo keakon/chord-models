@@ -1,0 +1,16 @@
+wire_model_id: mistral-large-4
+scope: mistral
+context: 1000000
+input_modalities:
+- text
+- image
+sources:
+- url: https://docs.mistral.ai/models/mistral-large-4
+  checked: '2026-10-08'
+- url: https://mistral.ai/news/mistral-large-4/
+  checked: '2026-10-08'
+notes: 'Public Preview released 2026-10-06 with official agentic-coding evidence and a general API route. The reviewed official materials do not state a hard maximum output limit, so this remains a candidate; listed preview pricing is not copied into runtime defaults.'
+coding_sources:
+- url: https://mistral.ai/news/mistral-large-4/
+  checked: '2026-10-08'
+released: '2026-10-06'
