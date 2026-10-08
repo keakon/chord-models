@@ -504,6 +504,19 @@ models:
     - url: https://openai.com/index/introducing-gpt-6-sol-and-luna/
       checked: "2026-10-08"
     reasoning_options: [none, low, medium, high, xhigh, max]
+    cost:
+      input_per_million: 2
+      output_per_million: 10
+      currency: USD
+      checked: "2026-10-05"
+      source:
+        url: https://developers.openai.com/api/docs/models/gpt-6-sol
+        checked: "2026-10-05"
+      notes: >-
+        Standard USD API rates for uncached text input and text output up to
+        272K input tokens. Above 272K, the entire request uses 2x input and
+        cache rates and 1.5x output rates. Cache writes, processing tiers
+        and regional pricing are separate; these are not Codex subscription rates.
     sources:
       - url: https://developers.openai.com/api/docs/models/gpt-6-sol
         checked: "2026-10-05"
@@ -512,6 +525,8 @@ models:
       - url: https://platform.openai.com/docs/models
         checked: "2026-10-01"
       - url: https://developers.openai.com/api/docs/models
+        checked: "2026-10-04"
+      - url: https://developers.openai.com/api/docs/pricing
         checked: "2026-10-04"
 
   - id: openai/gpt-6.1-sol
