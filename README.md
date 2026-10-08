@@ -98,8 +98,8 @@ receive an explicit inventory decision rather than silently disappearing.
 ./scripts/validate.sh ../chord
 ```
 
-Without a checkout argument the script fetches the fixed Chord validator
-commit. CI runs the same schema/candidate checks, verifies version bumps on
+Without a checkout argument the script resolves the fixed Chord validator
+commit through the Go module proxy. CI runs the same schema/candidate checks, verifies version bumps on
 PRs and tag/version identity on releases. Weekly discovery produces an
 artifact listing possible omissions from models.dev and missing official
 release evidence; it never silently promotes registry data. An inventory
@@ -118,4 +118,4 @@ or live provider requests have succeeded.
 | `bindings.yaml` | Exact wire IDs, route limits/modalities, variants and send rules |
 | `candidates/` | Partial discoveries, never used as defaults |
 | `coverage.json` | Rolling inventory, exclusions, unresolved evidence and vendor watch list |
-| `validator-revision` | Full Chord commit SHA used by validation |
+| `validator-revision` | Full Chord commit SHA used by validation (resolved via the Go module proxy) |

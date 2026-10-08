@@ -103,8 +103,8 @@ percentage as optimal for every endpoint.
 ## Validation and immutable releases
 
 ```bash
-./scripts/validate.sh ../chord             # local checkout; Go dependencies must be cached for offline use
-./scripts/validate.sh                     # fetch exact validator commit
+./scripts/validate.sh ../chord             # local checkout; uses that checkout's current code
+./scripts/validate.sh                     # resolve the pinned commit via the Go module proxy
 # On a checked-out release tag, verify tag/version identity as well:
 catalog_tag="$(git describe --tags --exact-match)" && \
   CATALOG_REVISION="$catalog_tag" ./scripts/validate.sh ../chord
@@ -117,6 +117,10 @@ The inventory checker catches missing models/candidate files and inconsistent de
 Validation writes only a temporary artifact, never Chord's embedded snapshot.
 The validator pin must be a full 40-character SHA even with a local checkout;
 the local checkout argument deliberately uses that checkout's current code.
+Without a checkout argument, validation resolves `github.com/keakon/chord` at
+the pin through the Go module proxy, so the resolved module version is
+immutable and proxy-cached even if Chord's history is rewritten. In a
+restricted network, configure `GOPROXY`/`GOSUMDB` or pass a local checkout.
 
 Every data or coverage change must increase `YYYY-MM-DD.N` in `catalog.yaml`.
 A release tag is exactly `v<version>` and must point at that data version.
@@ -131,6 +135,12 @@ publishing the upstream data/tag**, so remote CI can fetch the validator.
 Then publish the reviewed catalog tag and sync Chord's embedded snapshot with
 `scripts/sync_model_catalog.sh <tag> /path/to/chord-models`. Older Chord builds
 reject unknown fields and retain their supported embedded catalog.
+If validation fails with an unknown field, either fix the typo or bump the pin
+to the published Chord commit that implements the field; never relax
+validation to accept data the pinned consumer cannot read.
+Release order: publish the Chord commit first, then push `main` and the tag
+here, then run Chord's `Model catalog integration` workflow to compare the
+published tag against Chord's embedded snapshot.
 
 Schema and source evidence checks are not live provider checks. Contributions
 must state which smoke checks actually ran; do not imply a published tag or
