@@ -607,10 +607,10 @@ models:
       input_per_million: 1.4
       output_per_million: 4.4
       currency: USD
-      checked: "2026-10-04"
+      checked: "2026-10-08"
       source:
-        url: https://models.dev/zhipuai/glm-5.3
-        checked: "2026-10-04"
+        url: https://docs.z.ai/guides/overview/pricing
+        checked: "2026-10-08"
     sources:
       - url: https://docs.z.ai/guides/llm/glm-5.3
         checked: "2026-10-04"
@@ -645,10 +645,10 @@ models:
       input_per_million: 3
       output_per_million: 15
       currency: USD
-      checked: "2026-10-04"
+      checked: "2026-10-08"
       source:
-        url: https://models.dev/moonshotai/kimi-k3
-        checked: "2026-10-04"
+        url: https://platform.kimi.ai/docs/pricing/chat
+        checked: "2026-10-08"
     sources:
       - url: https://platform.kimi.ai/docs/guide/kimi-k3-quickstart
         checked: "2026-10-04"
