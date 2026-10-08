@@ -41,8 +41,11 @@ sources, release dates, pricing scope, and candidates delivered by refresh.
 These commands require a Chord build supporting the schema pinned in
 [`validator-revision`](validator-revision).
 Input budgets reserve the requested output from the total context window unless
-the provider documents a separate input cap. Prices include scope notes; for
-example, long-context requests can cost more than the listed base rate.
+the provider documents a separate input cap. Compaction thresholds instead use
+a fixed baseline: a documented input cap if present, otherwise
+`context - output`, otherwise the whole window. They do not move with a
+request's planned output. Prices include scope notes; for example, long-context
+requests can cost more than the listed base rate.
 
 For guided gateway setup, run:
 

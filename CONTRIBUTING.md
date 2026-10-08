@@ -86,6 +86,12 @@ independent input limit still wins. Preserve real model capabilities instead
 of lowering them to work around a budgeting bug.
 In particular, do not store `context - output` as an independent `input` cap.
 Omit `input` when no separate provider limit is documented.
+Compaction thresholds use a fixed baseline instead of a request's output
+budget: a documented independent `input` cap when present, otherwise
+`context - output` while output is smaller than the window, otherwise the
+whole window. Changing recorded `input`/`output` limits therefore moves every
+compaction trigger for that model; re-check the `config_profile.compaction`
+hints when you change them.
 
 Configuration profiles are Chord starting recommendations, not additional
 provider limits or proven performance optima. Prefer documented provider
