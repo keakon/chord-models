@@ -118,8 +118,11 @@ Validation writes only a temporary artifact, never Chord's embedded snapshot.
 The validator pin must be a full 40-character SHA even with a local checkout;
 the local checkout argument deliberately uses that checkout's current code.
 Without a checkout argument, validation resolves `github.com/keakon/chord` at
-the pin through the Go module proxy, so the resolved module version is
-immutable and proxy-cached even if Chord's history is rewritten. In a
+the pin through the Go module proxy, then falls back to a shallow Git fetch
+of the same commit if module resolution fails. A proxy may cache a resolved
+module version, but resolving a raw SHA is not guaranteed after history is
+rewritten. Keep the pinned commit published and reachable; a local checkout
+passing validation does not prove the default remote path works. In a
 restricted network, configure `GOPROXY`/`GOSUMDB` or pass a local checkout.
 
 Every data or coverage change must increase `YYYY-MM-DD.N` in `catalog.yaml`.
