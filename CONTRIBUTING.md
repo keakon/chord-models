@@ -123,6 +123,9 @@ immutable and proxy-cached even if Chord's history is rewritten. In a
 restricted network, configure `GOPROXY`/`GOSUMDB` or pass a local checkout.
 
 Every data or coverage change must increase `YYYY-MM-DD.N` in `catalog.yaml`.
+The version check compares committed revisions. Candidate data means
+`candidates/*.yaml`; documentation such as `candidates/README.md` and tooling-only
+changes do not require a data version bump.
 A release tag is exactly `v<version>` and must point at that data version.
 Never move/delete a published tag or reuse a version. Protect tags on the
 hosting service. Fix bad data by releasing a **higher** version (revert the
