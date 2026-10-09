@@ -155,3 +155,39 @@ published tag against Chord's embedded snapshot.
 Schema and source evidence checks are not live provider checks. Contributions
 must state which smoke checks actually ran; do not imply a published tag or
 GitHub workflow succeeded merely because local validation passed.
+
+## Server tool evidence
+
+The Chord consumer accepts binding-level `server_tools`. These facts are tied to
+that endpoint, protocol and wire model; they never belong in `config_profile`
+and never authorize tool execution. Omitted capabilities mean `unknown`.
+
+```yaml
+server_tools:
+  web_search:
+    state: unknown
+    contract: openai.responses.web_search
+    evidence: documentation
+    sources:
+      - url: https://developers.openai.com/api/docs/guides/tools-web-search
+        checked: "2026-10-09"
+```
+
+The accepted capability ID is `web_search`. State is `unknown`, `supported` or
+`unsupported`. Verified states
+require `evidence: api` and dated sources; `supported` also requires a contract.
+The boolean `client_tools` records whether web search can be combined with client
+tool declarations and defaults to `false` when omitted. For a `supported` binding,
+Chord rejects requests containing other client tool declarations unless
+`client_tools: true`. Set it to `true` only after API verification of that
+combination.
+
+Supported contracts are `openai.responses.web_search` on a
+Responses endpoint and `anthropic.messages.web_search_20250305` on a Messages
+endpoint. Documentation evidence alone must stay `unknown`.
+
+Validate additions against a local consumer using `./scripts/validate.sh ../chord`.
+Before adding these fields to published data, publish the consumer and update
+`validator-revision` to its full commit SHA. Do not invent a revision or mark
+bindings supported without API evidence. Chord requires separate explicit user
+preauthorization even for a supported binding.
