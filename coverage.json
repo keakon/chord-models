@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-08",
+  "as_of": "2026-10-09",
   "window_months": 6,
   "discovery_source": {
     "repository": "https://github.com/anomalyco/models.dev",
     "commit": "a5c9719377ba7b648b074511ac25bc8625e4892a"
   },
-  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability.",
+  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the broad release inventory remains the 2026-10-08 review, with vendor coverage still partial.",
   "watchlist": {
     "alibaba": {
       "registry_checked": "2026-10-04",
@@ -368,15 +368,19 @@
     {
       "id": "alibaba/qwen3.8-max",
       "reported_release": "2026-08-03",
-      "checked": "2026-10-04",
+      "checked": "2026-10-09",
       "sources": [
         {
           "url": "https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/alibaba/qwen3.8-max.toml",
           "checked": "2026-10-04"
+        },
+        {
+          "url": "https://www.alibabacloud.com/help/en/model-studio/qwen3-8-max",
+          "checked": "2026-10-09"
         }
       ],
       "state": "model",
-      "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded."
+      "reason": "Catalog facts available. The reported release remains a discovery hint. Rechecked mode-specific input limits and regional pricing; the shared input cap uses the smaller thinking-mode limit."
     },
     {
       "id": "alibaba/qwen3.8-max-0902",
@@ -652,15 +656,19 @@
     {
       "id": "cohere/north-mini-code-1-0",
       "reported_release": "2026-06-09",
-      "checked": "2026-10-04",
+      "checked": "2026-10-09",
       "sources": [
         {
           "url": "https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/cohere/north-mini-code-1-0.toml",
           "checked": "2026-10-04"
+        },
+        {
+          "url": "https://docs.cohere.com/docs/compatibility-api",
+          "checked": "2026-10-09"
         }
       ],
       "state": "model",
-      "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded.",
+      "reason": "Catalog facts and official release date recorded in models.yaml. Rechecked compatibility parameters: rename the computed output budget to max_tokens and omit unsupported parallel_tool_calls. Live requests were not checked.",
       "released": "2026-06-09"
     },
     {
@@ -736,12 +744,12 @@
     {
       "id": "deepseek/deepseek-flash",
       "state": "model",
-      "checked": "2026-10-04",
-      "reason": "Existing catalog fact; release date needs official confirmation or is outside this discovery window.",
+      "checked": "2026-10-09",
+      "reason": "Existing catalog fact; release date needs official confirmation or is outside this discovery window. Rechecked pricing scope: listed rates are peak uncached rates; off-peak and cache-hit prices differ.",
       "sources": [
         {
-          "url": "https://api-docs.deepseek.com/quick_start/pricing",
-          "checked": "2026-10-04"
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "checked": "2026-10-09"
         },
         {
           "url": "https://api-docs.deepseek.com/news/news260910",
@@ -1380,15 +1388,19 @@
     {
       "id": "moonshotai/kimi-k3",
       "reported_release": "2026-07-16",
-      "checked": "2026-10-04",
+      "checked": "2026-10-09",
       "sources": [
         {
           "url": "https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/moonshotai/kimi-k3.toml",
           "checked": "2026-10-04"
+        },
+        {
+          "url": "https://platform.kimi.ai/docs/guide/kimi-k3-quickstart",
+          "checked": "2026-10-09"
         }
       ],
       "state": "model",
-      "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded."
+      "reason": "Catalog facts available. The reported release remains a discovery hint. Rechecked the complete assistant-message passback contract and enabled visible reasoning replay across turns in the configuration profile."
     },
     {
       "id": "motif-technologies/motif-3",
@@ -1990,28 +2002,40 @@
     {
       "id": "xai/grok-4.6",
       "reported_release": "2026-08-12",
-      "checked": "2026-10-04",
+      "checked": "2026-10-09",
       "sources": [
         {
           "url": "https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/xai/grok-4.6.toml",
           "checked": "2026-10-04"
+        },
+        {
+          "url": "https://docs.x.ai/developers/model-capabilities/text/reasoning",
+          "checked": "2026-10-09"
+        },
+        {
+          "url": "https://docs.x.ai/developers/pricing",
+          "checked": "2026-10-09"
         }
       ],
       "state": "model",
-      "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded."
+      "reason": "Catalog facts available. The reported release remains a discovery hint. Rechecked reasoning controls and kept effort through tool loops without visible reasoning. Pricing now records the 200K prompt threshold and US regional premium."
     },
     {
       "id": "xai/grok-4.7",
       "reported_release": "2026-09-21",
-      "checked": "2026-10-04",
+      "checked": "2026-10-09",
       "sources": [
         {
           "url": "https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/xai/grok-4.7.toml",
           "checked": "2026-10-04"
+        },
+        {
+          "url": "https://docs.x.ai/developers/pricing",
+          "checked": "2026-10-09"
         }
       ],
       "state": "model",
-      "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded."
+      "reason": "Catalog facts available. The reported release remains a discovery hint. Rechecked pricing and recorded the 200K prompt threshold and US regional premium."
     },
     {
       "id": "xai/grok-build-0.1",
@@ -2142,38 +2166,54 @@
     {
       "id": "zhipuai/glm-5.3",
       "reported_release": "2026-08-14",
-      "checked": "2026-10-04",
+      "checked": "2026-10-09",
       "sources": [
         {
           "url": "https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/zhipuai/glm-5.3.toml",
           "checked": "2026-10-04"
+        },
+        {
+          "url": "https://docs.z.ai/guides/capabilities/thinking-mode",
+          "checked": "2026-10-09"
         }
       ],
       "state": "model",
-      "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded."
+      "reason": "Catalog facts available. The reported release remains a discovery hint. Rechecked preserved thinking and configured visible reasoning replay with thinking.clear_thinking false on the standard API."
     },
     {
       "id": "zhipuai/glm-5.3-flash",
       "reported_release": "2026-08-26",
-      "checked": "2026-10-04",
+      "checked": "2026-10-09",
       "sources": [
         {
           "url": "https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/zhipuai/glm-5.3-flash.toml",
           "checked": "2026-10-04"
+        },
+        {
+          "url": "https://docs.z.ai/guides/vlm/glm-5.3-flash",
+          "checked": "2026-10-09"
+        },
+        {
+          "url": "https://docs.z.ai/guides/capabilities/thinking-mode",
+          "checked": "2026-10-09"
         }
       ],
       "state": "model",
-      "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded."
+      "reason": "Catalog facts available. The reported release remains a discovery hint. Rechecked the shared Flash/FlashX thinking contract and added visible reasoning replay with thinking.clear_thinking false."
     },
     {
       "id": "zhipuai/glm-5.3-flashx",
       "state": "model",
-      "checked": "2026-10-04",
-      "reason": "Existing catalog fact; release date needs official confirmation or is outside this discovery window.",
+      "checked": "2026-10-09",
+      "reason": "Existing catalog fact; release date needs official confirmation or is outside this discovery window. Rechecked the shared Flash/FlashX thinking contract and added visible reasoning replay with thinking.clear_thinking false.",
       "sources": [
         {
           "url": "https://docs.z.ai/guides/vlm/glm-5.3-flash",
-          "checked": "2026-10-04"
+          "checked": "2026-10-09"
+        },
+        {
+          "url": "https://docs.z.ai/guides/capabilities/thinking-mode",
+          "checked": "2026-10-09"
         }
       ]
     }

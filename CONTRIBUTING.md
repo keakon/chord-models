@@ -86,6 +86,10 @@ independent input limit still wins. Preserve real model capabilities instead
 of lowering them to work around a budgeting bug.
 In particular, do not store `context - output` as an independent `input` cap.
 Omit `input` when no separate provider limit is documented.
+If modes have different documented input caps and the schema has one shared
+`input`, use the smaller cap and document both values. Qwen3.8-Max allows
+991,808 input tokens in ordinary mode and 983,616 in thinking mode; its catalog
+entry uses 983,616 across modes.
 Compaction thresholds use a fixed baseline instead of a request's output
 budget: a documented independent `input` cap when present, otherwise
 `context - output` while output is smaller than the window, otherwise the

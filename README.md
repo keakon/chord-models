@@ -11,13 +11,14 @@ weights, and self-hosted deployments.
 ## Use in Chord
 
 ```bash
-chord config show --catalog
+chord config add
 chord config add openai/gpt-6.1-sol
 ```
 
-Copy an add command from the catalog. Chord creates your first config if
-needed, fills the documented connection, and tells you which API key variable
-to set. For example:
+In an interactive terminal, run `chord config add` to browse managed providers
+and their verified models, or pass an exact catalog ID to add a model directly.
+Chord creates your first config if needed, fills the documented connection,
+and tells you which API key variable to set. For example:
 
 ```bash
 export OPENAI_API_KEY="your-api-key"
@@ -36,8 +37,10 @@ chord config add local/my-model \
 ```
 
 Fetch a published update with `chord config refresh-catalog`. Ordinary viewing
-and adding are offline. Use `chord config show --catalog --json` for full
-sources, release dates, pricing scope, and candidates delivered by refresh.
+and adding are offline. Use `chord doctor config` to see the active catalog
+version and source. See [`models.yaml`](models.yaml) for model facts, sources,
+release dates and pricing scope, and [`coverage.json`](coverage.json) and
+[`candidates/`](candidates/) for discoveries and remaining checks.
 These commands require a Chord build supporting the schema pinned in
 [`validator-revision`](validator-revision).
 Input budgets reserve the requested output from the total context window unless
@@ -46,6 +49,8 @@ a fixed baseline: a documented input cap if present, otherwise
 `context - output`, otherwise the whole window. They do not move with a
 request's planned output. Prices include scope notes; for example, long-context
 requests can cost more than the listed base rate.
+Qwen3.8-Max documents 991,808 input tokens in ordinary mode and 983,616 in
+thinking mode. Its catalog entry uses the smaller cap across modes.
 
 For guided gateway setup, run:
 
@@ -75,6 +80,8 @@ starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
 exclusion, reported release date, and remaining checks. Official release
 proof is still missing for many entries; registry dates are discovery hints.
+The 2026-10-09 update rechecks selected configuration profiles, input limits
+and pricing scopes; it does not repeat the full vendor inventory review.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.

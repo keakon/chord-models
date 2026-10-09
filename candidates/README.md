@@ -3,8 +3,10 @@
 Each YAML file records one observed wire model ID on a vendor/provider scope.
 The filename is `<vendor>--<wire-model-id>.yaml`; `coverage.json` records its
 release screening and missing checks. Candidates are delivered by catalog
-refresh and appear in `chord config show --catalog --json` and matching
-suggestions. They never fill runtime defaults.
+refresh and can appear in suggestions when `chord config add` cannot match a
+model. They are not selectable as verified models in the interactive guide
+and never fill runtime defaults. Read their complete evidence in this directory
+and [`coverage.json`](../coverage.json).
 
 The initial broad discovery set came from a pinned models.dev commit. Context
 values are secondary observations until official evidence confirms them.
