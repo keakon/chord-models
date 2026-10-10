@@ -49,6 +49,14 @@ a fixed baseline: a documented input cap if present, otherwise
 `context - output`, otherwise the whole window. They do not move with a
 request's planned output. Prices include scope notes; for example, long-context
 requests can cost more than the listed base rate.
+
+The Haiku 5.5 profile targets small coding tasks and subtasks: it recommends a
+reminder near 70K tokens and compaction near 87K, leaving headroom below the
+100K prompt pricing boundary. This cost-first starting point is not a hard
+billing cap; raise the model's threshold when more retained context is needed.
+Chord builds with shared compaction thresholds apply the threshold to both main
+agents and subagents; reminders apply only to the main agent. Explicit user
+settings take precedence.
 Qwen3.8-Max documents 991,808 input tokens in ordinary mode and 983,616 in
 thinking mode. Its catalog entry uses the smaller cap across modes.
 
@@ -82,6 +90,7 @@ exclusion, reported release date, and remaining checks. Official release
 proof is still missing for many entries; registry dates are discovery hints.
 The 2026-10-09 update rechecks selected configuration profiles, input limits
 and pricing scopes; it does not repeat the full vendor inventory review.
+The 2026-10-10 update only adjusts Haiku 5.5's cost-first compaction guidance.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.

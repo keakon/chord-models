@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-09",
+  "as_of": "2026-10-10",
   "window_months": 6,
   "discovery_source": {
     "repository": "https://github.com/anomalyco/models.dev",
     "commit": "a5c9719377ba7b648b074511ac25bc8625e4892a"
   },
-  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the broad release inventory remains the 2026-10-08 review, with vendor coverage still partial.",
+  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial.",
   "watchlist": {
     "alibaba": {
       "registry_checked": "2026-10-04",
@@ -440,7 +440,7 @@
     },
     {
       "id": "anthropic/claude-haiku-5-5",
-      "checked": "2026-10-08",
+      "checked": "2026-10-10",
       "sources": [
         {
           "url": "https://platform.claude.com/docs/en/models/haiku-5-5/overview",
@@ -448,11 +448,11 @@
         },
         {
           "url": "https://www.anthropic.com/claude-haiku-5-5",
-          "checked": "2026-10-08"
+          "checked": "2026-10-10"
         }
       ],
       "state": "model",
-      "reason": "Official Anthropic model documentation verifies the API ID, limits, pricing, adaptive effort and active lifecycle; the launch post supplies coding benchmark evidence.",
+      "reason": "Official Anthropic model documentation verifies the API ID, limits, pricing, adaptive effort and active lifecycle; the launch post supplies coding benchmark evidence. The 2026-10-10 profile update adds a cost-first compaction recommendation for small coding tasks and subagents below the 100K prompt pricing boundary; it is not a hard billing cap or a measured optimum.",
       "released": "2026-10-07"
     },
     {
