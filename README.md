@@ -90,7 +90,8 @@ exclusion, reported release date, and remaining checks. Official release
 proof is still missing for many entries; registry dates are discovery hints.
 The 2026-10-09 update rechecks selected configuration profiles, input limits
 and pricing scopes; it does not repeat the full vendor inventory review.
-The 2026-10-10 update only adjusts Haiku 5.5's cost-first compaction guidance.
+The 2026-10-10 update adjusts Haiku 5.5's cost-first compaction guidance and
+aligns the Gemini endpoint contract with the API version root.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.
