@@ -21,6 +21,22 @@ class CoverageTest(unittest.TestCase):
                 (modeldir / (name + '.toml')).write_text(f'tool_call = true\nrelease_date = "{released}"\n[modalities]\noutput = ["text"]\n')
             self.assertEqual({m['id'] for m in discoveries(root, dt.date(2026, 10, 4))}, {'sample/recent', 'sample/unknown'})
 
+    def test_discovery_survives_month_precision_and_malformed_dates(self):
+        # Upstream models.dev records month precision ("2026-04") and the odd
+        # malformed value. A screening report must degrade to a gap, never fail.
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            modeldir = root / 'models' / 'sample'
+            modeldir.mkdir(parents=True)
+            for name, released in [('month', '2026-04'), ('stale-month', '2026-03'),
+                                   ('malformed', 'not-a-date'), ('day-out-of-range', '2026-02-31')]:
+                (modeldir / (name + '.toml')).write_text(f'tool_call = true\nrelease_date = "{released}"\n[modalities]\noutput = ["text"]\n')
+            found = {m['id']: m['reported_release'] for m in discoveries(root, dt.date(2026, 10, 4))}
+            # Month precision is inclusive (last day of the month) so a model
+            # whose exact day is unknown cannot fall out of the window.
+            self.assertEqual(set(found), {'sample/month', 'sample/malformed', 'sample/day-out-of-range'})
+            self.assertEqual(found['sample/month'], '2026-04')
+
     def test_inventory_references_and_honest_completeness(self):
         day = dt.date(2026, 10, 4)
         catalog = {'models': [{'id': 'sample/model'}], 'bindings': []}

@@ -27,6 +27,25 @@ def date(value):
     return dt.date.fromisoformat(value)
 
 
+def release_date(value):
+    """Normalise an upstream registry release date for window comparison.
+
+    models.dev records some dates with month precision ("2024-09") and
+    occasionally a TOML date literal. Treat month precision as the last
+    day of that month: a broad screen must not drop a model whose exact
+    day is unknown. Anything unparseable is a gap, exactly like a missing
+    date, so one malformed upstream record cannot fail the whole report.
+    """
+    value = value.strip()
+    if re.fullmatch(r"\d{4}-\d{2}", value):
+        year, month = int(value[:4]), int(value[5:])
+        return dt.date(year, month, calendar.monthrange(year, month)[1])
+    try:
+        return dt.date.fromisoformat(value)
+    except ValueError:
+        return None
+
+
 def validate(root, catalog, inventory, as_of):
     if inventory['schema_version'] != 1 or inventory['window_months'] != 6:
         raise ValueError('unsupported inventory schema or maintenance window')
@@ -72,10 +91,12 @@ def discoveries(registry, as_of):
     for f in sorted((registry / 'models').glob('*/*.toml')):
         d = tomllib.loads(f.read_text())
         released = str(d.get('release_date', ''))
-        # A missing date is also a gap: do not silently claim an entire family
-        # was covered because its newest model has no registry release date.
         if d.get('tool_call') and 'text' in d.get('modalities', {}).get('output', []):
-            if not released or start <= date(released) <= as_of:
+            released_on = release_date(released)
+            # A missing or unparseable date is also a gap: do not silently
+            # claim an entire family was covered because its newest model
+            # has no usable registry release date.
+            if released_on is None or start <= released_on <= as_of:
                 yield {'id': f.parent.name + '/' + f.stem, 'reported_release': released or None}
 
 
