@@ -2,6 +2,7 @@
   "schema_version": 1,
   "as_of": "2026-10-10",
   "window_months": 6,
+  "notification_watchlist": ["alibaba", "anthropic", "deepseek", "google", "meta", "minimax", "moonshotai", "openai", "xiaomi", "xai", "zhipuai"],
   "discovery_source": {
     "repository": "https://github.com/anomalyco/models.dev",
     "commit": "a5c9719377ba7b648b074511ac25bc8625e4892a"

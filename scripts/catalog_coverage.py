@@ -86,10 +86,16 @@ def validate(root, catalog, inventory, as_of):
         raise ValueError(f'model facts without a model inventory decision: {sorted(missing)}; candidate inventory differs: {sorted(files ^ candidates)}')
 
 
-def discoveries(registry, as_of):
+def discoveries(registry, as_of, watch=None):
     start = window_start(as_of)
     for f in sorted((registry / 'models').glob('*/*.toml')):
         d = tomllib.loads(f.read_text())
+        vendor = f.parent.name
+        # A watch list narrows the broad registry to vendors whose releases
+        # this catalog actually tracks, so the discovery feed is signal rather
+        # than the full upstream noise. None means no filter (full registry).
+        if watch is not None and vendor not in watch:
+            continue
         released = str(d.get('release_date', ''))
         if d.get('tool_call') and 'text' in d.get('modalities', {}).get('output', []):
             released_on = release_date(released)
@@ -97,16 +103,16 @@ def discoveries(registry, as_of):
             # claim an entire family was covered because its newest model
             # has no usable registry release date.
             if released_on is None or start <= released_on <= as_of:
-                yield {'id': f.parent.name + '/' + f.stem, 'reported_release': released or None}
+                yield {'id': vendor + '/' + f.stem, 'reported_release': released or None}
 
 
-def report(inventory, catalog, as_of, registry=None):
+def report(inventory, catalog, as_of, registry=None, watch=None):
     start = window_start(as_of)
     entries = inventory['entries']
     counts = collections.Counter(e['state'] for e in entries)
     unresolved = [e['id'] for e in entries if e['state'] != 'excluded' and not e.get('released')]
     known = {e['id'] for e in entries}
-    new = [d for d in discoveries(registry, as_of) if d['id'] not in known] if registry else []
+    new = [d for d in discoveries(registry, as_of, watch) if d['id'] not in known] if registry else []
     ready = [m['id'] for m in catalog['models'] if m.get('connection') or any(b['model_id'] == m['id'] for b in catalog['bindings'])]
     return {'as_of': str(as_of), 'window_start': str(start), 'inventory_reviewed': inventory['as_of'],
             'review_age_days': (as_of - date(inventory['as_of'])).days,
@@ -122,12 +128,14 @@ def main():
     parser.add_argument('--as-of', type=date, default=dt.datetime.now(dt.timezone.utc).date())
     parser.add_argument('--models-dev', type=Path, help='optional models.dev checkout for broad discovery hints')
     parser.add_argument('--max-review-age', type=int, help='fail if the inventory has not been reviewed within this many days')
+    parser.add_argument('--watch', help='comma-separated vendor slugs to limit discovery; defaults to notification_watchlist in coverage.json')
     args = parser.parse_args()
     inventory = json.loads((args.root / 'coverage.json').read_text())
     catalog = json.loads(args.catalog.read_text())
+    watch = {s.strip() for s in (args.watch or '').split(',') if s.strip()} or set(inventory.get('notification_watchlist') or [])
     try:
         validate(args.root, catalog, inventory, args.as_of)
-        result = report(inventory, catalog, args.as_of, args.models_dev)
+        result = report(inventory, catalog, args.as_of, args.models_dev, watch or None)
         print(json.dumps(result, indent=2))
         if args.max_review_age is not None and result['review_age_days'] > args.max_review_age:
             parser.exit(1, 'Inventory review is overdue; review official releases and discovery gaps.\n')

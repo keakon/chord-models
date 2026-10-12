@@ -21,6 +21,17 @@ class CoverageTest(unittest.TestCase):
                 (modeldir / (name + '.toml')).write_text(f'tool_call = true\nrelease_date = "{released}"\n[modalities]\noutput = ["text"]\n')
             self.assertEqual({m['id'] for m in discoveries(root, dt.date(2026, 10, 4))}, {'sample/recent', 'sample/unknown'})
 
+    def test_discovery_watchlist_filters_vendors(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for vendor, name, released in [('keep', 'a', '2026-04-04'), ('drop', 'b', '2026-04-04'),
+                                          ('keep', 'c', '2026-04-04')]:
+                d = root / 'models' / vendor
+                d.mkdir(parents=True, exist_ok=True)
+                (d / (name + '.toml')).write_text(f'tool_call = true\nrelease_date = "{released}"\n[modalities]\noutput = ["text"]\n')
+            found = {m['id'] for m in discoveries(root, dt.date(2026, 10, 4), watch={'keep'})}
+            self.assertEqual(found, {'keep/a', 'keep/c'})
+
     def test_discovery_survives_month_precision_and_malformed_dates(self):
         # Upstream models.dev records month precision ("2026-04") and the odd
         # malformed value. A screening report must degrade to a gap, never fail.

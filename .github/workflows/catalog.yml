@@ -6,9 +6,10 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: '0 3 * * 1'
+    - cron: '0 3 * * *'
 permissions:
   contents: read
+  issues: write
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -55,6 +56,12 @@ jobs:
           git -C "$RUNNER_TEMP/models-dev" sparse-checkout set models
           git -C "$RUNNER_TEMP/models-dev" rev-parse HEAD > discovery-source.txt
           python3 scripts/catalog_coverage.py --catalog "$RUNNER_TEMP/catalog.json" --models-dev "$RUNNER_TEMP/models-dev" --max-review-age 7 > coverage-report.json
+      - name: Notify new discoveries
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/notify_discoveries.py --report coverage-report.json --repo "$GITHUB_REPOSITORY"
       - name: Upload discovery report
         if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
