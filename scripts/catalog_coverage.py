@@ -128,6 +128,7 @@ def main():
     parser.add_argument('--as-of', type=date, default=dt.datetime.now(dt.timezone.utc).date())
     parser.add_argument('--models-dev', type=Path, help='optional models.dev checkout for broad discovery hints')
     parser.add_argument('--max-review-age', type=int, help='fail if the inventory has not been reviewed within this many days')
+    parser.add_argument('--fail-on-new', action='store_true', help='fail if watch-listed discoveries are not yet in the inventory (CI failure emails the maintainer)')
     parser.add_argument('--watch', help='comma-separated vendor slugs to limit discovery; defaults to notification_watchlist in coverage.json')
     args = parser.parse_args()
     inventory = json.loads((args.root / 'coverage.json').read_text())
@@ -139,6 +140,9 @@ def main():
         print(json.dumps(result, indent=2))
         if args.max_review_age is not None and result['review_age_days'] > args.max_review_age:
             parser.exit(1, 'Inventory review is overdue; review official releases and discovery gaps.\n')
+        if args.fail_on_new and result['new_discoveries']:
+            ids = ', '.join(sorted(d['id'] for d in result['new_discoveries']))
+            parser.exit(1, f'New watch-listed discoveries to review and add to coverage.json: {ids}\n')
     except (ValueError, KeyError) as exc:
         parser.exit(1, f'Coverage validation failed: {exc}\n')
 
