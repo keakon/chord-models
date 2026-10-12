@@ -73,7 +73,7 @@ def main():
             f"### {today}\n{addition}\n\n{new_marker}"
         )
         proc = gh(['issue', 'create', '--repo', args.repo, '--title', ISSUE_TITLE,
-                   '--body', body, '--label', 'discovery'])
+                   '--body', body])
         if proc.returncode != 0:
             print(f'failed to create issue: {proc.stderr.strip()}', file=sys.stderr)
             return
