@@ -1,0 +1,39 @@
+wire_model_id: muse-wonder-1.0
+scope: meta
+released: '2026-10-12'
+context: 1048576
+input_modalities: [text, image, video, audio, pdf]
+coding_sources:
+- url: https://research.meta.ai/blog/muse-wonder
+  checked: '2026-10-13'
+sources:
+- url: https://dev.meta.ai/docs/models
+  checked: '2026-10-13'
+- url: https://dev.meta.ai/models/muse-wonder
+  checked: '2026-10-13'
+- url: https://research.meta.ai/static/muse-wonder-model-card
+  checked: '2026-10-13'
+- url: https://dev.meta.ai/docs/reasoning
+  checked: '2026-10-13'
+- url: https://dev.meta.ai/docs/pricing-rate-limits
+  checked: '2026-10-13'
+- url: https://github.com/anomalyco/models.dev/blob/6b6442578ea7d6844d2260cc6da3b14e97980f06/models/meta/muse-wonder-1.0.toml
+  checked: '2026-10-13'
+notes: >-
+  Officially released frontier coding model, currently in preview on Meta Model
+  API and available in Muse Code. The API model ID is muse-wonder-1.0; Standard
+  mode costs USD 4 per million uncached input tokens and USD 20 per million
+  output tokens, with USD 0.20 cached input and no long-context premium.
+  Contributor mode is not available on Model API. Official reasoning levels
+  are minimal, low, medium, high, xhigh and max; omission uses a model-determined
+  level, not a documented fixed default. Reasoning and visible text share the
+  output budget. The hard output maximum remains unverified: the registry's
+  131072 is a practical rate-limit-based choice, not a documented model cap;
+  do not copy Muse Spark's output limit or infer an independent input cap.
+  For sustained coding, a provisional Chord compaction starting point is
+  threshold 0.70 and reminder 0.60, retaining room for tool results and
+  reasoning. These are tunable recommendations, not provider limits or measured
+  optima. Their token counts depend on the independently verified input cap or
+  context-minus-output baseline; no absolute trigger is claimed while output
+  capacity is unresolved. Candidate notes do not apply runtime configuration.
+  Verify the hard output maximum and endpoint behavior before promotion.

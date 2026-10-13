@@ -1,0 +1,36 @@
+wire_model_id: muse-wonder-full-1.0
+scope: meta
+released: '2026-10-12'
+context: 1048576
+input_modalities: [text, image, video, audio]
+coding_sources:
+- url: https://research.meta.ai/blog/muse-wonder
+  checked: '2026-10-13'
+sources:
+- url: https://dev.meta.ai/models/muse-wonder
+  checked: '2026-10-13'
+- url: https://dev.meta.ai/docs/models
+  checked: '2026-10-13'
+- url: https://research.meta.ai/static/muse-wonder-model-card
+  checked: '2026-10-13'
+- url: https://dev.meta.ai/docs/reasoning
+  checked: '2026-10-13'
+- url: https://github.com/anomalyco/models.dev/blob/6b6442578ea7d6844d2260cc6da3b14e97980f06/models/meta/muse-wonder-full.toml
+  checked: '2026-10-13'
+notes: >-
+  Officially released coding model. The official model page lists
+  muse-wonder-full-1.0; models.dev's muse-wonder-full is a discovery alias for
+  this model, not a second candidate. Available only in Muse Code on the Power
+  Usage and Maximum Usage subscription plans, with no public Model API route.
+  Setting muse-wonder-1.0 reasoning effort to max does not select Full.
+  The official model card documents a 1M context and text, image, video and
+  audio inputs; the exact 1048576 context is a registry observation pending
+  model-specific confirmation. Hard output capacity and any independent input
+  cap remain unverified. Max reasoning is documented in Muse Code; do not copy
+  the API model's complete effort list, pricing or connection to Full.
+  If a supported Chord route becomes available, a provisional sustained-coding
+  compaction starting point is threshold 0.70 and reminder 0.60. Tune these
+  recommendations against task quality, latency and cost after verifying route
+  limits; do not derive absolute token triggers from an unknown output budget.
+  Candidate notes do not apply runtime configuration. Verify exact limits and
+  a supported serving route before promotion.

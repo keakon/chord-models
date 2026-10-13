@@ -82,7 +82,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-The 2026-10-08 review contains **32 model fact records** and **99 discovery
+As of 2026-10-13, the catalog contains **32 model fact records** and **101 discovery
 candidates**, with a release inventory across **33 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
@@ -92,6 +92,11 @@ The 2026-10-09 update rechecks selected configuration profiles, input limits
 and pricing scopes; it does not repeat the full vendor inventory review.
 The 2026-10-10 update adjusts Haiku 5.5's cost-first compaction guidance and
 aligns the Gemini endpoint contract with the API version root.
+The 2026-10-13 update adds Muse Wonder and Muse Wonder Full as candidates after
+checking their official release and coding evidence. Their notes retain access
+restrictions, missing output limits, and provisional compaction recommendations
+(`threshold: 0.70`, `reminder: 0.60`) for sustained coding. Candidate notes do
+not apply runtime defaults; Full is available only through Muse Code subscriptions.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.
@@ -117,10 +122,11 @@ receive an explicit inventory decision rather than silently disappearing.
 
 Without a checkout argument the script resolves the fixed Chord validator
 commit through the Go module proxy. CI runs the same schema/candidate checks, verifies version bumps on
-PRs and tag/version identity on releases. Weekly discovery produces an
+PRs and tag/version identity on releases. Daily discovery produces an
 artifact listing possible omissions from models.dev and missing official
 release evidence; it never silently promotes registry data. An inventory
-review older than seven days fails the weekly check.
+review is not subject to a time-based failure gate. A new watch-listed discovery
+without an inventory decision fails the workflow to notify the maintainer.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for scope, evidence, discovery review,
 pricing and release instructions. Chord owns the schema; this repository owns

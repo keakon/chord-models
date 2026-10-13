@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-10",
+  "as_of": "2026-10-13",
   "window_months": 6,
   "notification_watchlist": ["alibaba", "anthropic", "deepseek", "google", "meta", "minimax", "moonshotai", "openai", "xiaomi", "xai", "zhipuai"],
   "discovery_source": {
     "repository": "https://github.com/anomalyco/models.dev",
-    "commit": "a5c9719377ba7b648b074511ac25bc8625e4892a"
+    "commit": "6b6442578ea7d6844d2260cc6da3b14e97980f06"
   },
-  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial.",
+  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The 2026-10-13 update screens watch-listed registry discoveries and reviews the Muse Wonder series against official sources; hard output limits remain unresolved. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial.",
   "watchlist": {
     "alibaba": {
       "registry_checked": "2026-10-04",
@@ -70,10 +70,10 @@
       "notes": "Continue checking official release inventory; this record is not a claim of exhaustive vendor coverage."
     },
     "meta": {
-      "registry_checked": "2026-10-04",
+      "registry_checked": "2026-10-13",
       "official_index": "https://dev.meta.ai/docs/models",
       "review": "partial",
-      "notes": "Continue checking official release inventory; this record is not a claim of exhaustive vendor coverage."
+      "notes": "Reviewed Muse Wonder and Muse Wonder Full release, coding evidence, availability and candidate configuration guidance on 2026-10-13. Hard output limits remain unverified; Full has no public Model API route. Other Meta releases retain their earlier review dates; vendor coverage remains partial."
     },
     "microsoft": {
       "registry_checked": "2026-10-04",
@@ -1199,6 +1199,68 @@
       ],
       "state": "model",
       "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded."
+    },
+    {
+      "id": "meta/muse-wonder-1.0",
+      "released": "2026-10-12",
+      "reported_release": "2026-10-12",
+      "checked": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://research.meta.ai/blog/muse-wonder",
+          "checked": "2026-10-13"
+        },
+        {
+          "url": "https://dev.meta.ai/docs/models",
+          "checked": "2026-10-13"
+        },
+        {
+          "url": "https://github.com/anomalyco/models.dev/blob/6b6442578ea7d6844d2260cc6da3b14e97980f06/models/meta/muse-wonder-1.0.toml",
+          "checked": "2026-10-13"
+        }
+      ],
+      "state": "candidate",
+      "candidate": "candidates/meta--muse-wonder-1.0.yaml",
+      "reason": "Official release, coding suitability, context and preview API availability verified. Hard output maximum remains unverified; the registry's practical 131072 output budget is not a model cap. Candidate notes retain provisional compaction recommendations without applying defaults."
+    },
+    {
+      "id": "meta/muse-wonder-full",
+      "reported_release": "2026-10-12",
+      "checked": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://dev.meta.ai/models/muse-wonder",
+          "checked": "2026-10-13"
+        },
+        {
+          "url": "https://github.com/anomalyco/models.dev/blob/6b6442578ea7d6844d2260cc6da3b14e97980f06/models/meta/muse-wonder-full.toml",
+          "checked": "2026-10-13"
+        }
+      ],
+      "state": "excluded",
+      "reason": "Duplicate discovery identity for the Muse Wonder Full variant. The official model page names muse-wonder-full-1.0, tracked as candidate meta/muse-wonder-full-1.0; this alias must not create a second candidate or imply a public API route."
+    },
+    {
+      "id": "meta/muse-wonder-full-1.0",
+      "released": "2026-10-12",
+      "checked": "2026-10-13",
+      "sources": [
+        {
+          "url": "https://dev.meta.ai/models/muse-wonder",
+          "checked": "2026-10-13"
+        },
+        {
+          "url": "https://research.meta.ai/blog/muse-wonder",
+          "checked": "2026-10-13"
+        },
+        {
+          "url": "https://research.meta.ai/static/muse-wonder-model-card",
+          "checked": "2026-10-13"
+        }
+      ],
+      "state": "candidate",
+      "candidate": "candidates/meta--muse-wonder-full-1.0.yaml",
+      "reason": "Official identity, release and coding suitability verified. Muse Code subscription-only availability, no public Model API route, and unresolved exact context and hard output limits prevent promotion. Candidate notes retain conditional compaction guidance."
     },
     {
       "id": "microsoft/mai-code-1-flash",
