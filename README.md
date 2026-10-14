@@ -82,7 +82,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-As of 2026-10-13, the catalog contains **32 model fact records** and **101 discovery
+As of 2026-10-14, the catalog contains **33 model fact records** and **101 discovery
 candidates**, with a release inventory across **33 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
@@ -97,6 +97,14 @@ checking their official release and coding evidence. Their notes retain access
 restrictions, missing output limits, and provisional compaction recommendations
 (`threshold: 0.70`, `reminder: 0.60`) for sustained coding. Candidate notes do
 not apply runtime defaults; Full is available only through Muse Code subscriptions.
+The 2026-10-14 update adds the verified `google/gemini-4-argon` model and its
+documented API connection. Input, thinking and output share a 1,048,576-token
+window. Model facts retain the long-decode output capacity up to that window;
+the Gemini binding caps current streaming requests at 65,536 tokens because
+longer output requires continuation handling. Pricing records the $4/$20 standard rates and
+the $2/$10 introductory rates through November 30, 2026 (per million input/output
+tokens). The live connection check reached the API but returned HTTP 429
+because the credential's free-tier quota is zero; no completion was verified.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.
