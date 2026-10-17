@@ -82,7 +82,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-As of 2026-10-17, the catalog contains **33 model fact records** and **102 discovery
+As of 2026-10-17, the catalog contains **33 model fact records** and **97 discovery
 candidates**, with a release inventory across **33 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
@@ -112,6 +112,16 @@ official pages were unreachable, so release, coding suitability, hard output
 limit, serving route, pricing and license terms remain unverified. The
 registry's 131072 output follows the Muse Spark lab convention, not a
 documented cap for Open.
+The 2026-10-17 DeepSeek review verifies DeepSeek-V4.1-Flash-1017, now served
+under the existing `deepseek-flash` model name with unchanged calling
+conventions; the entry records the official release date and the announcement's
+DeepSWE v1.1 coding evidence. Documented facts stay a 1M context, a 384K hard
+output maximum, vision input and peak uncached pricing of $0.3/$1.2 per
+million input/output tokens (off-peak half, cache hits priced separately). The
+registry's `deepseek-v4.1-flash` alias and the retired V4-Flash line
+(`deepseek-v4-flash`, `deepseek-v4-flash-vision-exp` and the dated 0423/0731
+snapshots) receive explicit exclusion decisions: the legacy names still route
+to V4.1-Flash-1017 at the Flash price.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.

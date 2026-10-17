@@ -7,7 +7,7 @@
     "repository": "https://github.com/anomalyco/models.dev",
     "commit": "70972b6cd2557a958c768f981b477b7bf75f2aa5"
   },
-  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The 2026-10-13 update screens watch-listed registry discoveries and reviews the Muse Wonder series against official sources; hard output limits remain unresolved. The 2026-10-14 update verifies Gemini 4 Argon release, coding, unified context, single-request output limits, modalities, thinking levels, pricing and API connection. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial. The 2026-10-17 update screens watch-listed registry discoveries and records Muse Spark Open as a candidate; official sources cited by the registry were unreachable for independent verification.",
+  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The 2026-10-13 update screens watch-listed registry discoveries and reviews the Muse Wonder series against official sources; hard output limits remain unresolved. The 2026-10-14 update verifies Gemini 4 Argon release, coding, unified context, single-request output limits, modalities, thinking levels, pricing and API connection. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial. The 2026-10-17 update screens watch-listed registry discoveries and records Muse Spark Open as a candidate; official sources cited by the registry were unreachable for independent verification. A further 2026-10-17 review verifies the DeepSeek-V4.1-Flash-1017 release served under the existing deepseek-flash wire ID and excludes the deepseek-v4.1-flash registry alias plus the retired V4-Flash line and its dated snapshots as aliases of retired routes.",
   "watchlist": {
     "alibaba": {
       "registry_checked": "2026-10-04",
@@ -40,10 +40,10 @@
       "notes": "Continue checking official release inventory; this record is not a claim of exhaustive vendor coverage."
     },
     "deepseek": {
-      "registry_checked": "2026-10-04",
+      "registry_checked": "2026-10-17",
       "official_index": "https://api-docs.deepseek.com/news",
       "review": "partial",
-      "notes": "Continue checking official release inventory; this record is not a claim of exhaustive vendor coverage."
+      "notes": "Reviewed the DeepSeek-V4.1-Flash-1017 release against the official announcement and model/pricing documentation and screened the registry on 2026-10-17; the release is served under the existing deepseek-flash wire ID. The deepseek-v4.1-flash alias and the retired V4-Flash line are excluded; other DeepSeek entries retain their earlier evidence dates; vendor coverage remains partial."
     },
     "google": {
       "registry_checked": "2026-10-14",
@@ -745,74 +745,107 @@
     {
       "id": "deepseek/deepseek-flash",
       "state": "model",
-      "checked": "2026-10-09",
-      "reason": "Existing catalog fact; release date needs official confirmation or is outside this discovery window. Rechecked pricing scope: listed rates are peak uncached rates; off-peak and cache-hit prices differ.",
+      "released": "2026-10-17",
+      "checked": "2026-10-17",
+      "reason": "Official release date confirmed: the 2026-10-17 announcement introduces DeepSeek-V4.1-Flash-1017, served under the deepseek-flash wire ID that went live with V4.1-Flash on 2026-09-10. Rechecked pricing scope: listed rates are peak uncached rates; off-peak and cache-hit prices differ.",
       "sources": [
         {
           "url": "https://api-docs.deepseek.com/quick_start/pricing/",
-          "checked": "2026-10-09"
+          "checked": "2026-10-17"
         },
         {
           "url": "https://api-docs.deepseek.com/news/news260910",
-          "checked": "2026-10-04"
+          "checked": "2026-10-17"
+        },
+        {
+          "url": "https://api-docs.deepseek.com/news/news261017",
+          "checked": "2026-10-17"
         }
       ]
     },
     {
       "id": "deepseek/deepseek-v4-flash",
       "reported_release": "2026-04-24",
-      "checked": "2026-10-04",
+      "checked": "2026-10-17",
       "sources": [
         {
           "url": "https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/deepseek/deepseek-v4-flash.toml",
-          "checked": "2026-10-04"
+          "checked": "2026-10-17"
+        },
+        {
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "checked": "2026-10-17"
+        },
+        {
+          "url": "https://api-docs.deepseek.com/news/news260910",
+          "checked": "2026-10-17"
         }
       ],
-      "state": "candidate",
-      "candidate": "candidates/deepseek--deepseek-v4-flash.yaml",
-      "reason": "Pending official release, coding, limits and endpoint verification."
+      "state": "excluded",
+      "reason": "Retired route: the official pricing page states the V4-Flash model is retired and the legacy deepseek-v4-flash name now routes to DeepSeek-V4.1-Flash-1017 at the Flash price. The route is tracked as model deepseek/deepseek-flash."
     },
     {
       "id": "deepseek/deepseek-v4-flash-0423",
       "reported_release": "2026-04-23",
-      "checked": "2026-10-04",
+      "checked": "2026-10-17",
       "sources": [
         {
           "url": "https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/deepseek/deepseek-v4-flash-0423.toml",
-          "checked": "2026-10-04"
+          "checked": "2026-10-17"
+        },
+        {
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "checked": "2026-10-17"
+        },
+        {
+          "url": "https://api-docs.deepseek.com/news/news260910",
+          "checked": "2026-10-17"
         }
       ],
-      "state": "candidate",
-      "candidate": "candidates/deepseek--deepseek-v4-flash-0423.yaml",
-      "reason": "Pending official release, coding, limits and endpoint verification."
+      "state": "excluded",
+      "reason": "Retired route: dated registry snapshot of the retired V4-Flash line (registry family deepseek-flash). The official model list names only deepseek-flash and deepseek-v4-pro, and legacy V4-Flash requests route to DeepSeek-V4.1-Flash-1017. The route is tracked as model deepseek/deepseek-flash."
     },
     {
       "id": "deepseek/deepseek-v4-flash-0731",
       "reported_release": "2026-07-31",
-      "checked": "2026-10-04",
+      "checked": "2026-10-17",
       "sources": [
         {
           "url": "https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/deepseek/deepseek-v4-flash-0731.toml",
-          "checked": "2026-10-04"
+          "checked": "2026-10-17"
+        },
+        {
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "checked": "2026-10-17"
+        },
+        {
+          "url": "https://api-docs.deepseek.com/news/news260910",
+          "checked": "2026-10-17"
         }
       ],
-      "state": "candidate",
-      "candidate": "candidates/deepseek--deepseek-v4-flash-0731.yaml",
-      "reason": "Pending official release, coding, limits and endpoint verification."
+      "state": "excluded",
+      "reason": "Retired route: dated registry snapshot of the retired V4-Flash line (registry family deepseek-flash). The official model list names only deepseek-flash and deepseek-v4-pro, and legacy V4-Flash requests route to DeepSeek-V4.1-Flash-1017. The route is tracked as model deepseek/deepseek-flash."
     },
     {
       "id": "deepseek/deepseek-v4-flash-vision-exp",
       "reported_release": "2026-08-21",
-      "checked": "2026-10-04",
+      "checked": "2026-10-17",
       "sources": [
         {
           "url": "https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/deepseek/deepseek-v4-flash-vision-exp.toml",
-          "checked": "2026-10-04"
+          "checked": "2026-10-17"
+        },
+        {
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "checked": "2026-10-17"
+        },
+        {
+          "url": "https://api-docs.deepseek.com/news/news260910",
+          "checked": "2026-10-17"
         }
       ],
-      "state": "candidate",
-      "candidate": "candidates/deepseek--deepseek-v4-flash-vision-exp.yaml",
-      "reason": "Pending official release, coding, limits and endpoint verification."
+      "state": "excluded",
+      "reason": "Retired route: the official pricing page states the V4-Flash-Vision-Exp model is retired and the legacy deepseek-v4-flash-vision-exp name now routes to DeepSeek-V4.1-Flash-1017, which carries native vision input, at the Flash price. The route is tracked as model deepseek/deepseek-flash."
     },
     {
       "id": "deepseek/deepseek-v4-pro",
@@ -859,16 +892,40 @@
     {
       "id": "deepseek/deepseek-v4.1-flash",
       "reported_release": "2026-09-10",
-      "checked": "2026-10-04",
+      "checked": "2026-10-17",
       "sources": [
         {
-          "url": "https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/deepseek/deepseek-v4.1-flash.toml",
-          "checked": "2026-10-04"
+          "url": "https://github.com/anomalyco/models.dev/blob/70972b6cd2557a958c768f981b477b7bf75f2aa5/models/deepseek/deepseek-v4.1-flash.toml",
+          "checked": "2026-10-17"
+        },
+        {
+          "url": "https://api-docs.deepseek.com/",
+          "checked": "2026-10-17"
+        },
+        {
+          "url": "https://api-docs.deepseek.com/news/news261017",
+          "checked": "2026-10-17"
         }
       ],
-      "state": "candidate",
-      "candidate": "candidates/deepseek--deepseek-v4.1-flash.yaml",
-      "reason": "Pending official release, coding, limits and endpoint verification."
+      "state": "excluded",
+      "reason": "Alias of the official deepseek-flash route: the registry entry shares family deepseek-flash, and the official documentation names deepseek-flash, now serving DeepSeek-V4.1-Flash-1017, as the only model name for this line. The route is tracked as model deepseek/deepseek-flash."
+    },
+    {
+      "id": "deepseek/deepseek-v4.1-flash-1017",
+      "released": "2026-10-17",
+      "checked": "2026-10-17",
+      "sources": [
+        {
+          "url": "https://api-docs.deepseek.com/news/news261017",
+          "checked": "2026-10-17"
+        },
+        {
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "checked": "2026-10-17"
+        }
+      ],
+      "state": "excluded",
+      "reason": "Duplicate identity for the released DeepSeek-V4.1-Flash-1017 version: the official model name is deepseek-flash, tracked as model deepseek/deepseek-flash, so this version alias must not create a second model record."
     },
     {
       "id": "google/deep-research-max-preview-04-2026",
