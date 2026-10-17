@@ -82,7 +82,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-As of 2026-10-14, the catalog contains **33 model fact records** and **101 discovery
+As of 2026-10-17, the catalog contains **33 model fact records** and **102 discovery
 candidates**, with a release inventory across **33 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
@@ -105,6 +105,13 @@ longer output requires continuation handling. Pricing records the $4/$20 standar
 the $2/$10 introductory rates through November 30, 2026 (per million input/output
 tokens). The live connection check reached the API but returned HTTP 429
 because the credential's free-tier quota is zero; no completion was verified.
+The 2026-10-17 update records Meta's Muse Spark Open as a candidate after the
+daily discovery screen flagged it. The open-weight 816B/42B model (1M context,
+tool calling, reasoning default xhigh) is registry-reported only: Meta's
+official pages were unreachable, so release, coding suitability, hard output
+limit, serving route, pricing and license terms remain unverified. The
+registry's 131072 output follows the Muse Spark lab convention, not a
+documented cap for Open.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.

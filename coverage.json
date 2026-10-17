@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-14",
+  "as_of": "2026-10-17",
   "window_months": 6,
   "notification_watchlist": ["alibaba", "anthropic", "deepseek", "google", "meta", "minimax", "moonshotai", "openai", "xiaomi", "xai", "zhipuai"],
   "discovery_source": {
     "repository": "https://github.com/anomalyco/models.dev",
-    "commit": "6b6442578ea7d6844d2260cc6da3b14e97980f06"
+    "commit": "70972b6cd2557a958c768f981b477b7bf75f2aa5"
   },
-  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The 2026-10-13 update screens watch-listed registry discoveries and reviews the Muse Wonder series against official sources; hard output limits remain unresolved. The 2026-10-14 update verifies Gemini 4 Argon release, coding, unified context, single-request output limits, modalities, thinking levels, pricing and API connection. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial.",
+  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The 2026-10-13 update screens watch-listed registry discoveries and reviews the Muse Wonder series against official sources; hard output limits remain unresolved. The 2026-10-14 update verifies Gemini 4 Argon release, coding, unified context, single-request output limits, modalities, thinking levels, pricing and API connection. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial. The 2026-10-17 update screens watch-listed registry discoveries and records Muse Spark Open as a candidate; official sources cited by the registry were unreachable for independent verification.",
   "watchlist": {
     "alibaba": {
       "registry_checked": "2026-10-04",
@@ -70,10 +70,10 @@
       "notes": "Continue checking official release inventory; this record is not a claim of exhaustive vendor coverage."
     },
     "meta": {
-      "registry_checked": "2026-10-13",
+      "registry_checked": "2026-10-17",
       "official_index": "https://dev.meta.ai/docs/models",
       "review": "partial",
-      "notes": "Reviewed Muse Wonder and Muse Wonder Full release, coding evidence, availability and candidate configuration guidance on 2026-10-13. Hard output limits remain unverified; Full has no public Model API route. Other Meta releases retain their earlier review dates; vendor coverage remains partial."
+      "notes": "Reviewed Muse Wonder and Muse Wonder Full release, coding evidence, availability and candidate configuration guidance on 2026-10-13. Hard output limits remain unverified; Full has no public Model API route. Other Meta releases retain their earlier review dates; vendor coverage remains partial. The 2026-10-17 screen recorded Muse Spark Open as a candidate; Meta's official pages were unreachable, so registry-reported facts remain unverified."
     },
     "microsoft": {
       "registry_checked": "2026-10-04",
@@ -1228,6 +1228,20 @@
       ],
       "state": "model",
       "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded."
+    },
+    {
+      "id": "meta/muse-spark-open",
+      "reported_release": "2026-10-15",
+      "checked": "2026-10-17",
+      "sources": [
+        {
+          "url": "https://github.com/anomalyco/models.dev/blob/70972b6cd2557a958c768f981b477b7bf75f2aa5/models/meta/muse-spark-open.toml",
+          "checked": "2026-10-17"
+        }
+      ],
+      "state": "candidate",
+      "candidate": "candidates/meta--muse-spark-open.yaml",
+      "reason": "Open-weight frontier coding model discovered in the 2026-10-17 registry screen. Release, coding suitability and context are registry-reported only; the official sources cited by the registry were unreachable. Hard output limit, serving route, pricing and license terms remain unverified; the registry's 131072 output follows the Muse Spark lab convention, not a documented cap for Open."
     },
     {
       "id": "meta/muse-wonder-1.0",

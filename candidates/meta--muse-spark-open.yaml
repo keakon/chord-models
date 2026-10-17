@@ -1,0 +1,17 @@
+wire_model_id: muse-spark-open
+scope: meta
+context: 1048576
+input_modalities: [text, image, video, audio]
+sources:
+- url: https://github.com/anomalyco/models.dev/blob/70972b6cd2557a958c768f981b477b7bf75f2aa5/models/meta/muse-spark-open.toml
+  checked: '2026-10-17'
+notes: >-
+  Discovery only: open-weight frontier coding model (816B total / 42B active,
+  1M context, tool calling, reasoning default xhigh) reported by the registry
+  with a 2026-10-15 release date. Official announcement, model card and docs
+  cited by the registry could not be reached for independent verification, so
+  release date, coding suitability, hard output limit, serving route, pricing
+  and license terms need official confirmation. The registry's 131072 output
+  follows the Muse Spark 1.2/1.3 lab convention; no first-party max-output
+  document exists for Open, so no output limit is recorded. Registry context is
+  an observed reference, never a runtime default.
