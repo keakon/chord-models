@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-17",
+  "as_of": "2026-10-24",
   "window_months": 6,
   "notification_watchlist": ["alibaba", "anthropic", "deepseek", "google", "meta", "minimax", "moonshotai", "openai", "xiaomi", "xai", "zhipuai"],
   "discovery_source": {
     "repository": "https://github.com/anomalyco/models.dev",
     "commit": "70972b6cd2557a958c768f981b477b7bf75f2aa5"
   },
-  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The 2026-10-13 update screens watch-listed registry discoveries and reviews the Muse Wonder series against official sources; hard output limits remain unresolved. The 2026-10-14 update verifies Gemini 4 Argon release, coding, unified context, single-request output limits, modalities, thinking levels, pricing and API connection. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial. The 2026-10-17 update screens watch-listed registry discoveries and records Muse Spark Open as a candidate; official sources cited by the registry were unreachable for independent verification. A further 2026-10-17 review verifies the DeepSeek-V4.1-Flash-1017 release served under the existing deepseek-flash wire ID and excludes the deepseek-v4.1-flash registry alias plus the retired V4-Flash line and its dated snapshots as aliases of retired routes.",
+  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The 2026-10-13 update screens watch-listed registry discoveries and reviews the Muse Wonder series against official sources; hard output limits remain unresolved. The 2026-10-14 update verifies Gemini 4 Argon release, coding, unified context, single-request output limits, modalities, thinking levels, pricing and API connection. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial. The 2026-10-17 update screens watch-listed registry discoveries and records Muse Spark Open as a candidate; official sources cited by the registry were unreachable for independent verification. A further 2026-10-17 review verifies the DeepSeek-V4.1-Flash-1017 release served under the existing deepseek-flash wire ID and excludes the deepseek-v4.1-flash registry alias plus the retired V4-Flash line and its dated snapshots as aliases of retired routes. The 2026-10-24 update verifies Kimi K3.1 Pro and Kimi K3.1 Pro Highspeed from the official release, API guide and pricing pages: release date, coding evidence, 1,048,576-token context and hard output maximum, text/image/video input, low/high/max reasoning, Chat Completions connection and standard USD pricing.",
   "watchlist": {
     "alibaba": {
       "registry_checked": "2026-10-04",
@@ -100,10 +100,10 @@
       "notes": "Continue checking official release inventory; this record is not a claim of exhaustive vendor coverage."
     },
     "moonshotai": {
-      "registry_checked": "2026-10-04",
+      "registry_checked": "2026-10-24",
       "official_index": "https://platform.kimi.ai/docs/api/models-overview",
       "review": "partial",
-      "notes": "Continue checking official release inventory; this record is not a claim of exhaustive vendor coverage."
+      "notes": "Screened the Moonshot registry inventory, which now lists kimi-k3.1-pro, and verified the official K3.1 Pro release, API guide and pricing pages on 2026-10-24. Other Moonshot entries retain their earlier evidence dates; vendor coverage remains partial."
     },
     "motif-technologies": {
       "registry_checked": "2026-10-04",
@@ -1564,6 +1564,56 @@
       ],
       "state": "model",
       "reason": "Catalog facts available. The reported release remains a discovery hint. Rechecked the complete assistant-message passback contract and enabled visible reasoning replay across turns in the configuration profile."
+    },
+    {
+      "id": "moonshotai/kimi-k3.1-pro",
+      "state": "model",
+      "released": "2026-10-24",
+      "checked": "2026-10-24",
+      "sources": [
+        {
+          "url": "https://kimi.ai/blog/kimi-k3-1-pro",
+          "checked": "2026-10-24"
+        },
+        {
+          "url": "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart",
+          "checked": "2026-10-24"
+        },
+        {
+          "url": "https://platform.kimi.ai/docs/api/models-overview",
+          "checked": "2026-10-24"
+        },
+        {
+          "url": "https://platform.kimi.ai/docs/pricing/chat",
+          "checked": "2026-10-24"
+        }
+      ],
+      "reason": "Official Kimi K3.1 Pro release announcement, API guide, parameter reference and pricing verified on 2026-10-24. Records a 1,048,576-token context and hard output maximum, text/image/video input, low/high/max reasoning with thinking always enabled, a documented Chat Completions connection, and $2/$10 standard USD rates. Access requires a minimum $1 top-up; account tier sets rate limits. Full open weights are planned by 2026-11-04. No compaction profile is recorded: no official long-context reliability window or billing-tier boundary is documented, so the entry inherits Chord's global 0.8 threshold on the full 1,048,576-token baseline."
+    },
+    {
+      "id": "moonshotai/kimi-k3.1-pro-highspeed",
+      "state": "model",
+      "released": "2026-10-24",
+      "checked": "2026-10-24",
+      "sources": [
+        {
+          "url": "https://kimi.ai/blog/kimi-k3-1-pro",
+          "checked": "2026-10-24"
+        },
+        {
+          "url": "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart",
+          "checked": "2026-10-24"
+        },
+        {
+          "url": "https://platform.kimi.ai/docs/api/models-overview",
+          "checked": "2026-10-24"
+        },
+        {
+          "url": "https://platform.kimi.ai/docs/pricing/chat",
+          "checked": "2026-10-24"
+        }
+      ],
+      "reason": "Official guide and pricing list kimi-k3.1-pro-highspeed as the 2-3x faster serving variant with the same parameter constraints as K3.1 Pro. Records the separate wire ID and $4/$20 standard USD rates; context and hard output follow the shared K3.1 Pro documentation. The same compaction decision applies: no documented reliability window or billing boundary, so the entry inherits the global 0.8 threshold."
     },
     {
       "id": "motif-technologies/motif-3",

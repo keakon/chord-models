@@ -733,6 +733,108 @@ models:
       - url: https://models.dev/moonshotai/kimi-k3
         checked: "2026-10-04"
 
+  - id: moonshotai/kimi-k3.1-pro
+    config_profile:
+      compat:
+        chat_completions:
+          native_thinking: thinking
+        reasoning_continuity:
+          mode: openai_visible
+          reasoning_replay: all
+      sources:
+        - url: https://platform.kimi.ai/docs/api/models-overview
+          checked: "2026-10-24"
+        - url: https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart
+          checked: "2026-10-24"
+    released: "2026-10-24"
+    connection:
+      request_url: https://api.moonshot.ai/v1/chat/completions
+      wire_model_id: kimi-k3.1-pro
+      env_var: MOONSHOT_API_KEY
+      sources:
+      - url: https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart
+        checked: "2026-10-24"
+    context: 1048576
+    output: 1048576
+    input_modalities: [text, image, video]
+    coding_sources:
+    - url: https://kimi.ai/blog/kimi-k3-1-pro
+      checked: "2026-10-24"
+    - url: https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart
+      checked: "2026-10-24"
+    reasoning_options: [low, high, max]
+    cost:
+      input_per_million: 2
+      output_per_million: 10
+      currency: USD
+      checked: "2026-10-24"
+      source:
+        url: https://platform.kimi.ai/docs/pricing/chat
+        checked: "2026-10-24"
+      notes: >-
+        Standard USD API rates for uncached input and output. Cached input is
+        $0.20/MTok; cache writes are $2.00/MTok (5m) and $4.00/MTok (1h).
+        Access requires a minimum $1 top-up; promotions and account-tier rate
+        limits are separate.
+    sources:
+      - url: https://kimi.ai/blog/kimi-k3-1-pro
+        checked: "2026-10-24"
+      - url: https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart
+        checked: "2026-10-24"
+      - url: https://platform.kimi.ai/docs/pricing/chat
+        checked: "2026-10-24"
+
+  - id: moonshotai/kimi-k3.1-pro-highspeed
+    config_profile:
+      compat:
+        chat_completions:
+          native_thinking: thinking
+        reasoning_continuity:
+          mode: openai_visible
+          reasoning_replay: all
+      sources:
+        - url: https://platform.kimi.ai/docs/api/models-overview
+          checked: "2026-10-24"
+        - url: https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart
+          checked: "2026-10-24"
+    released: "2026-10-24"
+    connection:
+      request_url: https://api.moonshot.ai/v1/chat/completions
+      wire_model_id: kimi-k3.1-pro-highspeed
+      env_var: MOONSHOT_API_KEY
+      sources:
+      - url: https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart
+        checked: "2026-10-24"
+    context: 1048576
+    output: 1048576
+    input_modalities: [text, image, video]
+    coding_sources:
+    - url: https://kimi.ai/blog/kimi-k3-1-pro
+      checked: "2026-10-24"
+    - url: https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart
+      checked: "2026-10-24"
+    reasoning_options: [low, high, max]
+    cost:
+      input_per_million: 4
+      output_per_million: 20
+      currency: USD
+      checked: "2026-10-24"
+      source:
+        url: https://platform.kimi.ai/docs/pricing/chat
+        checked: "2026-10-24"
+      notes: >-
+        Standard USD API rates for uncached input and output on the 2-3x faster
+        serving variant. Cached input is $0.20/MTok; cache writes are
+        $4.00/MTok (5m) and $8.00/MTok (1h). Access requires a minimum $1
+        top-up; promotions and account-tier rate limits are separate.
+    sources:
+      - url: https://kimi.ai/blog/kimi-k3-1-pro
+        checked: "2026-10-24"
+      - url: https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart
+        checked: "2026-10-24"
+      - url: https://platform.kimi.ai/docs/pricing/chat
+        checked: "2026-10-24"
+
   - id: alibaba/qwen3.8-max
     context: 1000000
     # Ordinary mode allows 991808; use the smaller documented thinking cap

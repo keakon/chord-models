@@ -82,7 +82,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-As of 2026-10-17, the catalog contains **33 model fact records** and **97 discovery
+As of 2026-10-24, the catalog contains **35 model fact records** and **97 discovery
 candidates**, with a release inventory across **33 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
@@ -122,6 +122,16 @@ registry's `deepseek-v4.1-flash` alias and the retired V4-Flash line
 (`deepseek-v4-flash`, `deepseek-v4-flash-vision-exp` and the dated 0423/0731
 snapshots) receive explicit exclusion decisions: the legacy names still route
 to V4.1-Flash-1017 at the Flash price.
+
+The 2026-10-24 update adds `moonshotai/kimi-k3.1-pro` and
+`moonshotai/kimi-k3.1-pro-highspeed` as verified models. The official release,
+API guide and pricing pages document a 1M-token context, a 1,048,576-token hard
+output maximum, text/image/video input, low/high/max reasoning with thinking
+always enabled, and Chat Completions at
+`https://api.moonshot.ai/v1/chat/completions`. Standard rates are $2/$10 per
+million input/output tokens for K3.1 Pro and $4/$20 for the 2-3x faster
+Highspeed variant. Access requires a minimum $1 top-up; full open weights are
+planned by November 4, 2026. No managed binding or live request was verified.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.

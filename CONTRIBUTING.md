@@ -129,13 +129,18 @@ rewritten. Keep the pinned commit published and reachable; a local checkout
 passing validation does not prove the default remote path works. In a
 restricted network, configure `GOPROXY`/`GOSUMDB` or pass a local checkout.
 
-Every data or coverage change must increase `YYYY-MM-DD.N` in `catalog.yaml`.
-The version check compares committed revisions. Candidate data means
-`candidates/*.yaml`; documentation such as `candidates/README.md` and tooling-only
-changes do not require a data version bump.
+Every committed data or coverage change must use a strictly newer
+`YYYY-MM-DD.N` in `catalog.yaml`. Bump once per change set, not once per
+working-tree edit: uncommitted version numbers carry no identity, so if a draft
+already bumped the version and the change set is unchanged, keep that version
+instead of consuming another `.N`. Choose the next sequence number relative to
+the last committed or published version. The version check compares committed
+revisions. Candidate data means `candidates/*.yaml`; documentation such as
+`candidates/README.md` and tooling-only changes do not require a data version
+bump.
 A release tag is exactly `v<version>` and must point at that data version.
-Never move/delete a published tag or reuse a version. Protect tags on the
-hosting service. Fix bad data by releasing a **higher** version (revert the
+Never move/delete a published tag or reuse a published version. Protect tags on
+the hosting service. Fix bad data by releasing a **higher** version (revert the
 facts in that new release); version-based refresh cannot roll back to an
 older tag. Failed refresh leaves the last valid catalog in use.
 
