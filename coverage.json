@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-24",
+  "as_of": "2026-10-27",
   "window_months": 6,
   "notification_watchlist": ["alibaba", "anthropic", "deepseek", "google", "meta", "minimax", "moonshotai", "openai", "xiaomi", "xai", "zhipuai"],
   "discovery_source": {
     "repository": "https://github.com/anomalyco/models.dev",
     "commit": "70972b6cd2557a958c768f981b477b7bf75f2aa5"
   },
-  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The 2026-10-13 update screens watch-listed registry discoveries and reviews the Muse Wonder series against official sources; hard output limits remain unresolved. The 2026-10-14 update verifies Gemini 4 Argon release, coding, unified context, single-request output limits, modalities, thinking levels, pricing and API connection. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial. The 2026-10-17 update screens watch-listed registry discoveries and records Muse Spark Open as a candidate; official sources cited by the registry were unreachable for independent verification. A further 2026-10-17 review verifies the DeepSeek-V4.1-Flash-1017 release served under the existing deepseek-flash wire ID and excludes the deepseek-v4.1-flash registry alias plus the retired V4-Flash line and its dated snapshots as aliases of retired routes. The 2026-10-24 update verifies Kimi K3.1 Pro and Kimi K3.1 Pro Highspeed from the official release, API guide and pricing pages: release date, coding evidence, 1,048,576-token context and hard output maximum, text/image/video input, low/high/max reasoning, Chat Completions connection and standard USD pricing.",
+  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The 2026-10-13 update screens watch-listed registry discoveries and reviews the Muse Wonder series against official sources; hard output limits remain unresolved. The 2026-10-14 update verifies Gemini 4 Argon release, coding, unified context, single-request output limits, modalities, thinking levels, pricing and API connection. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial. The 2026-10-17 update screens watch-listed registry discoveries and records Muse Spark Open as a candidate; official sources cited by the registry were unreachable for independent verification. A further 2026-10-17 review verifies the DeepSeek-V4.1-Flash-1017 release served under the existing deepseek-flash wire ID and excludes the deepseek-v4.1-flash registry alias plus the retired V4-Flash line and its dated snapshots as aliases of retired routes. The 2026-10-24 update verifies Kimi K3.1 Pro and Kimi K3.1 Pro Highspeed from the official release, API guide and pricing pages: release date, coding evidence, 1,048,576-token context and hard output maximum, text/image/video input, low/high/max reasoning, Chat Completions connection and standard USD pricing. The 2026-10-27 update verifies OpenAI GPT-6.1 Terra from the official announcement, news index, model documentation and Codex model documentation: wire ID gpt-6.1-terra, release date 2026-10-26, Terminal-Bench coding evidence, 1,050,000-token context and 128,000-token hard output maximum, text/image input, none/low/medium/high/xhigh/max reasoning, standard $1/$5 USD pricing with the 272K input pricing-tier boundary, and codex/openai route bindings; the live codex smoke check was attempted but returned HTTP 401 on expired OAuth credentials (the existing gpt-6.1-sol failed identically), so no completion was verified.",
   "watchlist": {
     "alibaba": {
       "registry_checked": "2026-10-04",
@@ -124,10 +124,10 @@
       "notes": "Continue checking official release inventory; this record is not a claim of exhaustive vendor coverage."
     },
     "openai": {
-      "registry_checked": "2026-10-04",
+      "registry_checked": "2026-10-27",
       "official_index": "https://developers.openai.com/api/docs/models",
       "review": "partial",
-      "notes": "Continue checking official release inventory; this record is not a claim of exhaustive vendor coverage."
+      "notes": "Reviewed gpt-6.1-terra against the official announcement, news index, model documentation and Codex model documentation on 2026-10-27 and screened the OpenAI registry inventory. Other OpenAI entries retain their earlier evidence dates; vendor coverage remains partial."
     },
     "openbmb": {
       "registry_checked": "2026-10-04",
@@ -1877,6 +1877,35 @@
       ],
       "state": "model",
       "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded."
+    },
+    {
+      "id": "openai/gpt-6.1-terra",
+      "state": "model",
+      "released": "2026-10-26",
+      "checked": "2026-10-27",
+      "sources": [
+        {
+          "url": "https://openai.com/index/introducing-gpt-6-1-terra",
+          "checked": "2026-10-27"
+        },
+        {
+          "url": "https://openai.com/news/",
+          "checked": "2026-10-27"
+        },
+        {
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+          "checked": "2026-10-27"
+        },
+        {
+          "url": "https://developers.openai.com/api/docs/models",
+          "checked": "2026-10-27"
+        },
+        {
+          "url": "https://learn.chatgpt.com/docs/models",
+          "checked": "2026-10-27"
+        }
+      ],
+      "reason": "Official announcement (dated 2026-10-26 on the OpenAI news index), model documentation and Codex model documentation verified on 2026-10-27: wire ID gpt-6.1-terra, 1,050,000-token context, 128,000-token hard output maximum, text/image input with text-only output, none/low/medium/high/xhigh/max reasoning with medium default, a single stable snapshot with no preview or deprecation flag, and standard USD pricing of $1/$5 per million input/output tokens with the documented 272K input pricing-tier boundary (2x input and cache, 1.5x output for the whole request). Coding evidence is the official Terminal-Bench 4.0 result (50.3% at max reasoning effort, more than double GPT-5.6 Terra's published 21.5%) and Terminal-Bench-Science 0.1 ahead of GPT-6.1 Sol at lower cost; OpenAI notes GPT-6.1 Sol and GPT-6 Astra remain preferable for the hardest coding tasks. The compaction profile mirrors gpt-6.1-sol: 0.25/0.20 triggers at 0.25 x 922,000 = 230,500 tokens, below the 272K tier; no separate long-context quality limit is documented, and the reasoning-summary profile follows the family-level reasoning-guide evidence also cited for gpt-6.1-sol. The codex binding follows the official Codex model documentation (gpt-6.1-terra listed as a recommended model, Codex CLI 0.159.0 or later); the required live smoke check was attempted on 2026-10-27 but returned HTTP 401 on rejected OAuth credentials, with the existing gpt-6.1-sol failing identically, so no completion was verified. The openai binding follows the model documentation; no live check was run because no API credential is available."
     },
     {
       "id": "openai/gpt-realtime-2.1",

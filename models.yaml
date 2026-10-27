@@ -638,6 +638,53 @@ models:
       - url: https://developers.openai.com/api/docs/pricing
         checked: "2026-10-04"
 
+  - id: openai/gpt-6.1-terra
+    config_profile:
+      model:
+        reasoning:
+          summary: auto
+      compaction:
+        threshold: 0.25
+        reminder: 0.20
+        notes: Chord starting heuristic to stay below the 272K input pricing tier; not a provider limit or a measured optimum. Tune for task quality, latency and cache reuse.
+      sources:
+        - url: https://developers.openai.com/api/docs/models/gpt-6.1-terra
+          checked: "2026-10-27"
+        - url: https://developers.openai.com/api/docs/guides/reasoning
+          checked: "2026-10-27"
+    released: "2026-10-26"
+    context: 1050000
+    output: 128000
+    input_modalities: [text, image]
+    coding_sources:
+    - url: https://openai.com/index/introducing-gpt-6-1-terra
+      checked: "2026-10-27"
+    reasoning_options: [none, low, medium, high, xhigh, max]
+    cost:
+      input_per_million: 1
+      output_per_million: 5
+      currency: USD
+      checked: "2026-10-27"
+      source:
+        url: https://developers.openai.com/api/docs/models/gpt-6.1-terra
+        checked: "2026-10-27"
+      notes: >-
+        Standard USD API rates for uncached text input and text output up to
+        272K input tokens. Above 272K, the entire request uses 2x input and
+        cache rates and 1.5x output rates. Cached input is $0.05/MTok; cache
+        writes are $1.25/MTok (30-minute) and $2.50/MTok (12-hour). Batch and
+        Flex rates are 50% lower; regional processing, Fast mode and Codex
+        subscription rates are separate.
+    sources:
+      - url: https://openai.com/index/introducing-gpt-6-1-terra
+        checked: "2026-10-27"
+      - url: https://openai.com/news/
+        checked: "2026-10-27"
+      - url: https://developers.openai.com/api/docs/models/gpt-6.1-terra
+        checked: "2026-10-27"
+      - url: https://developers.openai.com/api/docs/models
+        checked: "2026-10-27"
+
   # Documented connections support one-command onboarding. These are API
   # recipes, not smoke-tested managed bindings; no route send rules are borrowed.
   - id: zhipuai/glm-5.3

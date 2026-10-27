@@ -82,7 +82,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-As of 2026-10-24, the catalog contains **35 model fact records** and **97 discovery
+As of 2026-10-27, the catalog contains **36 model fact records** and **97 discovery
 candidates**, with a release inventory across **33 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
@@ -132,6 +132,22 @@ always enabled, and Chat Completions at
 million input/output tokens for K3.1 Pro and $4/$20 for the 2-3x faster
 Highspeed variant. Access requires a minimum $1 top-up; full open weights are
 planned by November 4, 2026. No managed binding or live request was verified.
+
+The 2026-10-27 update adds `openai/gpt-6.1-terra` as a verified model with
+codex and openai bindings. The official announcement (dated October 26, 2026
+on the OpenAI news index), model documentation and Codex model documentation
+record a 1,050,000-token context, a 128,000-token hard output maximum,
+text/image input, none/low/medium/high/xhigh/max reasoning with `medium` as
+the default, and standard rates of $1/$5 per million input/output tokens
+(cached input $0.05; prompts over 272K input tokens reprice the whole request
+at 2x input and cache, 1.5x output). Coding evidence is the official
+Terminal-Bench 4.0 score of 50.3% at max effort, more than double GPT-5.6
+Terra's 21.5%; OpenAI notes GPT-6.1 Sol and GPT-6 Astra remain preferable for
+the hardest coding tasks. The compaction profile mirrors gpt-6.1-sol
+(0.25/0.20, below the 272K tier). The live codex smoke check reached the API
+but returned HTTP 401 on expired OAuth credentials — the existing
+gpt-6.1-sol failed identically — so no completion was verified; no live check
+was run on the openai route (no API credential).
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.
