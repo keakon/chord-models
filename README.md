@@ -82,7 +82,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-As of 2026-10-27, the catalog contains **36 model fact records** and **97 discovery
+As of 2026-11-05, the catalog contains **36 model fact records** and **97 discovery
 candidates**, with a release inventory across **33 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
@@ -148,6 +148,27 @@ the hardest coding tasks. The compaction profile mirrors gpt-6.1-sol
 but returned HTTP 401 on expired OAuth credentials — the existing
 gpt-6.1-sol failed identically — so no completion was verified; no live check
 was run on the openai route (no API credential).
+
+The 2026-11-05 update is a pricing and modality completeness backfill driven
+by a revised maintenance SOP. Cache hit/write rates were verified against
+official pages and recorded for DeepSeek (deepseek-flash $0.006 hits,
+deepseek-v4-pro $0.044 hits; no write fee), Kimi K3 ($0.30 hits, $3/$6 writes
+by TTL), xAI Grok 4.6/4.7 ($0.50/$1.00 hits, batch 20% off), GLM-5.3 and its
+Flash/FlashX variants, Qwen3.8 Max/Flash, Muse Spark 1.2/1.3 ($0.15 hits),
+Gemini 3.8 Flash and 3.1 Pro Preview, Inception Mercury 2.5 ($0.02 hits), and
+StepFun step-5-preview (new cost block; cache writes bundled). The OpenAI
+GPT-5.6/6/6.1 families gained complete pricing details — the three 5.6
+entries had no cost block at all and now record their cached-input, cache
+write and Batch/Flex rates. Promotional windows are not recorded: GPT-5.6
+Sol is recorded at its standard $5/$30 rates even though the official pages
+currently display a time-limited lower rate — and Cohere north-mini-code-1-0 was
+confirmed officially "free until rate limits are reached" with no published
+per-token price, so its cost block stays omitted under the unknown-pricing
+rule. PDF input was added to every Claude and GPT entry from
+the official PDF-support and PDF-files guides (per-model pages list only
+"text, image" while the guides document PDF for vision-capable models);
+Mercury 2.5's expired promotional rate was corrected to the standard
+$0.20/$0.75. No new models were added; the catalog version is 2026-11-05.1.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.
