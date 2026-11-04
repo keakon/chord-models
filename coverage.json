@@ -1569,7 +1569,7 @@
       "id": "moonshotai/kimi-k3.1-pro",
       "state": "model",
       "released": "2026-10-24",
-      "checked": "2026-10-24",
+      "checked": "2026-11-05",
       "sources": [
         {
           "url": "https://kimi.ai/blog/kimi-k3-1-pro",
@@ -1585,16 +1585,24 @@
         },
         {
           "url": "https://platform.kimi.ai/docs/pricing/chat",
-          "checked": "2026-10-24"
+          "checked": "2026-11-05"
+        },
+        {
+          "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+          "checked": "2026-11-05"
+        },
+        {
+          "url": "https://www.kimi.ai/resources/kimi-k3-1-pro-pricing",
+          "checked": "2026-11-05"
         }
       ],
-      "reason": "Official Kimi K3.1 Pro release announcement, API guide, parameter reference and pricing verified on 2026-10-24. Records a 1,048,576-token context and hard output maximum, text/image/video input, low/high/max reasoning with thinking always enabled, a documented Chat Completions connection, and $2/$10 standard USD rates. Access requires a minimum $1 top-up; account tier sets rate limits. Full open weights are planned by 2026-11-04. No compaction profile is recorded: no official long-context reliability window or billing-tier boundary is documented, so the entry inherits Chord's global 0.8 threshold on the full 1,048,576-token baseline."
+      "reason": "Official Kimi K3.1 Pro release announcement, API guide, parameter reference and pricing verified on 2026-10-24; rechecked on 2026-11-05. The promised full open weights shipped on 2026-11-04 in the public, ungated Hugging Face repository moonshotai/Kimi-K3.1-Pro; the official model card reconfirms the 1,048,576-token context, MXFP4-weight/MXFP8-activation quantization-aware training, and the kimi-k3.1-pro wire ID. Records a hard output maximum, text/image/video input, low/high/max reasoning with thinking always enabled and default effort max, a documented Chat Completions connection, and $2/$10 standard USD rates reconfirmed unchanged (the pricing page's per-MTok table is JS-rendered; figures were cross-checked against the official kimi.ai pricing explainer updated 2026-10-26). Batch inference is documented for kimi-k3.1-pro and kimi-k3 at 60% of standard price. The guide documents fixed sampling (temperature 1.0, top_p 0.95, n 1, zero penalties must be omitted) and base64/ms:// vision input; the catalog has no schema field for vendor-fixed sampling, so these serving notes live here. Access requires a minimum $1 top-up; account tier sets rate limits. No compaction profile is recorded: no official long-context reliability window or billing-tier boundary is documented, so the entry inherits Chord's global 0.8 threshold on the full 1,048,576-token baseline."
     },
     {
       "id": "moonshotai/kimi-k3.1-pro-highspeed",
       "state": "model",
       "released": "2026-10-24",
-      "checked": "2026-10-24",
+      "checked": "2026-11-05",
       "sources": [
         {
           "url": "https://kimi.ai/blog/kimi-k3-1-pro",
@@ -1610,10 +1618,14 @@
         },
         {
           "url": "https://platform.kimi.ai/docs/pricing/chat",
-          "checked": "2026-10-24"
+          "checked": "2026-11-05"
+        },
+        {
+          "url": "https://www.kimi.ai/resources/kimi-k3-1-pro-pricing",
+          "checked": "2026-11-05"
         }
       ],
-      "reason": "Official guide and pricing list kimi-k3.1-pro-highspeed as the 2-3x faster serving variant with the same parameter constraints as K3.1 Pro. Records the separate wire ID and $4/$20 standard USD rates; context and hard output follow the shared K3.1 Pro documentation. The same compaction decision applies: no documented reliability window or billing boundary, so the entry inherits the global 0.8 threshold."
+      "reason": "Official guide and pricing list kimi-k3.1-pro-highspeed as the 2-3x faster serving variant with the same parameter constraints as K3.1 Pro; rechecked on 2026-11-05. Records the separate wire ID and $4/$20 standard USD rates, reconfirmed unchanged together with the $0.20 cached-input and $4/$8 cache-write rates; the 2026-11-04 open-weights release covers K3.1 Pro only, and no Highspeed repository exists on Hugging Face as of 2026-11-05. Batch inference is documented only for kimi-k3.1-pro and kimi-k3, so this variant is excluded from the 60% batch price. The same compaction decision applies: no documented reliability window or billing boundary, so the entry inherits the global 0.8 threshold."
     },
     {
       "id": "motif-technologies/motif-3",
