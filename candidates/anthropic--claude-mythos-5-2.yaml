@@ -1,0 +1,17 @@
+wire_model_id: claude-mythos-5-2
+scope: anthropic
+context: 1000000
+output: 128000
+input_modalities: [text, image, pdf]
+released: "2026-11-09"
+coding_sources:
+- url: https://www.anthropic.com/claude-fable-and-mythos-5-2
+  checked: '2026-11-10'
+sources:
+- url: https://platform.claude.com/docs/en/models/fable-5-2/overview
+  checked: '2026-11-10'
+notes: 'Limited availability: only organizations verified through Anthropic''s
+  verification programs (e.g. the Cyber Verification Program) can access Mythos
+  5.2, and the official pages state it shares Fable 5.2''s specifications and
+  pricing. No serving route is verified for general Chord use; Mythos-specific
+  lifecycle/retirement dates and an accessible route remain unconfirmed.'

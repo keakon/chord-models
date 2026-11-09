@@ -82,7 +82,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-As of 2026-11-05, the catalog contains **36 model fact records** and **97 discovery
+As of 2026-11-10, the catalog contains **37 model fact records** and **98 discovery
 candidates**, with a release inventory across **33 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
@@ -169,6 +169,24 @@ the official PDF-support and PDF-files guides (per-model pages list only
 "text, image" while the guides document PDF for vision-capable models);
 Mercury 2.5's expired promotional rate was corrected to the standard
 $0.20/$0.75. No new models were added; the catalog version is 2026-11-05.1.
+
+The 2026-11-10 update adds `anthropic/claude-fable-5-2` as a verified model
+with a binding on the existing anthropic endpoint. The official launch post,
+model overview, release notes, pricing, effort and PDF-support pages record
+the `claude-fable-5-2` wire ID, the November 9, 2026 release, official coding
+benchmarks (FrontierCode 2.0 49.1% at xhigh effort versus Fable 5.1's 32.4%;
+FrontierSWE v2 69.9%), a 1M-token context, a 128,000-token hard output
+maximum, text/image/PDF input, adaptive always-on thinking with all five
+effort levels (`high` default), and $8/$40 per million input/output tokens
+(cache reads $0.20; 5m/1h cache writes $10/$16; fast mode `speed: "fast"` at
+$16/$80; US-only inference 1.1x; Batch API 50% off). The compaction profile
+mirrors Fable 5.1's 0.70/0.60 family hint because no 5.2-specific reliability
+window or pricing-tier boundary is documented — the full 1M window bills at
+standard pricing — and omitting it would hand the successor the global 0.8
+default. Claude Mythos 5.2, jointly announced with verification-gated access,
+is added as a candidate: its official pages document Fable-identical
+specifications and pricing, but no serving route is verifiable for general
+use. No live endpoint check was run; the catalog version is 2026-11-10.1.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.

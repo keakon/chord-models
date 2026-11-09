@@ -214,6 +214,62 @@ models:
       - url: https://docs.anthropic.com/en/docs/build-with-claude/effort
         checked: "2026-10-04"
 
+  - id: anthropic/claude-fable-5-2
+    config_profile:
+      model:
+        thinking:
+          type: adaptive
+          effort: high
+        prompt_cache:
+          mode: explicit
+          ttl: 5m
+          cache_tools: true
+      compaction:
+        threshold: 0.70
+        reminder: 0.60
+        notes: >-
+          Starting hint inherited from Fable 5.1's family profile: same 1M window
+          and long-horizon agentic positioning, and official guidance for the
+          Fable family prefers server-side compaction over client context editing
+          because rewriting an earlier tool result invalidates every thinking
+          block. No Fable-5.2-specific reliability window or pricing-tier
+          boundary is documented (the full 1M window bills at standard pricing),
+          so this is a family-continuity hint, not a measured optimum.
+      sources:
+        - url: https://platform.claude.com/docs/en/models/fable-5-2/overview
+          checked: "2026-11-10"
+        - url: https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence
+          checked: "2026-11-10"
+    context: 1000000
+    output: 128000
+    input_modalities: [text, image, pdf]
+    coding_sources:
+    - url: https://www.anthropic.com/claude/fable
+      checked: "2026-11-10"
+    reasoning_options: [low, medium, high, xhigh, max]
+    cost:
+      input_per_million: 8
+      output_per_million: 40
+      currency: USD
+      checked: "2026-11-10"
+      source:
+        url: https://platform.claude.com/docs/en/about-claude/pricing
+        checked: "2026-11-10"
+      notes: >-
+        Standard USD API rates. Cache reads are $0.20/MTok (0.025x base input);
+        cache writes are $10/MTok (5m) and $16/MTok (1h). Fast mode
+        (`speed: "fast"`) is $16/$80 per MTok; US-only inference is 1.1x on
+        input and output; Batch API is 50% off input and output.
+    sources:
+      - url: https://platform.claude.com/docs/en/models/fable-5-2/overview
+        checked: "2026-11-10"
+      - url: https://platform.claude.com/docs/en/about-claude/pricing
+        checked: "2026-11-10"
+      - url: https://platform.claude.com/docs/en/build-with-claude/pdf-support
+        checked: "2026-11-10"
+      - url: https://platform.claude.com/docs/en/build-with-claude/effort
+        checked: "2026-11-10"
+
   - id: anthropic/claude-opus-5
     config_profile:
       compaction:

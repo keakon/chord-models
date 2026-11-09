@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "as_of": "2026-11-05",
+  "as_of": "2026-11-10",
   "window_months": 6,
   "notification_watchlist": ["alibaba", "anthropic", "deepseek", "google", "meta", "minimax", "moonshotai", "openai", "xiaomi", "xai", "zhipuai"],
   "discovery_source": {
     "repository": "https://github.com/anomalyco/models.dev",
     "commit": "70972b6cd2557a958c768f981b477b7bf75f2aa5"
   },
-  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The 2026-10-13 update screens watch-listed registry discoveries and reviews the Muse Wonder series against official sources; hard output limits remain unresolved. The 2026-10-14 update verifies Gemini 4 Argon release, coding, unified context, single-request output limits, modalities, thinking levels, pricing and API connection. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial. The 2026-10-17 update screens watch-listed registry discoveries and records Muse Spark Open as a candidate; official sources cited by the registry were unreachable for independent verification. A further 2026-10-17 review verifies the DeepSeek-V4.1-Flash-1017 release served under the existing deepseek-flash wire ID and excludes the deepseek-v4.1-flash registry alias plus the retired V4-Flash line and its dated snapshots as aliases of retired routes. The 2026-10-24 update verifies Kimi K3.1 Pro and Kimi K3.1 Pro Highspeed from the official release, API guide and pricing pages: release date, coding evidence, 1,048,576-token context and hard output maximum, text/image/video input, low/high/max reasoning, Chat Completions connection and standard USD pricing. The 2026-10-27 update verifies OpenAI GPT-6.1 Terra from the official announcement, news index, model documentation and Codex model documentation: wire ID gpt-6.1-terra, release date 2026-10-26, Terminal-Bench coding evidence, 1,050,000-token context and 128,000-token hard output maximum, text/image input, none/low/medium/high/xhigh/max reasoning, standard $1/$5 USD pricing with the 272K input pricing-tier boundary, and codex/openai route bindings; the live codex smoke check was attempted but returned HTTP 401 on expired OAuth credentials (the existing gpt-6.1-sol failed identically), so no completion was verified. The 2026-11-05 update is a pricing and modality completeness backfill driven by the revised SOP: cache hit/write rates were verified from official pages and recorded for DeepSeek (deepseek-flash, deepseek-v4-pro), Kimi K3, xAI Grok 4.6/4.7, GLM-5.3/Flash/FlashX, Qwen3.8 Max/Flash, Muse Spark 1.2/1.3, Gemini 3.8 Flash and 3.1 Pro Preview, Inception Mercury 2.5, and StepFun step-5-preview (a new cost block; cache writes bundled); Cohere north-mini-code-1-0 was confirmed officially free until rate limits with no published per-token price, so its cost block stays omitted under the unknown-pricing rule; and the OpenAI GPT-5.6/6/6.1 families (the 5.6 entries gained full cost blocks; per the recording policy, promotional windows are not recorded and GPT-5.6 Sol is recorded at its standard $5/$30 rates while the official pages display a time-limited lower rate); PDF input was added to all Claude and GPT entries from the official PDF-support and PDF-files guides; Mercury 2.5's expired promotional rate was corrected to the standard $0.20/$0.75.",
+  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The 2026-10-13 update screens watch-listed registry discoveries and reviews the Muse Wonder series against official sources; hard output limits remain unresolved. The 2026-10-14 update verifies Gemini 4 Argon release, coding, unified context, single-request output limits, modalities, thinking levels, pricing and API connection. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial. The 2026-10-17 update screens watch-listed registry discoveries and records Muse Spark Open as a candidate; official sources cited by the registry were unreachable for independent verification. A further 2026-10-17 review verifies the DeepSeek-V4.1-Flash-1017 release served under the existing deepseek-flash wire ID and excludes the deepseek-v4.1-flash registry alias plus the retired V4-Flash line and its dated snapshots as aliases of retired routes. The 2026-10-24 update verifies Kimi K3.1 Pro and Kimi K3.1 Pro Highspeed from the official release, API guide and pricing pages: release date, coding evidence, 1,048,576-token context and hard output maximum, text/image/video input, low/high/max reasoning, Chat Completions connection and standard USD pricing. The 2026-10-27 update verifies OpenAI GPT-6.1 Terra from the official announcement, news index, model documentation and Codex model documentation: wire ID gpt-6.1-terra, release date 2026-10-26, Terminal-Bench coding evidence, 1,050,000-token context and 128,000-token hard output maximum, text/image input, none/low/medium/high/xhigh/max reasoning, standard $1/$5 USD pricing with the 272K input pricing-tier boundary, and codex/openai route bindings; the live codex smoke check was attempted but returned HTTP 401 on expired OAuth credentials (the existing gpt-6.1-sol failed identically), so no completion was verified. The 2026-11-05 update is a pricing and modality completeness backfill driven by the revised SOP: cache hit/write rates were verified from official pages and recorded for DeepSeek (deepseek-flash, deepseek-v4-pro), Kimi K3, xAI Grok 4.6/4.7, GLM-5.3/Flash/FlashX, Qwen3.8 Max/Flash, Muse Spark 1.2/1.3, Gemini 3.8 Flash and 3.1 Pro Preview, Inception Mercury 2.5, and StepFun step-5-preview (a new cost block; cache writes bundled); Cohere north-mini-code-1-0 was confirmed officially free until rate limits with no published per-token price, so its cost block stays omitted under the unknown-pricing rule; and the OpenAI GPT-5.6/6/6.1 families (the 5.6 entries gained full cost blocks; per the recording policy, promotional windows are not recorded and GPT-5.6 Sol is recorded at its standard $5/$30 rates while the official pages display a time-limited lower rate); PDF input was added to all Claude and GPT entries from the official PDF-support and PDF-files guides; Mercury 2.5's expired promotional rate was corrected to the standard $0.20/$0.75. The 2026-11-10 update verifies the Claude Fable 5.2 release from the official launch post, model overview, release notes, pricing, effort and PDF-support pages: wire ID claude-fable-5-2, release 2026-11-09, coding benchmarks, 1M context, 128K hard output, text/image/PDF input, adaptive always-on thinking with all five effort levels, $8/$40 USD pricing with cache rates, and a binding on the existing anthropic endpoint; Claude Mythos 5.2 is added as a candidate because its verification-gated availability leaves no general route to verify. No live endpoint check was run.",
   "watchlist": {
     "alibaba": {
       "registry_checked": "2026-10-04",
@@ -482,6 +482,49 @@
       ],
       "state": "model",
       "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded."
+    },
+    {
+      "id": "anthropic/claude-fable-5-2",
+      "reported_release": "2026-11-09",
+      "checked": "2026-11-10",
+      "sources": [
+        {
+          "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+          "checked": "2026-11-10"
+        },
+        {
+          "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "checked": "2026-11-10"
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "checked": "2026-11-10"
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort",
+          "checked": "2026-11-10"
+        }
+      ],
+      "state": "model",
+      "reason": "Official launch post, model overview, release notes, pricing, effort and PDF-support pages verify the wire ID claude-fable-5-2, the 2026-11-09 release, official coding benchmarks (FrontierCode 2.0 49.1% at xhigh effort vs Fable 5.1's 32.4%; FrontierSWE v2 69.9%), 1M context, 128K hard output, text/image/PDF input, adaptive always-on thinking with all five effort levels (API default high), active lifecycle with retirement not sooner than 2027-11-09, and $8/$40 USD pricing with $10/$16 cache writes and $0.20 cache reads; fast mode is $16/$80 via speed: \"fast\". Compaction profile mirrors Fable 5.1's 0.70/0.60 family hint: no Fable-5.2-specific reliability window or pricing-tier boundary is documented (the full 1M window bills at standard pricing), so the profile is a family-continuity starting recommendation, not a measured optimum — omitting it would hand the successor the global 0.8 default while its predecessor and the operator's claude-base template use 0.70/0.60. Binding follows the existing anthropic endpoint pattern with no route variants recorded; no live endpoint check was run."
+    },
+    {
+      "id": "anthropic/claude-mythos-5-2",
+      "reported_release": "2026-11-09",
+      "checked": "2026-11-10",
+      "sources": [
+        {
+          "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+          "checked": "2026-11-10"
+        },
+        {
+          "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "checked": "2026-11-10"
+        }
+      ],
+      "state": "candidate",
+      "candidate": "candidates/anthropic--claude-mythos-5-2.yaml",
+      "reason": "Jointly announced with Fable 5.2 and documented on the official overview as sharing Fable 5.2's specifications and pricing, but access is limited to organizations verified through Anthropic's verification programs, so no serving route is verifiable for general Chord use. Pending a Mythos-specific lifecycle check and a reachable route."
     },
     {
       "id": "anthropic/claude-mythos-5",
