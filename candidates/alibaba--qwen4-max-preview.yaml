@@ -1,0 +1,27 @@
+wire_model_id: qwen4-max-preview
+scope: alibaba
+released: "2026-11-11"
+context: 1000000
+output: 393216
+input_modalities: [text, image, video]
+coding_sources:
+- url: https://www.alibabacloud.com/help/zh/model-studio/qwen4-max-preview
+  checked: '2026-11-12'
+sources:
+- url: https://www.alibabacloud.com/help/zh/model-studio/qwen4-max-preview
+  checked: '2026-11-12'
+- url: https://help.aliyun.com/zh/model-studio/newly-released-models
+  checked: '2026-11-12'
+notes: 'Official Model Studio page documents the preview flagship: 1M context,
+  393,216 max output shared by thinking and the final answer (from this model
+  onward max_tokens caps both), text/image/video input, thinking on by default
+  with reasoning_effort low/medium/xhigh (xhigh default; reasoning_effort and
+  thinking_budget are mutually exclusive), preserve_thinking on by default
+  requiring reasoning_content replay, and OpenAI Chat Completions, Responses
+  and Anthropic Messages compatibility through the Token Plan base URL
+  https://token-plan.ap-southeast-1.maas.aliyuncs.com. It stays a candidate
+  and will not be promoted: the preview is Token Plan only (no pay-as-you-go,
+  no per-token pricing; Credits are subscription-based), the official page
+  takes the model offline after 2026-11-25 24:00 (UTC+8), no official coding
+  evaluation is published yet, and no separate input cap is documented. Watch
+  for the official Qwen4 release under a new model ID.'

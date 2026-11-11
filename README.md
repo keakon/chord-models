@@ -82,7 +82,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-As of 2026-11-11, the catalog contains **39 model fact records** and **98 discovery
+As of 2026-11-12, the catalog contains **39 model fact records** and **99 discovery
 candidates**, with a release inventory across **34 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
@@ -216,6 +216,18 @@ TokenHub check was run. The same pages backfill the hy4-preview candidate
 (text-only, same limits and pricing) which stays a candidate because
 announcement 2559 retires it on December 7, 2026, and the hy3 candidate with
 documented limits and pricing. The catalog version is 2026-11-11.1.
+
+The 2026-11-12 update records Alibaba's Qwen4-Max-Preview as a candidate
+after checking the official Model Studio model page and the release
+inventory. The preview flagship (`qwen4-max-preview`, released November 11,
+2026) documents a 1M context, a 393,216-token output budget shared by
+thinking and the final answer, text/image/video input, thinking on by
+default with `low`/`medium`/`xhigh` reasoning (`xhigh` default), and OpenAI
+Chat Completions, Responses and Anthropic Messages compatibility through the
+Token Plan base URL. It stays a candidate: the preview is Token Plan only
+with no per-token pricing, closes on November 25, 2026 at 24:00 (UTC+8), and
+no official coding evaluation is published. Candidate notes do not apply
+runtime defaults; watch for the official Qwen4 release under a new model ID.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.
