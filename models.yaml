@@ -406,6 +406,60 @@ models:
       - url: https://deepmind.google/models/model-cards/gemini-4-argon/
         checked: "2026-10-14"
 
+  - id: google/gemini-4-carbon
+    released: "2026-11-10"
+    config_profile:
+      model:
+        thinking:
+          level: medium
+      sources:
+        - url: https://ai.google.dev/gemini-api/docs/generate-content/latest-model
+          checked: "2026-11-11"
+    connection:
+      request_url: https://generativelanguage.googleapis.com/v1beta/
+      wire_model_id: gemini-4-carbon
+      env_var: GEMINI_API_KEY
+      sources:
+        - url: https://ai.google.dev/gemini-api/docs/models/gemini-4-carbon
+          checked: "2026-11-11"
+    # Input, thinking and output share one window; no separate input cap.
+    context: 1048576
+    # Model capacity with long decode; actual output shares the context window.
+    # The Gemini binding caps current streaming requests at 65536 until Chord
+    # implements continuation across requests.
+    output: 1048576
+    input_modalities: [text, image, video, audio, pdf]
+    reasoning_options: [low, medium, high]
+    coding_sources:
+      - url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/
+        checked: "2026-11-11"
+      - url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/
+        checked: "2026-11-11"
+    cost:
+      input_per_million: 4
+      output_per_million: 20
+      currency: USD
+      checked: "2026-11-11"
+      source:
+        url: https://ai.google.dev/gemini-api/docs/pricing
+        checked: "2026-11-11"
+      notes: >-
+        Standard paid-tier USD API rates for uncached input and output
+        (including thinking), effective December 1, 2026. Introductory rates
+        through November 30, 2026 are $2 input and $10 output per million
+        tokens, and implicit cache hits are $0.10/MTok through that date and
+        $0.20/MTok after. Explicit caching and the Free tier are not
+        supported. Batch, Flex and Priority rates differ.
+    sources:
+      - url: https://ai.google.dev/gemini-api/docs/models/gemini-4-carbon
+        checked: "2026-11-11"
+      - url: https://ai.google.dev/gemini-api/docs/generate-content/latest-model
+        checked: "2026-11-11"
+      - url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/
+        checked: "2026-11-11"
+      - url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/
+        checked: "2026-11-11"
+
   - id: google/gemini-3.8-flash
     input: 1048576
     coding_sources:
@@ -1667,3 +1721,59 @@ models:
     - url: https://platform.stepfun.com/docs/zh/guides/models/step-5-preview
       checked: '2026-10-04'
     input: 1000000
+
+  - id: tencent/hy4
+    released: "2026-11-04"
+    config_profile:
+      compat:
+        chat_completions:
+          native_thinking: thinking
+      sources:
+        - url: https://cloud.tencent.com/document/product/1823/131208
+          checked: "2026-11-11"
+    connection:
+      request_url: https://tokenhub-intl.tencentcloudmaas.com/v1/chat/completions
+      wire_model_id: hy4
+      env_var: TENCENT_API_KEY
+      sources:
+        - url: https://intl.cloud.tencent.com/document/product/1300/80695?lang=en
+          checked: "2026-11-11"
+    # The Hy API guide lists 1M context, 960k max input and 64k max output;
+    # the binary reading is the only one where input and output sum to the
+    # context window (983040 + 65536 = 1048576).
+    context: 1048576
+    input: 983040
+    output: 65536
+    input_modalities: [text, image]
+    reasoning_options: [high, no_think]
+    coding_sources:
+      - url: https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/
+        checked: "2026-11-11"
+      - url: https://hy.tencent.ai/research/hy4
+        checked: "2026-11-11"
+    cost:
+      input_per_million: 0.834
+      output_per_million: 2.501
+      currency: USD
+      checked: "2026-11-11"
+      source:
+        url: https://www.tencentcloud.com/act/pro/tokenhub
+        checked: "2026-11-11"
+      notes: >-
+        Standard Singapore-region TokenHub USD rates for uncached input and
+        output; cache hits are $0.042/MTok and no cache-write fee is
+        documented. The Guangzhou region bills the same list prices in CNY
+        (input ¥6, output ¥18, cache hits ¥0.3 per million tokens). TokenHub
+        applies a 50% promotional discount to Hy4 through December 31, 2026
+        (Beijing time); the recorded figures are the standard list rates.
+    sources:
+      - url: https://intl.cloud.tencent.com/document/product/1300/80695?lang=en
+        checked: "2026-11-11"
+      - url: https://cloud.tencent.com/document/product/1823/130055
+        checked: "2026-11-11"
+      - url: https://www.tencentcloud.com/act/pro/tokenhub
+        checked: "2026-11-11"
+      - url: https://hy.tencent.ai/research/hy4
+        checked: "2026-11-11"
+      - url: https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/
+        checked: "2026-11-11"

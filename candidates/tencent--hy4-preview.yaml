@@ -1,9 +1,31 @@
 wire_model_id: hy4-preview
 scope: tencent
-context: 1024000
+released: "2026-08-28"
+context: 1048576
+input: 983040
+output: 65536
+input_modalities: [text]
+coding_sources:
+- url: https://hunyuan.tencent.com/research/hy4-preview
+  checked: '2026-11-11'
 sources:
+- url: https://intl.cloud.tencent.com/document/product/1300/80695?lang=en
+  checked: '2026-11-11'
+- url: https://cloud.tencent.com/document/product/1823/130055
+  checked: '2026-11-11'
+- url: https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/
+  checked: '2026-11-11'
 - url: https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/tencent/hy4-preview.toml
   checked: '2026-10-04'
-notes: 'Discovery only: release date, coding suitability, hard output limit, lifecycle
-  and serving route need official confirmation. Registry context is an observed reference,
-  never a runtime default.'
+notes: 'Official Hy API guide documents 1M context, 960k max input and 64k max
+  output (recorded as the binary reading 1048576/983040/65536, the only one
+  where input and output sum to the context window); thinking is enabled by
+  default with reasoning_effort high (no_think disables it), and TokenHub
+  bills the same list price as hy4 (USD $0.834/$2.501, CNY ¥6/¥18, cache hits
+  $0.042/¥0.3 per million tokens). Tencent''s 2026-08-28 release post
+  documents the expert blind evaluation on 203 engineering tasks (2.99/4.00
+  versus GLM-5.3 and Kimi K3). Tencent Cloud announcement 2559 takes
+  hy4-preview offline on TokenHub, ADP and CloudBase from Beijing time
+  2026-12-07 00:00:00 and migrates qualifying traffic to hy4, so this
+  candidate stays out of runtime defaults; use tencent/hy4. The open-weight
+  release is text-only; vision arrived with the official hy4.'

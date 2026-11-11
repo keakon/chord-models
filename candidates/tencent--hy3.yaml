@@ -1,9 +1,23 @@
 wire_model_id: hy3
 scope: tencent
-context: 256000
+context: 262144
+input: 196608
+output: 131072
 sources:
+- url: https://intl.cloud.tencent.com/document/product/1300/80695?lang=en
+  checked: '2026-11-11'
+- url: https://cloud.tencent.com/document/product/1823/130055
+  checked: '2026-11-11'
 - url: https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/tencent/hy3.toml
   checked: '2026-10-04'
-notes: 'Discovery only: release date, coding suitability, hard output limit, lifecycle
-  and serving route need official confirmation. Registry context is an observed reference,
-  never a runtime default.'
+notes: 'The official Hy API guide lists 256k context, 192k max input and 128k
+  max output, recorded here as the binary reading (262144/196608/131072); the
+  figures do not reconcile under either reading (192k + 128k exceeds 256k), so
+  exact token counts remain unconfirmed. TokenHub bills ¥1 input, ¥4 output
+  and ¥0.25 cache hits per million tokens in Guangzhou; Tencent''s
+  international TokenHub page lists $0.132/$0.528 with $0.033 cache hits for
+  Singapore. Thinking is enabled by default with reasoning_effort low/high/
+  none documented. Official release date, a model-specific coding evaluation
+  beyond the capability description, and lifecycle beyond the current API
+  guide listing still need confirmation; the capability column does cite
+  Coding as a strengthened area.'

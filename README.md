@@ -82,8 +82,8 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-As of 2026-11-10, the catalog contains **37 model fact records** and **98 discovery
-candidates**, with a release inventory across **33 vendors**. This is a
+As of 2026-11-11, the catalog contains **39 model fact records** and **98 discovery
+candidates**, with a release inventory across **34 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
 exclusion, reported release date, and remaining checks. Official release
@@ -187,6 +187,35 @@ default. Claude Mythos 5.2, jointly announced with verification-gated access,
 is added as a candidate: its official pages document Fable-identical
 specifications and pricing, but no serving route is verifiable for general
 use. No live endpoint check was run; the catalog version is 2026-11-10.1.
+
+The 2026-11-11 update adds `google/gemini-4-carbon` and `tencent/hy4` as
+verified models. Carbon's official announcement (October 28, 2026),
+availability post, API model page, latest-model guide and pricing page record
+the `gemini-4-carbon` wire ID, general API availability on November 10, 2026,
+official coding benchmarks (first on CursorBench 4.0, WANDR and
+AutomationBench; SEC-bench Pro 88.2%, CWE-bench 71.0%, ExploitGym 54.8%), a
+unified 1,048,576-token window with 65,536 synchronous output and long decode
+to the window, text/image/video/audio/PDF input, low/medium/high thinking
+with `medium` as the default, and $4/$20 per million input/output tokens from
+December 1, 2026 ($2/$10 introductory through November 30; implicit cache
+hits $0.10/$0.20 across the same boundary). The compaction profile is
+deliberately omitted: no Carbon-specific reliability window or pricing-tier
+boundary is documented, so the entry inherits the global default like Argon.
+The live gemini smoke check reached the API but returned HTTP 429 with
+free-tier quota limit 0; no completion was verified. Tencent Hy4 (the Hunyuan
+family's official release, November 4, 2026) is verified from the launch
+post, Hy research page, Hy API guide, TokenHub pricing doc and deep-thinking
+doc: long-horizon software-engineering and GameDev/GameLogic coding evidence,
+the guide's 1M/960k/64k limits recorded as the binary reading
+1048576/983040/65536, text/image input, thinking enabled by default with
+`high` default effort and `no_think` to disable, and Singapore TokenHub rates
+of $0.834/$2.501 with $0.042 cache hits (Guangzhou ¥6/¥18/¥0.3; a 50%
+promotion through December 31 is not the recorded price). Hy4 documents an
+OpenAI Chat Completions connection but no managed binding was added; no live
+TokenHub check was run. The same pages backfill the hy4-preview candidate
+(text-only, same limits and pricing) which stays a candidate because
+announcement 2559 retires it on December 7, 2026, and the hy3 candidate with
+documented limits and pricing. The catalog version is 2026-11-11.1.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.
