@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "as_of": "2026-11-12",
+  "as_of": "2026-11-13",
   "window_months": 6,
   "notification_watchlist": ["alibaba", "anthropic", "deepseek", "google", "meta", "minimax", "moonshotai", "openai", "xiaomi", "xai", "zhipuai"],
   "discovery_source": {
     "repository": "https://github.com/anomalyco/models.dev",
     "commit": "70972b6cd2557a958c768f981b477b7bf75f2aa5"
   },
-  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The 2026-10-13 update screens watch-listed registry discoveries and reviews the Muse Wonder series against official sources; hard output limits remain unresolved. The 2026-10-14 update verifies Gemini 4 Argon release, coding, unified context, single-request output limits, modalities, thinking levels, pricing and API connection. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial. The 2026-10-17 update screens watch-listed registry discoveries and records Muse Spark Open as a candidate; official sources cited by the registry were unreachable for independent verification. A further 2026-10-17 review verifies the DeepSeek-V4.1-Flash-1017 release served under the existing deepseek-flash wire ID and excludes the deepseek-v4.1-flash registry alias plus the retired V4-Flash line and its dated snapshots as aliases of retired routes. The 2026-10-24 update verifies Kimi K3.1 Pro and Kimi K3.1 Pro Highspeed from the official release, API guide and pricing pages: release date, coding evidence, 1,048,576-token context and hard output maximum, text/image/video input, low/high/max reasoning, Chat Completions connection and standard USD pricing. The 2026-10-27 update verifies OpenAI GPT-6.1 Terra from the official announcement, news index, model documentation and Codex model documentation: wire ID gpt-6.1-terra, release date 2026-10-26, Terminal-Bench coding evidence, 1,050,000-token context and 128,000-token hard output maximum, text/image input, none/low/medium/high/xhigh/max reasoning, standard $1/$5 USD pricing with the 272K input pricing-tier boundary, and codex/openai route bindings; the live codex smoke check was attempted but returned HTTP 401 on expired OAuth credentials (the existing gpt-6.1-sol failed identically), so no completion was verified. The 2026-11-05 update is a pricing and modality completeness backfill driven by the revised SOP: cache hit/write rates were verified from official pages and recorded for DeepSeek (deepseek-flash, deepseek-v4-pro), Kimi K3, xAI Grok 4.6/4.7, GLM-5.3/Flash/FlashX, Qwen3.8 Max/Flash, Muse Spark 1.2/1.3, Gemini 3.8 Flash and 3.1 Pro Preview, Inception Mercury 2.5, and StepFun step-5-preview (a new cost block; cache writes bundled); Cohere north-mini-code-1-0 was confirmed officially free until rate limits with no published per-token price, so its cost block stays omitted under the unknown-pricing rule; and the OpenAI GPT-5.6/6/6.1 families (the 5.6 entries gained full cost blocks; per the recording policy, promotional windows are not recorded and GPT-5.6 Sol is recorded at its standard $5/$30 rates while the official pages display a time-limited lower rate); PDF input was added to all Claude and GPT entries from the official PDF-support and PDF-files guides; Mercury 2.5's expired promotional rate was corrected to the standard $0.20/$0.75. The 2026-11-10 update verifies the Claude Fable 5.2 release from the official launch post, model overview, release notes, pricing, effort and PDF-support pages: wire ID claude-fable-5-2, release 2026-11-09, coding benchmarks, 1M context, 128K hard output, text/image/PDF input, adaptive always-on thinking with all five effort levels, $8/$40 USD pricing with cache rates, and a binding on the existing anthropic endpoint; Claude Mythos 5.2 is added as a candidate because its verification-gated availability leaves no general route to verify. No live endpoint check was run. The 2026-11-11 update verifies Google Gemini 4 Carbon from the official announcement, availability post, API model page, latest-model guide and pricing page: wire ID gemini-4-carbon, API general availability 2026-11-10 after the 2026-10-28 announcement, official coding benchmarks (first on CursorBench 4.0, WANDR and AutomationBench; SEC-bench Pro 88.2%, CWE-bench 71.0%, ExploitGym 54.8%), a unified 1,048,576-token window with 65,536 synchronous output and long decode to the window, text/image/video/audio/PDF input, low/medium/high thinking with medium as the default, $4/$20 standard USD rates from 2026-12-01 with $2/$10 introductory rates through 2026-11-30 and implicit cache hits at $0.10/$0.20 across the same boundary, and a binding on the existing gemini endpoint. It also verifies Tencent Hy4 from the Tencent launch post, Hy research page, Hy API guide, TokenHub pricing doc and deep-thinking doc: wire ID hy4, release 2026-11-04, long-horizon software-engineering and GameDev/GameLogic coding evidence, the guide's 1M/960k/64k limits recorded as the binary reading 1048576/983040/65536 because it is the only one where input and output sum to the context window, text/image input, thinking enabled by default with reasoning_effort high or no_think, Singapore TokenHub USD rates $0.834/$2.501 with $0.042 cache hits (Guangzhou ¥6/¥18/¥0.3; a 50% TokenHub promotion runs through 2026-12-31), and a documented OpenAI Chat Completions connection without a managed binding. The same pages backfill the hy4-preview candidate with its official limits, pricing, text-only modality and the 2026-12-07 retirement announcement (it stays a candidate and will not be promoted), and backfill the hy3 candidate with the API guide limits and TokenHub pricing. The live gemini smoke check reached the API but returned HTTP 429 with free-tier quota limit 0; no TokenHub live check was run (no credential). The 2026-11-12 update screens Alibaba's Qwen4-Max-Preview against the official Model Studio model page and the release inventory: preview wire ID qwen4-max-preview released 2026-11-11, Token Plan only with no per-token pricing, 1M context and a 393,216-token output budget shared by thinking and the final answer, text/image/video input, low/medium/xhigh reasoning with xhigh as the default, and automatic retirement after 2026-11-25 24:00 (UTC+8); it is recorded as a candidate because the preview window closes and no official coding evaluation exists.",
+  "scope": "All recently released frontier/general or coding-specialized text models, including official API, hosted open weights and self-hosted deployments. Tool-capable text models are broad discovery hints, not proof of coding suitability. The 2026-10-09 update only rechecks selected configuration profiles, input limits and pricing scopes; the 2026-10-10 update only rechecks the Haiku 5.5 cost-first compaction profile. The 2026-10-13 update screens watch-listed registry discoveries and reviews the Muse Wonder series against official sources; hard output limits remain unresolved. The 2026-10-14 update verifies Gemini 4 Argon release, coding, unified context, single-request output limits, modalities, thinking levels, pricing and API connection. The broad release inventory remains the 2026-10-08 review, with vendor coverage still partial. The 2026-10-17 update screens watch-listed registry discoveries and records Muse Spark Open as a candidate; official sources cited by the registry were unreachable for independent verification. A further 2026-10-17 review verifies the DeepSeek-V4.1-Flash-1017 release served under the existing deepseek-flash wire ID and excludes the deepseek-v4.1-flash registry alias plus the retired V4-Flash line and its dated snapshots as aliases of retired routes. The 2026-10-24 update verifies Kimi K3.1 Pro and Kimi K3.1 Pro Highspeed from the official release, API guide and pricing pages: release date, coding evidence, 1,048,576-token context and hard output maximum, text/image/video input, low/high/max reasoning, Chat Completions connection and standard USD pricing. The 2026-10-27 update verifies OpenAI GPT-6.1 Terra from the official announcement, news index, model documentation and Codex model documentation: wire ID gpt-6.1-terra, release date 2026-10-26, Terminal-Bench coding evidence, 1,050,000-token context and 128,000-token hard output maximum, text/image input, none/low/medium/high/xhigh/max reasoning, standard $1/$5 USD pricing with the 272K input pricing-tier boundary, and codex/openai route bindings; the live codex smoke check was attempted but returned HTTP 401 on expired OAuth credentials (the existing gpt-6.1-sol failed identically), so no completion was verified. The 2026-11-05 update is a pricing and modality completeness backfill driven by the revised SOP: cache hit/write rates were verified from official pages and recorded for DeepSeek (deepseek-flash, deepseek-v4-pro), Kimi K3, xAI Grok 4.6/4.7, GLM-5.3/Flash/FlashX, Qwen3.8 Max/Flash, Muse Spark 1.2/1.3, Gemini 3.8 Flash and 3.1 Pro Preview, Inception Mercury 2.5, and StepFun step-5-preview (a new cost block; cache writes bundled); Cohere north-mini-code-1-0 was confirmed officially free until rate limits with no published per-token price, so its cost block stays omitted under the unknown-pricing rule; and the OpenAI GPT-5.6/6/6.1 families (the 5.6 entries gained full cost blocks; per the recording policy, promotional windows are not recorded and GPT-5.6 Sol is recorded at its standard $5/$30 rates while the official pages display a time-limited lower rate); PDF input was added to all Claude and GPT entries from the official PDF-support and PDF-files guides; Mercury 2.5's expired promotional rate was corrected to the standard $0.20/$0.75. The 2026-11-10 update verifies the Claude Fable 5.2 release from the official launch post, model overview, release notes, pricing, effort and PDF-support pages: wire ID claude-fable-5-2, release 2026-11-09, coding benchmarks, 1M context, 128K hard output, text/image/PDF input, adaptive always-on thinking with all five effort levels, $8/$40 USD pricing with cache rates, and a binding on the existing anthropic endpoint; Claude Mythos 5.2 is added as a candidate because its verification-gated availability leaves no general route to verify. No live endpoint check was run. The 2026-11-11 update verifies Google Gemini 4 Carbon from the official announcement, availability post, API model page, latest-model guide and pricing page: wire ID gemini-4-carbon, API general availability 2026-11-10 after the 2026-10-28 announcement, official coding benchmarks (first on CursorBench 4.0, WANDR and AutomationBench; SEC-bench Pro 88.2%, CWE-bench 71.0%, ExploitGym 54.8%), a unified 1,048,576-token window with 65,536 synchronous output and long decode to the window, text/image/video/audio/PDF input, low/medium/high thinking with medium as the default, $4/$20 standard USD rates from 2026-12-01 with $2/$10 introductory rates through 2026-11-30 and implicit cache hits at $0.10/$0.20 across the same boundary, and a binding on the existing gemini endpoint. It also verifies Tencent Hy4 from the Tencent launch post, Hy research page, Hy API guide, TokenHub pricing doc and deep-thinking doc: wire ID hy4, release 2026-11-04, long-horizon software-engineering and GameDev/GameLogic coding evidence, the guide's 1M/960k/64k limits recorded as the binary reading 1048576/983040/65536 because it is the only one where input and output sum to the context window, text/image input, thinking enabled by default with reasoning_effort high or no_think, Singapore TokenHub USD rates $0.834/$2.501 with $0.042 cache hits (Guangzhou ¥6/¥18/¥0.3; a 50% TokenHub promotion runs through 2026-12-31), and a documented OpenAI Chat Completions connection without a managed binding. The same pages backfill the hy4-preview candidate with its official limits, pricing, text-only modality and the 2026-12-07 retirement announcement (it stays a candidate and will not be promoted), and backfill the hy3 candidate with the API guide limits and TokenHub pricing. The live gemini smoke check reached the API but returned HTTP 429 with free-tier quota limit 0; no TokenHub live check was run (no credential). The 2026-11-12 update screens Alibaba's Qwen4-Max-Preview against the official Model Studio model page and the release inventory: preview wire ID qwen4-max-preview released 2026-11-11, Token Plan only with no per-token pricing, 1M context and a 393,216-token output budget shared by thinking and the final answer, text/image/video input, low/medium/xhigh reasoning with xhigh as the default, and automatic retirement after 2026-11-25 24:00 (UTC+8); it is recorded as a candidate because the preview window closes and no official coding evaluation exists. The 2026-11-13 update verifies Google Gemini 4 Hydrogen from the official launch post, model card, API model page, what's-new migration guide, thinking, long-decode, caching, document-processing and pricing pages: wire ID gemini-4-hydrogen, release 2026-11-12, official coding benchmarks (Terminal-Bench 4.1 57% versus 18.2% for Gemini 3.8 Flash; SWE-sweep 13.5%), a unified 1,048,576-token window with 65,536 synchronous output and long decode to the remaining window, text/image/video/audio/PDF input, low/medium/high(default)/xhigh thinking with high as the documented default, $1.50/$7.50 per million input/output tokens flat across the 1M window with $0.075 implicit cache hits and a rate-limited free tier, and a binding on the existing gemini endpoint. The same pricing page backfills Gemini 4 Argon's exact cache rates and Gemini 3.6 Flash's cost block; Gemini 3.7 Flash has no pricing row, so its cost omission is recorded as deliberate. No live endpoint check was run because no Gemini API credential was available to the tooling.",
   "watchlist": {
     "alibaba": {
       "registry_checked": "2026-10-04",
@@ -49,7 +49,7 @@
       "registry_checked": "2026-10-14",
       "official_index": "https://ai.google.dev/gemini-api/docs/models",
       "review": "partial",
-      "notes": "Reviewed Gemini 4 Argon against official release, model, pricing and GenerateContent documentation on 2026-10-14 and screened the Google registry inventory. The 2026-11-11 review verifies Gemini 4 Carbon against the official announcement, availability post, API model page, latest-model guide and pricing page. Other Google entries retain their earlier evidence dates; vendor coverage remains partial."
+      "notes": "Reviewed Gemini 4 Argon against official release, model, pricing and GenerateContent documentation on 2026-10-14 and screened the Google registry inventory. The 2026-11-11 review verifies Gemini 4 Carbon against the official announcement, availability post, API model page, latest-model guide and pricing page. Other Google entries retain their earlier evidence dates; vendor coverage remains partial. The 2026-11-13 review verifies Gemini 4 Hydrogen against official release, model card, API model, migration, thinking, long-decode, caching, document-processing and pricing documentation, and backfills Argon's cache rates plus Gemini 3.6 Flash pricing from the same pricing page. Other Google entries retain their earlier evidence dates; vendor coverage remains partial."
     },
     "inception": {
       "registry_checked": "2026-10-04",
@@ -1102,28 +1102,36 @@
     {
       "id": "google/gemini-3.6-flash",
       "reported_release": "2026-07-21",
-      "checked": "2026-10-04",
+      "checked": "2026-11-13",
       "sources": [
         {
           "url": "https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/google/gemini-3.6-flash.toml",
           "checked": "2026-10-04"
+        },
+        {
+          "url": "https://aistudio.google.com/docs/pricing",
+          "checked": "2026-11-13"
         }
       ],
       "state": "model",
-      "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded."
+      "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded. The 2026-11-13 pricing review backfills a cost block from the official pricing row: $0.75/$3.75 per million input/output tokens and $0.075/MTok implicit cache hits through 2026-12-31, doubling from 2027-01-01, with $0.50/$1.00 per MTok-hour storage and no separate cache-write price."
     },
     {
       "id": "google/gemini-3.7-flash",
       "reported_release": "2026-08-13",
-      "checked": "2026-10-04",
+      "checked": "2026-11-13",
       "sources": [
         {
           "url": "https://github.com/anomalyco/models.dev/blob/a5c9719377ba7b648b074511ac25bc8625e4892a/models/google/gemini-3.7-flash.toml",
           "checked": "2026-10-04"
+        },
+        {
+          "url": "https://aistudio.google.com/docs/pricing",
+          "checked": "2026-11-13"
         }
       ],
       "state": "model",
-      "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded."
+      "reason": "Catalog facts available. Release date below is a discovery hint until an official release citation is recorded. The 2026-11-13 pricing review found no gemini-3.7-flash row on the official pricing page; its cost block stays deliberately omitted under the unknown-pricing rule rather than being copied from a neighboring model."
     },
     {
       "id": "google/gemini-3.8-flash",
@@ -1142,7 +1150,7 @@
       "id": "google/gemini-4-argon",
       "state": "model",
       "released": "2026-10-13",
-      "checked": "2026-10-14",
+      "checked": "2026-11-13",
       "sources": [
         {
           "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/",
@@ -1162,10 +1170,10 @@
         },
         {
           "url": "https://ai.google.dev/gemini-api/docs/pricing",
-          "checked": "2026-10-14"
+          "checked": "2026-11-13"
         }
       ],
-      "reason": "Stable paid-tier coding model, generally available on 2026-10-13. Input, thinking and output share 1,048,576 tokens; model output records long-decode capacity up to the remaining window, while the Gemini binding caps current streaming requests at 65,536 tokens. Long decode requires continuation handling, which current Chord does not implement; direct non-streaming REST requests stop at 32,768. Thinking levels are low, medium (default) and high. On the configured Gemini API route, legacy thinking_budget maps to a level with a warning; minimal is unsupported. Explicit caching is unsupported and sampling parameters are ignored. Standard pricing is $4/$20 per million input/output tokens from 2026-12-01, with $2/$10 introductory rates through 2026-11-30. Live smoke checks on 2026-10-14: chord doctor models, gemini preset, wire ID gemini-4-argon, medium level, streaming GenerateContent at https://generativelanguage.googleapis.com/v1beta/. The direct attempt timed out; a subsequent attempt through the existing local SOCKS proxy reached the API but returned HTTP 429 with free-tier quota limit 0 for this model. No completion, low/high variants or long decode were verified. The binding's streaming cap is documentation-backed; the live check is quota-blocked."
+      "reason": "Stable paid-tier coding model, generally available on 2026-10-13. Input, thinking and output share 1,048,576 tokens; model output records long-decode capacity up to the remaining window, while the Gemini binding caps current streaming requests at 65,536 tokens. Long decode requires continuation handling, which current Chord does not implement; direct non-streaming REST requests stop at 32,768. Thinking levels are low, medium (default) and high. On the configured Gemini API route, legacy thinking_budget maps to a level with a warning; minimal is unsupported. Explicit caching is unsupported and sampling parameters are ignored. Standard pricing is $4/$20 per million input/output tokens from 2026-12-01, with $2/$10 introductory rates through 2026-11-30. Live smoke checks on 2026-10-14: chord doctor models, gemini preset, wire ID gemini-4-argon, medium level, streaming GenerateContent at https://generativelanguage.googleapis.com/v1beta/. The direct attempt timed out; a subsequent attempt through the existing local SOCKS proxy reached the API but returned HTTP 429 with free-tier quota limit 0 for this model. No completion, low/high variants or long decode were verified. The binding's streaming cap is documentation-backed; the live check is quota-blocked. The 2026-11-13 pricing recheck replaces the percentage-only cache wording with exact implicit cache rates ($0.10/MTok through 2026-11-30 and $0.20/MTok from 2026-12-01) and records that the pricing page lists no separate cache-write or storage fee."
     },
     {
       "id": "google/gemini-4-carbon",
@@ -1195,6 +1203,59 @@
         }
       ],
       "reason": "Stable paid-tier coding model, announced 2026-10-28 and generally available to paying API developers on 2026-11-10. Official coding evidence: first on CursorBench 4.0, WANDR and AutomationBench, plus SEC-bench Pro 88.2%, CWE-bench 71.0% and ExploitGym 54.8% from the announcement. Input, thinking and output share 1,048,576 tokens; model output records long-decode capacity up to the remaining window, while the Gemini binding caps current streaming requests at 65,536 tokens as documented on the model page. Thinking levels are low, medium (default) and high. No compaction profile is recorded: neither a long-context reliability window nor a pricing-tier boundary is documented for Carbon, so the entry inherits the global default like Argon. Standard pricing is $4/$20 per million input/output tokens from 2026-12-01, with $2/$10 introductory rates through 2026-11-30 and implicit cache hits at $0.10/$0.20 across the same boundary; explicit caching and the Free tier are unsupported, and Batch, Flex and Priority rates differ. Live smoke check on 2026-11-11: chord doctor models, gemini preset, wire ID gemini-4-carbon, medium level, streaming GenerateContent at https://generativelanguage.googleapis.com/v1beta/, with model settings borrowed from gemini-4-argon because the embedded catalog snapshot does not contain Carbon yet. The request reached the API with the credential attached and returned HTTP 429 with free-tier quota limit 0 for this model; no completion, low/high variants or long decode were verified. A direct GenerateContent call confirmed the same quota-blocked result."
+    },
+    {
+      "id": "google/gemini-4-hydrogen",
+      "state": "model",
+      "released": "2026-11-12",
+      "checked": "2026-11-13",
+      "sources": [
+        {
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
+          "checked": "2026-11-13"
+        },
+        {
+          "url": "https://deepmind.google/models/model-cards/gemini-4-hydrogen/",
+          "checked": "2026-11-13"
+        },
+        {
+          "url": "https://deepmind.google/models/gemini/",
+          "checked": "2026-11-13"
+        },
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/models/gemini-4-hydrogen?generate-content=true",
+          "checked": "2026-11-13"
+        },
+        {
+          "url": "https://aistudio.google.com/docs/whats-new-gemini-4-hydrogen",
+          "checked": "2026-11-13"
+        },
+        {
+          "url": "https://aistudio.google.com/docs/text-generation?generate-content=true",
+          "checked": "2026-11-13"
+        },
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/generate-content/thinking",
+          "checked": "2026-11-13"
+        },
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/generate-content/long-decode",
+          "checked": "2026-11-13"
+        },
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/caching",
+          "checked": "2026-11-13"
+        },
+        {
+          "url": "https://aistudio.google.com/docs/document-processing?generate-content=true",
+          "checked": "2026-11-13"
+        },
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked": "2026-11-13"
+        }
+      ],
+      "reason": "Stable generally available coding model, released 2026-11-12 and rolled out globally on the Gemini API and Google AI Studio (free and paid tiers; the free tier is rate-limited). Official coding evidence: the launch post reports Terminal-Bench 4.1 57% (cheating-adjusted) versus 18.2% for Gemini 3.8 Flash, the DeepMind Gemini benchmark table records SWE-sweep 13.5% versus Claude Sonnet 5.5 3.1% and GPT-6.1 Terra 5.8%, and the model card lists iterative repository coding and debugging. The API model page records the stable wire ID gemini-4-hydrogen, text/image/video/audio/PDF input, a unified 1,048,576-token window shared by input, thinking and output, and a 65,536-token default synchronous output cap with long decode up to the remaining window. The model fact records long-decode capacity; the Gemini binding caps single requests at 65,536 tokens. Long decode requires background execution or client-side continuation, neither of which current Chord implements; unlike Carbon/Argon, Hydrogen's direct non-streaming REST cap is also 65,536. Thinking is always on at low/medium/high(default)/xhigh; minimal is rejected, thinking_budget is deprecated, sampling parameters are ignored, thought signatures must be passed back, and only implicit caching applies (minimum 4,096 input tokens; explicit caching unsupported). The compaction profile is deliberately omitted: no Hydrogen-specific long-context reliability window or pricing-tier boundary is documented and pricing is flat across the full 1M window, so the entry inherits the global default like Argon and Carbon. The config profile records the documented default thinking level high; documented route behaviors stay in this inventory reason rather than config_profile.compat, consistent with the sibling Gemini 4 entries. Standard pricing is $1.50/$7.50 per million input/output tokens with implicit cache hits at $0.075/MTok; the official pricing page lists no separate cache-write or storage fee, no long-context surcharge and no promotional tier, while Batch, Flex and Priority rates differ. No live endpoint check was run in this session: no Gemini API credential was available to the tooling and the embedded Chord catalog does not contain Hydrogen yet; the binding cap is documentation-backed. Prior gemini smoke checks (2026-10-14 Argon, 2026-11-11 Carbon) reached the API but returned HTTP 429 with free-tier quota limit 0, so no completion, thinking variants or long decode were verified."
     },
     {
       "id": "google/gemini-flash-latest",

@@ -82,7 +82,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-As of 2026-11-12, the catalog contains **39 model fact records** and **99 discovery
+As of 2026-11-13, the catalog contains **40 model fact records** and **99 discovery
 candidates**, with a release inventory across **34 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
@@ -228,6 +228,28 @@ Token Plan base URL. It stays a candidate: the preview is Token Plan only
 with no per-token pricing, closes on November 25, 2026 at 24:00 (UTC+8), and
 no official coding evaluation is published. Candidate notes do not apply
 runtime defaults; watch for the official Qwen4 release under a new model ID.
+
+The 2026-11-13 update adds `google/gemini-4-hydrogen` as a verified model with
+a binding on the existing gemini endpoint. The official launch post (November
+12, 2026), model card, DeepMind benchmark table, API model page, migration
+guide, thinking, long-decode, caching, document-processing and pricing pages
+record the stable `gemini-4-hydrogen` wire ID, global availability on the Gemini
+API and AI Studio (including a rate-limited free tier), official coding evidence
+(Terminal-Bench 4.1 57% versus 18.2% for Gemini 3.8 Flash; SWE-sweep 13.5%), a
+unified 1,048,576-token window shared by input, thinking and output, 65,536
+synchronous output with long decode to the remaining window,
+text/image/video/audio/PDF input, four thinking levels (`low`, `medium`,
+`high` default and `xhigh`, with thinking always on), and flat $1.50/$7.50 per
+million input/output tokens across the whole window (implicit cache hits
+$0.075/MTok; explicit caching unsupported; no separate cache-write or storage
+fee listed). The compaction profile is deliberately omitted: no
+Hydrogen-specific reliability window or pricing-tier boundary is documented, so
+the entry inherits the global default like Argon and Carbon. No live endpoint
+check was run because no Gemini API credential was available in this session;
+the binding's 65,536-token cap is documentation-backed. The same pricing page
+backfills Argon's exact cache rates and Gemini 3.6 Flash's pricing, while
+Gemini 3.7 Flash has no pricing row and keeps its deliberate cost omission.
+The catalog version is 2026-11-13.1.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.
