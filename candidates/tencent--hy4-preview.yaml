@@ -20,7 +20,7 @@ sources:
 notes: 'Official Hy API guide documents 1M context, 960k max input and 64k max
   output (recorded as the binary reading 1048576/983040/65536, the only one
   where input and output sum to the context window); thinking is enabled by
-  default with reasoning_effort high (no_think disables it), and TokenHub
+  default and reasoning_effort supports high (default) or none, and TokenHub
   bills the same list price as hy4 (USD $0.834/$2.501, CNY ¥6/¥18, cache hits
   $0.042/¥0.3 per million tokens). Tencent''s 2026-08-28 release post
   documents the expert blind evaluation on 203 engineering tasks (2.99/4.00

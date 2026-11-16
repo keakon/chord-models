@@ -82,7 +82,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-As of 2026-11-13, the catalog contains **40 model fact records** and **99 discovery
+As of 2026-11-16, the catalog contains **41 model fact records** and **99 discovery
 candidates**, with a release inventory across **34 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
@@ -250,6 +250,26 @@ the binding's 65,536-token cap is documentation-backed. The same pricing page
 backfills Argon's exact cache rates and Gemini 3.6 Flash's pricing, while
 Gemini 3.7 Flash has no pricing row and keeps its deliberate cost omission.
 The catalog version is 2026-11-13.1.
+
+The 2026-11-16 update adds `tencent/hy4-flash` as a verified model. Tencent's
+official Hunyuan release (November 16, 2026) describes a 224B-total/12B-active
+efficient variant for everyday work, with WorkIndex and seven public agent
+benchmarks including DeepSWE, ProgramBench and Terminal-Bench 4.0; it recommends
+flash for deep search, documents, PPT, simple frontend display and computer use,
+while reserving long-horizon software engineering for Hy4. The official model
+list and Hy API guide record the `hy4-flash` wire ID on Chat Completions,
+Responses and Anthropic Messages with 1M context, 960k max input and 64k max
+output, recorded as 1048576/983040/65536 like Hy4, and text/image input. The
+thinking docs list `high`/`no_think` with preserved reasoning backfill, recorded
+as `openai_visible` replay with all history. Standard TokenHub list rates are
+$0.07/$0.281 per million input/output tokens with $0.003 cache hits in
+Singapore (¥0.5/¥2/¥0.02 in Guangzhou); the 50% discount until 12:00 Beijing
+time on November 30 is not the recorded price. No compaction profile is added:
+no long-context reliability window or pricing-tier boundary is documented, so
+the global default is inherited. No managed binding or live TokenHub check was
+added. The same review backfills Hy4's preserved-thinking contract and corrects
+the hy4-preview candidate's `reasoning_effort` disable value to `none`.
+The catalog version is 2026-11-16.1.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.
