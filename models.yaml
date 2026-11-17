@@ -1304,6 +1304,57 @@ models:
       - url: https://models.dev/alibaba/qwen3.8-flash
         checked: "2026-10-04"
 
+  - id: alibaba/qwen4-max
+    released: "2026-11-16"
+    config_profile:
+      compat:
+        chat_completions:
+          native_thinking: qwen
+        reasoning_continuity:
+          mode: openai_visible
+          reasoning_replay: all
+      sources:
+        - url: https://www.alibabacloud.com/help/zh/model-studio/qwen4-max
+          checked: "2026-11-17"
+    # Ordinary mode allows 991808 input tokens; use the smaller documented
+    # thinking cap across modes because the catalog has one shared input
+    # limit. Non-thinking mode caps output at 131072; thinking and the final
+    # answer share the 262144 budget recorded here.
+    context: 1000000
+    input: 983616
+    output: 262144
+    input_modalities: [text, image, video]
+    reasoning_options: [low, high, xhigh]
+    coding_sources:
+    - url: https://www.alibabacloud.com/en/press-room/alibaba-unveils-qwen4-max
+      checked: "2026-11-17"
+    - url: https://qwen.ai/blog?id=qwen4-max
+      checked: "2026-11-17"
+    cost:
+      input_per_million: 1.5
+      output_per_million: 4.5
+      currency: USD
+      checked: "2026-11-17"
+      source:
+        url: https://www.alibabacloud.com/help/zh/model-studio/qwen4-max
+        checked: "2026-11-17"
+      notes: >-
+        Singapore International scope USD rates for the single 0<Token≤1M
+        tier; output billing includes the thinking chain and the final
+        answer. Cache hits (implicit and explicit) are $0.075/MTok and
+        explicit cache creation bills at 125% (5m TTL) and 200% (1h TTL) of
+        the input rate. Hong Kong, Frankfurt, Virginia and Tokyo (Global
+        scope) list $1.413 input and $4.24 output per million tokens. The
+        China site bills Beijing in CNY: ¥10 input, ¥30 output, ¥0.5 cache
+        hits and ¥12.5/¥20 explicit cache creation per million tokens.
+    sources:
+      - url: https://www.alibabacloud.com/help/zh/model-studio/qwen4-max
+        checked: "2026-11-17"
+      - url: https://help.aliyun.com/zh/model-studio/model-pricing
+        checked: "2026-11-17"
+      - url: https://help.aliyun.com/zh/model-studio/newly-released-models
+        checked: "2026-11-17"
+
   - id: deepseek/deepseek-flash
     config_profile:
       compat:

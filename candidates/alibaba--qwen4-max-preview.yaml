@@ -23,5 +23,8 @@ notes: 'Official Model Studio page documents the preview flagship: 1M context,
   and will not be promoted: the preview is Token Plan only (no pay-as-you-go,
   no per-token pricing; Credits are subscription-based), the official page
   takes the model offline after 2026-11-25 24:00 (UTC+8), no official coding
-  evaluation is published yet, and no separate input cap is documented. Watch
-  for the official Qwen4 release under a new model ID.'
+  evaluation is published yet, and no separate input cap is documented. The
+  official Qwen4-Max release followed on 2026-11-16 under the wire ID
+  qwen4-max with pay-as-you-go pricing and is recorded as alibaba/qwen4-max;
+  the preview itself stays Token Plan only until its scheduled 2026-11-25
+  retirement, so this candidate remains until then.'

@@ -82,7 +82,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-As of 2026-11-16, the catalog contains **41 model fact records** and **99 discovery
+As of 2026-11-17, the catalog contains **42 model fact records** and **99 discovery
 candidates**, with a release inventory across **34 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
@@ -270,6 +270,25 @@ the global default is inherited. No managed binding or live TokenHub check was
 added. The same review backfills Hy4's preserved-thinking contract and corrects
 the hy4-preview candidate's `reasoning_effort` disable value to `none`.
 The catalog version is 2026-11-16.1.
+
+The 2026-11-17 update adds `alibaba/qwen4-max` as a verified model. Alibaba's
+official Model Studio model page, model pricing page, release inventory and
+press announcement record the `qwen4-max` wire ID, the November 16, 2026 GA
+release (pay-as-you-go API plus Token Plan; the Token-Plan-only preview
+retires November 25, 2026 and stays a candidate), official coding evidence
+(Code Arena WebDev rank 6 and the launch post's coding and agentic benchmark
+claims), a 1M-token context, a 262,144-token output budget shared by thinking
+and the final answer (131,072 in non-thinking mode) with the 983,616
+thinking-mode input cap recorded across modes, text/image/video input,
+thinking on by default with `low`/`high`/`xhigh` effort (`high` default) and
+preserved-thinking replay, and $1.50/$4.50 per million input/output tokens in
+the Singapore international scope (other global regions $1.413/$4.24; Beijing
+bills ¥10/¥30) with 5% cache hits ($0.075/MTok) and 125%/200% explicit cache
+creation. No connection or managed binding was added: Alibaba Model Studio
+base URLs are region-specific and the qwen3.8-max family precedent records no
+general endpoint. The compaction profile is deliberately omitted — no
+reliability window or pricing-tier boundary is documented, so the entry
+inherits the global default. The catalog version is 2026-11-17.1.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.
