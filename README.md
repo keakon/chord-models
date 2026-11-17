@@ -113,7 +113,7 @@ limit, serving route, pricing and license terms remain unverified. The
 registry's 131072 output follows the Muse Spark lab convention, not a
 documented cap for Open.
 The 2026-10-17 DeepSeek review verifies DeepSeek-V4.1-Flash-1017, now served
-under the existing `deepseek-flash` model name with unchanged calling
+under the existing `deepseek-flash` wire ID with unchanged calling
 conventions; the entry records the official release date and the announcement's
 DeepSWE v1.1 coding evidence. Documented facts stay a 1M context, a 384K hard
 output maximum, vision input and peak uncached pricing of $0.3/$1.2 per
@@ -151,7 +151,7 @@ was run on the openai route (no API credential).
 
 The 2026-11-05 update is a pricing and modality completeness backfill driven
 by a revised maintenance SOP. Cache hit/write rates were verified against
-official pages and recorded for DeepSeek (deepseek-flash $0.006 hits,
+official pages and recorded for DeepSeek (DeepSeek-V4.1-Flash-1017 $0.006 hits,
 deepseek-v4-pro $0.044 hits; no write fee), Kimi K3 ($0.30 hits, $3/$6 writes
 by TTL), xAI Grok 4.6/4.7 ($0.50/$1.00 hits, batch 20% off), GLM-5.3 and its
 Flash/FlashX variants, Qwen3.8 Max/Flash, Muse Spark 1.2/1.3 ($0.15 hits),
