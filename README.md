@@ -82,7 +82,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-As of 2026-11-17, the catalog contains **42 model fact records** and **99 discovery
+As of 2026-11-18, the catalog contains **44 model fact records** and **99 discovery
 candidates**, with a release inventory across **34 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
@@ -289,6 +289,25 @@ base URLs are region-specific and the qwen3.8-max family precedent records no
 general endpoint. The compaction profile is deliberately omitted — no
 reliability window or pricing-tier boundary is documented, so the entry
 inherits the global default. The catalog version is 2026-11-17.1.
+
+The 2026-11-18 update adds `openai/gpt-6.2-astra` and `openai/gpt-6.2-sol` as
+verified models with codex and openai bindings. OpenAI's launch post (dated
+November 17, 2026 on the news index), API model pages, reasoning and PDF guides,
+pricing page and Codex model documentation record the exact wire IDs, the
+release date, official coding evidence (complex-change implementation and
+testing for Astra; FrontierCode 2.0 within 0.5 points of Astra at about one-fifth
+the cost for Sol), a 1,050,000-token context with documented 922,000 max input
+and 128,000 max output tokens, text/image/PDF input, `low`/`medium`/`high`/
+`xhigh`/`max` reasoning with `none` rejected, and standard rates of $8/$40 and
+$2/$10 per million input/output tokens. Both retain the 272K whole-request
+pricing boundary: above it, input and cache rates double and output costs 1.5x;
+Astra's cached input is $0.40/MTok with $10/$20 cache writes, and Sol's is
+$0.10/MTok with $2.50/$5 writes. Batch is 50% off, Fast is 2x, Ultrafast is 3x
+through February 28, 2027 and 6x afterward, and eligible background windows
+are 30%/40% below Standard. The compaction profile mirrors the GPT-6 family's
+0.25/0.20 heuristic, now based on the documented 922,000 input cap; no separate
+long-context reliability window is published. No live completion was verified
+for the new routes. The catalog version is 2026-11-18.1.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.
