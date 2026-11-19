@@ -82,7 +82,7 @@ can be broader than the variants verified on a particular managed endpoint.
 
 ## Coverage and evidence
 
-As of 2026-11-18, the catalog contains **44 model fact records** and **99 discovery
+As of 2026-11-19, the catalog contains **45 model fact records** and **99 discovery
 candidates**, with a release inventory across **34 vendors**. This is a
 starting coverage audit, **not a claim that every eligible model is already
 verified**. [`coverage.json`](coverage.json) records each model, candidate,
@@ -308,6 +308,26 @@ are 30%/40% below Standard. The compaction profile mirrors the GPT-6 family's
 0.25/0.20 heuristic, now based on the documented 922,000 input cap; no separate
 long-context reliability window is published. No live completion was verified
 for the new routes. The catalog version is 2026-11-18.1.
+
+The 2026-11-19 update adds `google/gemini-4-neon` as a verified model with a
+binding on the existing gemini endpoint. Google's launch post (November 18,
+2026), model card, API model page, what's-new migration guide, thinking and
+long-decode pages record the stable `gemini-4-neon` wire ID, the release date,
+official coding evidence (CursorBench 4.1 65.4%, SWE-sweep 39.0%, Terminal-bench
+4.1 65.2% cheating-adjusted and AA Index v5.0.1 61 at xhigh), a unified
+1,048,576-token window shared by input, thinking and output, a 65,536-token
+default synchronous output cap with long decode to the remaining window,
+text/image/video/audio/PDF input, and `low`/`medium`/`high`(default)/`xhigh`
+thinking with `high` as the documented default. Pricing is flat at $3/$15 per
+million input/output tokens across the full 1M window, with $0.15 implicit
+cache hits (a 95% discount on prompts of at least 4,096 tokens), no separate
+cache-write or storage fee, and no Free tier; Batch, Flex and Priority rates
+differ and grounding is billed per query. The compaction profile is
+deliberately omitted — no Neon-specific reliability window or pricing-tier
+boundary is documented — so the entry inherits the global default like the
+other Gemini 4 models; the config profile records the documented default
+`high` thinking level. No live endpoint check was run because no Gemini API
+credential was available to the tooling. The catalog version is 2026-11-19.1.
 
 - Model facts are checked against cited documentation and may exist without
   a managed binding. Unknown facts stay absent.
